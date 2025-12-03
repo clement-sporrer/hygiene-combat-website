@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Target, Heart, MapPin, ArrowRight } from "lucide-react";
 
 const About = () => {
   return (
     <div className="min-h-screen bg-brand-white">
+      <SEO
+        title="À propos | Hygiène & Combat"
+        description="Hygiène & Combat est né d'un constat simple : trop d'infections, trop de surfaces mal entretenues. Une solution pensée par les gens du combat pour les gens du combat."
+        path="/a-propos"
+      />
       <Header variant="light" />
       
       <main className="pt-20">

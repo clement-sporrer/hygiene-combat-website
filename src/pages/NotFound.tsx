@@ -1,5 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Home, ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,14 +12,65 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
-      </div>
+    <div className="min-h-screen bg-brand-white">
+      <Header variant="light" />
+      
+      <main className="pt-20">
+        <section className="py-20 md:py-32 bg-brand-white">
+          <div className="container mx-auto">
+            <div className="max-w-2xl mx-auto text-center">
+              <div className="mb-8">
+                <h1 className="text-8xl md:text-9xl font-bold text-primary mb-4">404</h1>
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
+                  Page introuvable
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/"
+                  className="btn-primary inline-flex items-center justify-center gap-2"
+                >
+                  <Home size={18} />
+                  Retour à l'accueil
+                </Link>
+                <button
+                  onClick={() => window.history.back()}
+                  className="btn-outline-dark inline-flex items-center justify-center gap-2"
+                >
+                  <ArrowLeft size={18} />
+                  Page précédente
+                </button>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-border">
+                <p className="text-sm text-muted-foreground mb-4">
+                  Vous pouvez également consulter :
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link to="/solution" className="text-primary hover:underline text-sm">
+                    Notre solution
+                  </Link>
+                  <Link to="/a-propos" className="text-primary hover:underline text-sm">
+                    À propos
+                  </Link>
+                  <Link to="/contact" className="text-primary hover:underline text-sm">
+                    Contact
+                  </Link>
+                  <Link to="/devis" className="text-primary hover:underline text-sm">
+                    Demander un devis
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
     </div>
   );
 };

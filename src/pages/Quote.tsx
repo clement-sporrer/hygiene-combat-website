@@ -1,56 +1,48 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Send, Truck, CheckCircle2 } from "lucide-react";
+import SEO from "@/components/SEO";
+import { Send, Truck, CheckCircle2, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { quoteFormSchema, type QuoteFormData } from "@/lib/validations";
+import { submitQuoteForm } from "@/lib/googleSheets";
 
 const Quote = () => {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    gymName: "",
-    location: "",
-    activities: "",
-    surfaces: "",
-    members: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<QuoteFormData>({
+    resolver: zodResolver(quoteFormSchema),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Demande envoyée !",
-      description: "Nous vous enverrons un devis personnalisé sous 24h.",
-    });
-    
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      gymName: "",
-      location: "",
-      activities: "",
-      surfaces: "",
-      members: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+  const onSubmit = async (data: QuoteFormData) => {
+    try {
+      await submitQuoteForm(data);
+      toast({
+        title: "Demande envoyée !",
+        description: "Nous vous enverrons un devis personnalisé sous 24h.",
+      });
+      reset();
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: error instanceof Error ? error.message : "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
     <div className="min-h-screen bg-brand-white">
+      <SEO
+        title="Demander un devis | Hygiène & Combat"
+        description="Demandez un devis personnalisé pour votre salle de sport. Solution adaptée à votre surface, votre fréquentation et vos besoins spécifiques."
+        path="/devis"
+      />
       <Header variant="light" />
       
       <main className="pt-20">
@@ -73,7 +65,7 @@ const Quote = () => {
         <section className="py-20 bg-brand-white">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-8">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                 {/* Contact info */}
                 <div className="space-y-6">
                   <h2 className="text-xl font-semibold text-brand-black">
@@ -88,13 +80,18 @@ const Quote = () => {
                       <input
                         type="text"
                         id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        {...register("name")}
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                          errors.name ? "border-destructive" : "border-border"
+                        }`}
                         placeholder="Votre nom"
                       />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                          <AlertCircle size={14} />
+                          {errors.name.message}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-brand-black mb-2">
@@ -103,13 +100,18 @@ const Quote = () => {
                       <input
                         type="email"
                         id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        {...register("email")}
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                          errors.email ? "border-destructive" : "border-border"
+                        }`}
                         placeholder="votre@email.com"
                       />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                          <AlertCircle size={14} />
+                          {errors.email.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -120,13 +122,18 @@ const Quote = () => {
                     <input
                       type="tel"
                       id="phone"
-                      name="phone"
-                      required
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                      placeholder="06 00 00 00 00"
+                      {...register("phone")}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                        errors.phone ? "border-destructive" : "border-border"
+                      }`}
+                      placeholder="+33 6 15 61 35 31"
                     />
+                    {errors.phone && (
+                      <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                        <AlertCircle size={14} />
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -144,13 +151,18 @@ const Quote = () => {
                       <input
                         type="text"
                         id="gymName"
-                        name="gymName"
-                        required
-                        value={formData.gymName}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        {...register("gymName")}
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                          errors.gymName ? "border-destructive" : "border-border"
+                        }`}
                         placeholder="Fight Club Paris"
                       />
+                      {errors.gymName && (
+                        <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                          <AlertCircle size={14} />
+                          {errors.gymName.message}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="location" className="block text-sm font-medium text-brand-black mb-2">
@@ -159,13 +171,18 @@ const Quote = () => {
                       <input
                         type="text"
                         id="location"
-                        name="location"
-                        required
-                        value={formData.location}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        {...register("location")}
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                          errors.location ? "border-destructive" : "border-border"
+                        }`}
                         placeholder="Paris 75001"
                       />
+                      {errors.location && (
+                        <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                          <AlertCircle size={14} />
+                          {errors.location.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -176,9 +193,7 @@ const Quote = () => {
                     <input
                       type="text"
                       id="activities"
-                      name="activities"
-                      value={formData.activities}
-                      onChange={handleChange}
+                      {...register("activities")}
                       className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                       placeholder="MMA, JJB, Boxe, Lutte, Grappling..."
                     />
@@ -191,9 +206,7 @@ const Quote = () => {
                     <input
                       type="text"
                       id="surfaces"
-                      name="surfaces"
-                      value={formData.surfaces}
-                      onChange={handleChange}
+                      {...register("surfaces")}
                       className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                       placeholder="Tatamis puzzle, ring, cage, sol musculation..."
                     />
@@ -205,9 +218,7 @@ const Quote = () => {
                     </label>
                     <select
                       id="members"
-                      name="members"
-                      value={formData.members}
-                      onChange={handleChange}
+                      {...register("members")}
                       className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all bg-brand-white"
                     >
                       <option value="">Sélectionner...</option>
@@ -228,10 +239,8 @@ const Quote = () => {
                     </label>
                     <textarea
                       id="message"
-                      name="message"
                       rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
+                      {...register("message")}
                       className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
                       placeholder="Décrivez vos besoins, fréquence de nettoyage souhaitée, questions..."
                     />

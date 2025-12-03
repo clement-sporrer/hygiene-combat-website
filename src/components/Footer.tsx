@@ -65,11 +65,11 @@ const Footer = () => {
                 <span>contact@hygiene-combat.fr</span>
               </a>
               <a
-                href="tel:+33600000000"
+                href="tel:+33615613531"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone size={18} />
-                <span>06 00 00 00 00</span>
+                <span>+33 6 15 61 35 31</span>
               </a>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin size={18} />

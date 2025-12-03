@@ -1,52 +1,48 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Clock, Calendar, Send } from "lucide-react";
+import SEO from "@/components/SEO";
+import { Mail, Phone, MapPin, Clock, Calendar, Send, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { contactFormSchema, type ContactFormData } from "@/lib/validations";
+import { submitContactForm } from "@/lib/googleSheets";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    gymName: "",
-    city: "",
-    activity: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message envoyé !",
-      description: "Nous vous répondrons sous 24h.",
-    });
-    
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      gymName: "",
-      city: "",
-      activity: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      await submitContactForm(data);
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous répondrons sous 24h.",
+      });
+      reset();
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: error instanceof Error ? error.message : "Une erreur est survenue. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
     <div className="min-h-screen bg-brand-white">
+      <SEO
+        title="Contact | Hygiène & Combat"
+        description="Contactez-nous pour toute question sur notre solution d'hygiène pour salles de sport de combat. Réponse sous 24h."
+        path="/contact"
+      />
       <Header variant="light" />
       
       <main className="pt-20">
@@ -74,7 +70,7 @@ const Contact = () => {
                   Envoyez-nous un message
                 </h2>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-brand-black mb-2">
@@ -83,13 +79,18 @@ const Contact = () => {
                       <input
                         type="text"
                         id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        {...register("name")}
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                          errors.name ? "border-destructive" : "border-border"
+                        }`}
                         placeholder="Votre nom"
                       />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                          <AlertCircle size={14} />
+                          {errors.name.message}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-brand-black mb-2">
@@ -98,13 +99,18 @@ const Contact = () => {
                       <input
                         type="email"
                         id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                        {...register("email")}
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
+                          errors.email ? "border-destructive" : "border-border"
+                        }`}
                         placeholder="votre@email.com"
                       />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                          <AlertCircle size={14} />
+                          {errors.email.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -116,11 +122,9 @@ const Contact = () => {
                       <input
                         type="tel"
                         id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
+                        {...register("phone")}
                         className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-                        placeholder="06 00 00 00 00"
+                        placeholder="06 15 61 35 31"
                       />
                     </div>
                     <div>
@@ -130,9 +134,7 @@ const Contact = () => {
                       <input
                         type="text"
                         id="gymName"
-                        name="gymName"
-                        value={formData.gymName}
-                        onChange={handleChange}
+                        {...register("gymName")}
                         className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         placeholder="Fight Club Paris"
                       />
@@ -147,9 +149,7 @@ const Contact = () => {
                       <input
                         type="text"
                         id="city"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
+                        {...register("city")}
                         className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         placeholder="Paris"
                       />
@@ -161,9 +161,7 @@ const Contact = () => {
                       <input
                         type="text"
                         id="activity"
-                        name="activity"
-                        value={formData.activity}
-                        onChange={handleChange}
+                        {...register("activity")}
                         className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                         placeholder="MMA, JJB, Boxe..."
                       />
@@ -176,14 +174,19 @@ const Contact = () => {
                     </label>
                     <textarea
                       id="message"
-                      name="message"
-                      required
                       rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
+                      {...register("message")}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none ${
+                        errors.message ? "border-destructive" : "border-border"
+                      }`}
                       placeholder="Votre message..."
                     />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-destructive flex items-center gap-1">
+                        <AlertCircle size={14} />
+                        {errors.message.message}
+                      </p>
+                    )}
                   </div>
 
                   <button
@@ -222,8 +225,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-brand-black mb-1">Téléphone</h4>
-                      <a href="tel:+33600000000" className="text-primary hover:underline">
-                        06 00 00 00 00
+                      <a href="tel:+33615613531" className="text-primary hover:underline">
+                        +33 6 15 61 35 31
                       </a>
                     </div>
                   </div>
@@ -260,7 +263,7 @@ const Contact = () => {
                       Planifiez un appel pour discuter de vos besoins.
                     </p>
                     <a
-                      href="https://calendly.com"
+                      href={import.meta.env.VITE_CALENDLY_LINK || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-secondary inline-flex items-center gap-2"

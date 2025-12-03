@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { 
   Sparkles, ShieldCheck, Wind, CheckCircle2, 
   Droplets, Clock, HelpCircle, ArrowRight 
@@ -43,6 +44,11 @@ const faqs = [
 const Solution = () => {
   return (
     <div className="min-h-screen bg-brand-white">
+      <SEO
+        title="Notre solution d'hygiène | Hygiène & Combat"
+        description="Découvrez notre biocide 3-en-1 professionnel : nettoyage, désinfection et désodorisation en 5 minutes. Compatible avec tous types de surfaces (tatamis, rings, machines)."
+        path="/solution"
+      />
       <Header variant="light" />
       
       <main className="pt-20">
