@@ -40,12 +40,11 @@ cp .env.example .env
 ```
 
 4. Remplir les variables dans `.env` :
-   - `VITE_RESEND_API_KEY` : Clé API Resend
-   - `VITE_GOOGLE_SHEETS_API_KEY` : Clé API Google Sheets (lecture publique)
-   - `VITE_GOOGLE_SHEETS_SPREADSHEET_ID` : ID du Google Sheets
+   - `VITE_GOOGLE_SHEETS_LOGOS_CSV_URL` : URL CSV public de la feuille "Logos" (voir ci-dessous)
+   - `RESEND_API_KEY` : Clé API Resend (server-side)
+   - `GOOGLE_SHEETS_SPREADSHEET_ID` : ID du Google Sheets (pour les formulaires)
    - `GOOGLE_SHEETS_CLIENT_EMAIL` : Email du compte de service Google
    - `GOOGLE_SHEETS_PRIVATE_KEY` : Clé privée du compte de service
-   - `RESEND_API_KEY` : Clé API Resend (server-side)
    - `VITE_CALENDLY_LINK` : Lien Calendly
    - `VITE_SITE_URL` : URL du site (ex: https://hygiene-combat.fr)
 
@@ -53,11 +52,20 @@ cp .env.example .env
 
 Le Google Sheets doit contenir 3 feuilles :
 
-### Feuille "Logos"
-Colonnes :
-- **A** : Nom du client
-- **B** : URL Imgur du logo
-- **C** : URL du site (optionnel)
+### Feuille "Logos" (CSV public - SIMPLE)
+
+**Configuration en 2 étapes :**
+1. Créer une feuille "Logos" avec les colonnes :
+   - **A** : Nom du client
+   - **B** : URL Imgur du logo
+   - **C** : URL du site (optionnel)
+
+2. Publier en CSV public :
+   - Aller dans "Fichier" > "Partager" > "Publier sur le web"
+   - Sélectionner la feuille "Logos" et le format "CSV"
+   - Copier l'URL → Variable `VITE_GOOGLE_SHEETS_LOGOS_CSV_URL`
+
+**C'est tout !** Aucune authentification nécessaire pour les logos.
 
 Exemple :
 ```

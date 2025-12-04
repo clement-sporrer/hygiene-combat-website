@@ -1,18 +1,8 @@
 /**
- * Google Sheets API utilities
+ * Google Sheets utilities
  * 
- * Structure attendue du Google Sheets :
- * 
- * Feuille "Logos" :
- * - Colonne A : Nom du client
- * - Colonne B : URL Imgur du logo
- * - Colonne C : URL du site (optionnel)
- * 
- * Feuille "Contact" :
- * - Colonnes : name, email, phone, gymName, city, activity, message, timestamp
- * 
- * Feuille "Devis" :
- * - Colonnes : name, email, phone, gymName, location, activities, surfaces, members, message, timestamp
+ * Pour les logos : utilisation d'un CSV public (plus simple)
+ * Pour les formulaires : API Google Sheets avec authentification (écriture)
  */
 
 export interface ClientLogo {
@@ -24,31 +14,66 @@ export interface ClientLogo {
 import type { ContactFormData, QuoteFormData } from './validations';
 
 /**
- * Fetch client logos from Google Sheets
+ * Parse CSV string into array of rows
+ */
+function parseCSV(csvText: string): string[][] {
+  const lines = csvText.split('\n').filter(line => line.trim());
+  return lines.map(line => {
+    const result: string[] = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        result.push(current.trim());
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    result.push(current.trim());
+    return result;
+  });
+}
+
+/**
+ * Fetch client logos from Google Sheets CSV public URL
+ * 
+ * Pour obtenir l'URL CSV :
+ * 1. Ouvrir le Google Sheets
+ * 2. Aller dans "Fichier" > "Partager" > "Publier sur le web"
+ * 3. Sélectionner la feuille "Logos" et le format "CSV"
+ * 4. Copier l'URL générée
+ * 
+ * Structure CSV attendue :
+ * - Colonne 1 : Nom du client
+ * - Colonne 2 : URL Imgur du logo
+ * - Colonne 3 : URL du site (optionnel)
  */
 export async function fetchClientLogos(): Promise<ClientLogo[]> {
-  const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY;
-  const spreadsheetId = import.meta.env.VITE_GOOGLE_SHEETS_SPREADSHEET_ID;
-  const sheetName = 'Logos';
+  const csvUrl = import.meta.env.VITE_GOOGLE_SHEETS_LOGOS_CSV_URL;
 
-  if (!apiKey || !spreadsheetId) {
-    console.warn('Google Sheets API not configured');
+  if (!csvUrl) {
+    console.warn('Google Sheets logos CSV URL not configured');
     return [];
   }
 
   try {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}?key=${apiKey}`;
-    const response = await fetch(url);
+    const response = await fetch(csvUrl);
     
     if (!response.ok) {
-      throw new Error(`Google Sheets API error: ${response.statusText}`);
+      throw new Error(`Failed to fetch logos CSV: ${response.statusText}`);
     }
 
-    const data = await response.json();
-    const rows = data.values || [];
+    const csvText = await response.text();
+    const rows = parseCSV(csvText);
 
-    // Skip header row and map to ClientLogo objects
-    return rows.slice(1).map((row: string[]) => ({
+    // Skip header row (first row) and map to ClientLogo objects
+    return rows.slice(1).map((row) => ({
       name: row[0] || '',
       logoUrl: row[1] || '',
       websiteUrl: row[2] || undefined,

@@ -2,11 +2,11 @@
 
 Ce document explique comment configurer le Google Sheets pour le site Hygiène & Combat.
 
-## Structure requise
+## 📋 Structure requise
 
 Le Google Sheets doit contenir **3 feuilles** :
 
-### 1. Feuille "Logos"
+### 1. Feuille "Logos" (CSV public - SIMPLE)
 
 Cette feuille contient les logos des clients à afficher sur la page d'accueil.
 
@@ -24,11 +24,25 @@ Cette feuille contient les logos des clients à afficher sur la page d'accueil.
 | BJJ Academy          | https://i.imgur.com/ghi789.png     | https://bjjacademy.fr |
 ```
 
+**✅ Configuration SIMPLE (CSV public) :**
+
+1. Ouvrir votre Google Sheets
+2. Aller dans **"Fichier"** > **"Partager"** > **"Publier sur le web"**
+3. Dans la fenêtre qui s'ouvre :
+   - Sélectionner la feuille **"Logos"**
+   - Choisir le format **"CSV"**
+   - Cliquer sur **"Publier"**
+4. Copier l'URL générée (ex: `https://docs.google.com/spreadsheets/d/.../gid=0/export?format=csv`)
+5. Ajouter cette URL dans la variable d'environnement `VITE_GOOGLE_SHEETS_LOGOS_CSV_URL`
+
+**C'est tout !** Aucune authentification nécessaire pour les logos.
+
 **Notes importantes :**
-- La première ligne peut être un en-tête (sera ignorée)
+- La première ligne peut être un en-tête (sera ignorée automatiquement)
 - Les logos doivent être hébergés sur Imgur ou un autre service d'hébergement d'images
 - Si la colonne C est vide, le logo ne sera pas cliquable
 - Les logos doivent être au format PNG, JPG ou SVG
+- Le CSV se met à jour automatiquement quand vous modifiez le Sheets
 
 ---
 
@@ -90,7 +104,9 @@ Cette feuille stocke les données du formulaire de demande de devis.
 
 ---
 
-## Configuration Google Cloud
+## 🔐 Configuration Google Cloud (uniquement pour les formulaires)
+
+**Note :** Cette configuration est uniquement nécessaire pour que les formulaires puissent écrire dans Google Sheets. Les logos utilisent un CSV public (voir ci-dessus).
 
 ### 1. Créer un projet Google Cloud
 
@@ -145,20 +161,6 @@ https://docs.google.com/spreadsheets/d/[SPREADSHEET_ID]/edit
 ```
 
 Copier `[SPREADSHEET_ID]` → Variable `GOOGLE_SHEETS_SPREADSHEET_ID`
-
----
-
-## Configuration API Key publique (pour les logos)
-
-Pour permettre la lecture publique des logos (sans authentification) :
-
-1. Aller dans "APIs & Services" > "Credentials"
-2. Cliquer sur "Create Credentials" > "API Key"
-3. Copier la clé API
-4. (Optionnel) Restreindre la clé à "Google Sheets API" uniquement
-5. Utiliser cette clé pour `VITE_GOOGLE_SHEETS_API_KEY`
-
-**Note :** Cette clé est publique (dans le code frontend), donc ne donnez accès qu'en lecture seule si possible.
 
 ---
 

@@ -30,16 +30,16 @@ Tous les problèmes identifiés dans l'audit ont été corrigés :
 Créer un fichier `.env` à la racine du projet avec les variables suivantes :
 
 ```env
+# Logos (CSV public - SIMPLE)
+VITE_GOOGLE_SHEETS_LOGOS_CSV_URL=https://docs.google.com/spreadsheets/d/.../gid=0/export?format=csv
+
 # API Keys (Frontend - préfixe VITE_)
 VITE_RESEND_API_KEY=your_resend_api_key_here
-VITE_GOOGLE_SHEETS_API_KEY=your_google_sheets_api_key_here
-VITE_GOOGLE_SHEETS_SPREADSHEET_ID=your_spreadsheet_id_here
 VITE_CALENDLY_LINK=https://calendly.com/votre-lien
 VITE_SITE_URL=https://hygiene-combat.fr
 
-# API Keys (Backend - pour Vercel)
+# API Keys (Backend - pour Vercel - uniquement pour les formulaires)
 RESEND_API_KEY=your_resend_api_key_here
-GOOGLE_SHEETS_API_KEY=your_google_sheets_api_key_here
 GOOGLE_SHEETS_SPREADSHEET_ID=your_spreadsheet_id_here
 GOOGLE_SHEETS_CLIENT_EMAIL=your_service_account_email@project.iam.gserviceaccount.com
 GOOGLE_SHEETS_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
@@ -59,11 +59,19 @@ RATE_LIMIT_MAX_REQUESTS=5
 Voir le fichier `GOOGLE_SHEETS_SETUP.md` pour les instructions détaillées.
 
 **Résumé rapide :**
-1. Créer un Google Sheets avec 3 feuilles : "Logos", "Contact", "Devis"
-2. Configurer les colonnes selon les spécifications
-3. Créer un compte de service Google Cloud
-4. Partager le Sheets avec l'email du compte de service
-5. Obtenir l'ID du spreadsheet et les credentials
+
+**Pour les logos (SIMPLE - CSV public) :**
+1. Créer un Google Sheets avec une feuille "Logos"
+2. Aller dans "Fichier" > "Partager" > "Publier sur le web"
+3. Sélectionner la feuille "Logos" et le format "CSV"
+4. Copier l'URL générée → Variable `VITE_GOOGLE_SHEETS_LOGOS_CSV_URL`
+5. **C'est tout !** Aucune authentification nécessaire.
+
+**Pour les formulaires (nécessite Google Cloud) :**
+1. Créer les feuilles "Contact" et "Devis" dans le même Sheets
+2. Créer un compte de service Google Cloud
+3. Partager le Sheets avec l'email du compte de service
+4. Obtenir l'ID du spreadsheet et les credentials
 
 ### 3. Configuration Resend
 
