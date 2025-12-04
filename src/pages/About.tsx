@@ -65,10 +65,10 @@ const About = () => {
         </Section>
 
         {/* Values */}
-        <Section variant="dark">
+        <Section variant="dark" className="min-h-[70vh] flex flex-col justify-center">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
+            <div className="text-center mb-10 md:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
                 Notre philosophie
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -76,7 +76,7 @@ const About = () => {
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
               {[
                 {
                   title: "Simplicité",
@@ -105,8 +105,8 @@ const About = () => {
         </Section>
 
         {/* Zone */}
-        <Section variant="light">
-          <div className="max-w-2xl mx-auto text-center space-y-4 md:space-y-6">
+        <Section variant="light" className="min-h-[60vh] flex flex-col justify-center">
+          <div className="max-w-2xl mx-auto text-center space-y-4 md:space-y-5">
             <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mx-auto">
               <MapPin size={24} className="md:w-7 md:h-7" />
             </div>
@@ -124,8 +124,8 @@ const About = () => {
         </Section>
 
         {/* CTA */}
-        <Section variant="muted">
-          <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
+        <Section variant="muted" className="min-h-[50vh] flex flex-col justify-center">
+          <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
               Une question ? Un projet ?
             </h2>

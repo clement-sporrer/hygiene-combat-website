@@ -35,7 +35,7 @@ const Section = ({
     >
       <div
         className={cn(
-          "container mx-auto px-4 sm:px-6 lg:px-8",
+          "container mx-auto px-6 md:px-12 lg:px-20",
           containerClassName
         )}
       >

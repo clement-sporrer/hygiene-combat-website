@@ -52,8 +52,8 @@ const Contact = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <Section variant="muted" className="py-16 md:py-20 lg:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
+        <Section variant="muted" className="min-h-[50vh] flex flex-col justify-center">
+          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Contact
             </h1>
@@ -64,8 +64,8 @@ const Contact = () => {
         </Section>
 
         {/* Contact content */}
-        <Section variant="light">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <Section variant="light" className="min-h-[70vh] flex flex-col justify-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 max-w-7xl mx-auto">
             {/* Form */}
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-brand-black mb-6 md:mb-8">

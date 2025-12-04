@@ -53,8 +53,8 @@ const Quote = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <Section variant="muted" className="py-16 md:py-20 lg:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
+        <Section variant="muted" className="min-h-[50vh] flex flex-col justify-center">
+          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Demander un devis
             </h1>
@@ -66,8 +66,8 @@ const Quote = () => {
         </Section>
 
         {/* Form section */}
-        <Section variant="light">
-          <div className="max-w-3xl mx-auto">
+        <Section variant="light" className="min-h-[70vh] flex flex-col justify-center">
+          <div className="max-w-3xl mx-auto w-full">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 md:space-y-10">
               {/* Contact info */}
               <div className="space-y-5 md:space-y-6">

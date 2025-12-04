@@ -55,8 +55,8 @@ const Solution = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <Section variant="muted" className="py-16 md:py-20 lg:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
+        <Section variant="muted" className="min-h-[60vh] flex flex-col justify-center">
+          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Notre solution d'hygiène
             </h1>
@@ -67,17 +67,17 @@ const Solution = () => {
         </Section>
 
         {/* How it works */}
-        <Section variant="light" id="comment-ca-agit">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-4 md:mb-6">
+        <Section variant="light" id="comment-ca-agit" className="min-h-[70vh] flex flex-col justify-center">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Comment ça agit
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Trois actions en une seule solution pour un nettoyage complet.
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: Sparkles,
@@ -111,8 +111,8 @@ const Solution = () => {
         </Section>
 
         {/* Surfaces */}
-        <Section variant="dark" id="sur-quelles-surfaces">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+        <Section variant="dark" id="sur-quelles-surfaces" className="min-h-[70vh] flex flex-col justify-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
             <div className="space-y-4 md:space-y-6">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 Sur quelles surfaces ?
@@ -169,18 +169,18 @@ const Solution = () => {
         </Section>
 
         {/* Mode d'emploi */}
-        <Section variant="light" id="mode-emploi">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-4 md:mb-6">
+        <Section variant="light" id="mode-emploi" className="min-h-[60vh] flex flex-col justify-center">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Comment l'utiliser
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Un mode d'emploi simple en 3 étapes.
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
               {[
                 { step: "1", title: "Diluer", desc: "Mélanger à 5% dans l'eau (50ml pour 1L)" },
                 { step: "2", title: "Appliquer", desc: "Au pulvérisateur ou à la serpillière" },
@@ -203,9 +203,9 @@ const Solution = () => {
         </Section>
 
         {/* FAQ */}
-        <Section variant="muted" id="questions-frequentes">
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-4 md:mb-6">
+        <Section variant="muted" id="questions-frequentes" className="min-h-[60vh] flex flex-col justify-center">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Questions fréquentes
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">

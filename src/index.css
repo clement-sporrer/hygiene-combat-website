@@ -10,6 +10,11 @@
 /* Smooth scroll global */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

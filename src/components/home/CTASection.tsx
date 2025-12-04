@@ -4,15 +4,15 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <Section variant="dark" id="cta-section" className="h-screen flex flex-col justify-center relative overflow-hidden">
+    <Section variant="dark" id="cta-section" className="min-h-screen flex flex-col justify-center relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-dark rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10">
-        <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8 animate-fade-in">
+      <div className="relative z-10 w-full">
+        <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6 lg:space-y-8 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Parlez-nous de votre salle
           </h2>

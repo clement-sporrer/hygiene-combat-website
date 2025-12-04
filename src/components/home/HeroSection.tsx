@@ -8,23 +8,23 @@ const HeroSection = () => {
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
-      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center h-full pt-8 md:pt-12 lg:pt-16">
+      <div className="container mx-auto relative z-10 px-6 md:px-12 lg:px-20 w-full h-full flex items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full">
           {/* Left content */}
-          <div className="space-y-5 md:space-y-6 lg:space-y-7 text-center lg:text-left animate-fade-in">
-            <div className="space-y-4 md:space-y-6">
+          <div className="space-y-4 md:space-y-5 lg:space-y-6 text-center lg:text-left animate-fade-in max-w-2xl mx-auto lg:mx-0">
+            <div className="space-y-3 md:space-y-4 lg:space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-brand-blue-dark/30 rounded-full text-xs md:text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Solution professionnelle
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-2xl mx-auto lg:mx-0">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Un produit pensé{" "}
                 <span className="text-primary">par</span> les gens du combat{" "}
                 <span className="text-primary">pour</span> les gens du combat
               </h1>
               
-              <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Nettoie, désinfecte et enlève les mauvaises odeurs en 5 minutes, 
                 sans rendre les surfaces glissantes.
               </p>
