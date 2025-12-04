@@ -7,54 +7,106 @@ interface ScrollArrowProps {
   variant?: "light" | "dark";
 }
 
+/**
+ * Calcule la position absolue du haut d'un élément dans le document.
+ * Utilise getBoundingClientRect() + window.scrollY pour une méthode robuste
+ * qui fonctionne même avec des transformations CSS et des positions relatives.
+ */
+const getAbsoluteTop = (element: HTMLElement): number => {
+  const rect = element.getBoundingClientRect();
+  return rect.top + window.scrollY;
+};
+
+/**
+ * Trouve la section suivante de manière fiable.
+ * Parcourt toutes les sections et trouve celle qui vient après la section actuelle.
+ */
+const findNextSection = (currentSection: HTMLElement | null): HTMLElement | null => {
+  if (!currentSection) return null;
+  
+  const allSections = Array.from(document.querySelectorAll("section")) as HTMLElement[];
+  const currentIndex = allSections.indexOf(currentSection);
+  
+  if (currentIndex >= 0 && currentIndex < allSections.length - 1) {
+    return allSections[currentIndex + 1];
+  }
+  
+  return null;
+};
+
+/**
+ * Trouve la section actuellement visible dans le viewport.
+ * Utilise une méthode plus fiable que elementFromPoint.
+ */
+const findCurrentSection = (): HTMLElement | null => {
+  const allSections = Array.from(document.querySelectorAll("section")) as HTMLElement[];
+  const viewportCenter = window.innerHeight / 2;
+  const scrollY = window.scrollY;
+  const centerY = scrollY + viewportCenter;
+  
+  // Trouve la section qui contient le centre du viewport
+  for (const section of allSections) {
+    const sectionTop = getAbsoluteTop(section);
+    const sectionBottom = sectionTop + section.offsetHeight;
+    
+    if (centerY >= sectionTop && centerY <= sectionBottom) {
+      return section;
+    }
+  }
+  
+  // Si aucune section ne contient le centre, trouve la section la plus proche
+  let closestSection: HTMLElement | null = null;
+  let minDistance = Infinity;
+  
+  for (const section of allSections) {
+    const sectionTop = getAbsoluteTop(section);
+    const distance = Math.abs(sectionTop - centerY);
+    
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestSection = section;
+    }
+  }
+  
+  return closestSection;
+};
+
 const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProps) => {
   const handleClick = () => {
-    // Get actual navbar height from the header element
+    // Récupère la hauteur réelle de la navbar depuis le DOM
     const header = document.querySelector("header");
     const navbarHeight = header 
       ? header.getBoundingClientRect().height 
       : (window.innerWidth >= 768 ? 80 : 64); // Fallback: 5rem (80px) md, 4rem (64px) mobile
     
-    // Helper function to get absolute position of element in document
-    const getAbsoluteTop = (element: HTMLElement): number => {
-      let offsetTop = 0;
-      let currentElement: HTMLElement | null = element;
-      
-      while (currentElement) {
-        offsetTop += currentElement.offsetTop;
-        currentElement = currentElement.offsetParent as HTMLElement | null;
-      }
-      
-      return offsetTop;
-    };
-    
     if (targetId) {
+      // Scroll vers une section spécifique par son ID
       const target = document.getElementById(targetId);
       if (target) {
-        // Get the absolute position of the section's top edge in the document
-        const elementTop = getAbsoluteTop(target);
+        // Position absolue du haut réel de la section (avant le padding)
+        const elementAbsoluteTop = getAbsoluteTop(target);
         
-        // Scroll so that the section's top edge is exactly navbarHeight pixels from viewport top
-        // This means the navbar (fixed at top: 0) will cover the first navbarHeight pixels of the section
-        // Since sections have pt-16/20 (equal to navbar height), the navbar will cover the padding
-        const scrollPosition = elementTop - navbarHeight;
+        // Position de scroll = position absolue - hauteur navbar
+        // Cela place le haut de la section exactement à navbarHeight pixels sous le haut de la fenêtre
+        // La navbar (fixe) recouvrira donc les premiers pixels de la section
+        const scrollPosition = elementAbsoluteTop - navbarHeight;
 
         window.scrollTo({
-          top: Math.max(0, scrollPosition), // Ensure we don't scroll to negative position
+          top: Math.max(0, scrollPosition), // S'assure qu'on ne scroll pas à une position négative
           behavior: "smooth"
         });
       }
     } else {
-      // Scroll to next section
-      const currentSection = document.elementFromPoint(
-        window.innerWidth / 2,
-        window.innerHeight / 2
-      )?.closest("section");
+      // Scroll vers la section suivante
+      const currentSection = findCurrentSection();
+      const nextSection = findNextSection(currentSection);
       
-      if (currentSection?.nextElementSibling) {
-        const nextSection = currentSection.nextElementSibling as HTMLElement;
-        const elementTop = getAbsoluteTop(nextSection);
-        const scrollPosition = elementTop - navbarHeight;
+      if (nextSection) {
+        // Position absolue du haut réel de la section suivante
+        const elementAbsoluteTop = getAbsoluteTop(nextSection);
+        
+        // Position de scroll = position absolue - hauteur navbar
+        const scrollPosition = elementAbsoluteTop - navbarHeight;
 
         window.scrollTo({
           top: Math.max(0, scrollPosition),
