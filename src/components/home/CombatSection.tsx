@@ -1,13 +1,14 @@
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { AlertTriangle, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const CombatSection = () => {
   return (
-    <Section variant="dark" id="protegez-vos-adherents">
+    <Section variant="dark" id="protegez-vos-adherents" className="h-screen flex flex-col justify-center relative">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
         {/* Left - Content */}
-        <div className="space-y-6 md:space-y-8">
+        <div className="space-y-6 md:space-y-8 animate-fade-in">
           <div className="space-y-4">
             <span className="inline-block text-primary text-xs md:text-sm font-medium uppercase tracking-wider">
               Pensé pour le combat
@@ -66,7 +67,7 @@ const CombatSection = () => {
         </div>
 
         {/* Right - Visual */}
-        <div className="relative order-first lg:order-last">
+        <div className="relative order-first lg:order-last animate-fade-in delay-200">
           <div className="bg-gradient-to-br from-brand-blue-dark to-secondary p-6 md:p-8 lg:p-10 xl:p-12 rounded-2xl">
             <div className="space-y-5 md:space-y-6">
               <h3 className="text-xl md:text-2xl font-semibold">
@@ -92,6 +93,9 @@ const CombatSection = () => {
           </div>
         </div>
       </div>
+      
+      {/* Scroll arrow */}
+      <ScrollArrow targetId="economie-usage" variant="dark" />
     </Section>
   );
 };

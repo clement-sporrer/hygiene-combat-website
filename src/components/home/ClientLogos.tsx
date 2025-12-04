@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchClientLogos, type ClientLogo } from "@/lib/googleSheets";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 
 const ClientLogos = () => {
   const [logos, setLogos] = useState<ClientLogo[]>([]);
@@ -22,7 +23,7 @@ const ClientLogos = () => {
 
   if (isLoading) {
     return (
-      <section className="bg-brand-white py-12 border-y border-border">
+      <section id="client-logos" className="bg-brand-white h-screen flex flex-col justify-center border-y border-border">
         <div className="container mx-auto">
           <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-wider">
             Ils nous font confiance
@@ -43,15 +44,14 @@ const ClientLogos = () => {
   const doubledLogos = [...logos, ...logos];
 
   return (
-    <section className="bg-brand-white py-12 border-y border-border overflow-hidden">
-      <div className="container mx-auto">
-        <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-wider">
+    <section id="client-logos" className="bg-brand-white h-screen flex flex-col justify-center border-y border-border overflow-hidden relative">
+      <div className="container mx-auto w-full">
+        <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-wider animate-fade-in">
           Ils nous font confiance
         </p>
-      </div>
-      
-      {/* Scrolling logos container */}
-      <div className="relative">
+        
+        {/* Scrolling logos container */}
+        <div className="relative">
         <div className="flex animate-scroll-logos">
           {doubledLogos.map((logo, index) => (
             <div
@@ -88,8 +88,12 @@ const ClientLogos = () => {
         
         {/* Fade edges */}
         <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-brand-white to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-brand-white to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-brand-white to-transparent pointer-events-none" />
+        </div>
       </div>
+      
+      {/* Scroll arrow */}
+      <ScrollArrow targetId="ce-que-fait-la-solution" variant="light" />
     </section>
   );
 };

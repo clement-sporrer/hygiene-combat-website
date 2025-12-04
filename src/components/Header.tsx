@@ -51,6 +51,11 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
           {/* Logo */}
           <Link
             to="/"
+            onClick={() => {
+              if (location.pathname !== "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
             aria-label="Retour à l'accueil"
           >
@@ -69,6 +74,11 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                 <Link
                   key={link.href}
                   to={link.href}
+                  onClick={() => {
+                    if (link.href !== location.pathname) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className={`relative px-2 py-1 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md ${
                     isDark ? "text-brand-white" : "text-brand-black"
                   } ${
@@ -130,7 +140,12 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    if (link.href !== location.pathname) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                     isActive
                       ? isDark

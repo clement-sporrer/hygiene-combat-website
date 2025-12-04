@@ -1,12 +1,13 @@
 import Section from "@/components/layout/Section";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Droplet, Calculator, Clock } from "lucide-react";
 
 const EconomySection = () => {
   return (
-    <Section variant="light" id="economie-usage">
+    <Section variant="light" id="economie-usage" className="h-screen flex flex-col justify-center relative">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
         {/* Left - Visual stats */}
-        <div className="order-2 lg:order-1">
+        <div className="order-2 lg:order-1 animate-fade-in delay-200">
           <div className="bg-gradient-to-br from-muted to-background p-6 md:p-8 lg:p-10 xl:p-12 rounded-2xl border border-border">
             <div className="grid grid-cols-2 gap-4 md:gap-6 lg:gap-8">
               <div className="text-center p-4 md:p-6 bg-brand-white rounded-xl shadow-sm">
@@ -45,7 +46,7 @@ const EconomySection = () => {
         </div>
 
         {/* Right - Content */}
-        <div className="order-1 lg:order-2 space-y-6 md:space-y-8">
+        <div className="order-1 lg:order-2 space-y-6 md:space-y-8 animate-fade-in">
           <div className="space-y-3 md:space-y-4">
             <span className="inline-block text-primary text-xs md:text-sm font-medium uppercase tracking-wider">
               Économique et simple
@@ -103,6 +104,9 @@ const EconomySection = () => {
           </div>
         </div>
       </div>
+      
+      {/* Scroll arrow */}
+      <ScrollArrow targetId="cta-section" variant="light" />
     </Section>
   );
 };

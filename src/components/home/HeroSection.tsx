@@ -1,16 +1,17 @@
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-brand-black text-brand-white overflow-hidden flex items-center">
+    <section className="relative h-screen bg-brand-black text-brand-white overflow-hidden flex items-center">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
-      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 pt-20 pb-12 md:pt-24 md:pb-16 lg:pt-32 lg:pb-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center min-h-[calc(100vh-5rem)]">
+      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center h-full">
           {/* Left content */}
-          <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+          <div className="space-y-6 md:space-y-8 text-center lg:text-left animate-fade-in">
             <div className="space-y-4 md:space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-brand-blue-dark/30 rounded-full text-xs md:text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
@@ -73,13 +74,13 @@ const HeroSection = () => {
           </div>
 
           {/* Right content - Video */}
-          <div className="relative order-first lg:order-last">
-            <div className="relative aspect-square max-w-md lg:max-w-lg mx-auto">
+          <div className="relative order-first lg:order-last flex items-center justify-center h-full animate-fade-in delay-200">
+            <div className="relative w-full max-w-md lg:max-w-lg xl:max-w-xl flex items-center justify-center">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75" />
               
-              {/* Video container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-glow">
+              {/* Video container - aspect ratio vertical pour meilleur alignement */}
+              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-glow">
                 <video
                   autoPlay
                   loop
@@ -96,12 +97,8 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
-        <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-muted-foreground/50 rounded-full animate-bounce" />
-        </div>
-      </div>
+      {/* Scroll arrow */}
+      <ScrollArrow targetId="client-logos" variant="dark" />
     </section>
   );
 };

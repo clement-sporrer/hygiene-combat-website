@@ -7,6 +7,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scroll global */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @layer base {
   :root {
     /* Brand Colors - Hygiène & Combat */
@@ -203,14 +222,17 @@
 @layer utilities {
   .animate-fade-up {
     animation: fade-up 0.6s ease-out forwards;
+    opacity: 0;
   }
 
   .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
+    animation: fade-in 0.6s ease-out forwards;
+    opacity: 0;
   }
 
   .animate-slide-in {
-    animation: slide-in 0.5s ease-out forwards;
+    animation: slide-in 0.6s ease-out forwards;
+    opacity: 0;
   }
 
   .animate-float {
@@ -236,8 +258,14 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-in {
