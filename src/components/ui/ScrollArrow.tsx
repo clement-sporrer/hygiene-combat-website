@@ -9,16 +9,25 @@ interface ScrollArrowProps {
 
 const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProps) => {
   const handleClick = () => {
-    const navbarHeight = window.innerWidth >= 768 ? 80 : 64; // 5rem (80px) md, 4rem (64px) mobile
+    // Get actual navbar height from the header element
+    const header = document.querySelector("header");
+    const navbarHeight = header 
+      ? header.getBoundingClientRect().height 
+      : (window.innerWidth >= 768 ? 80 : 64); // Fallback: 5rem (80px) md, 4rem (64px) mobile
     
     if (targetId) {
       const target = document.getElementById(targetId);
       if (target) {
-        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - navbarHeight;
+        // Get the absolute position of the section's top edge in the document
+        const rect = target.getBoundingClientRect();
+        const elementTop = rect.top + window.scrollY;
+        
+        // Scroll so that the section's top edge is exactly navbarHeight pixels from viewport top
+        // This means the navbar will cover the first navbarHeight pixels of the section
+        const scrollPosition = elementTop - navbarHeight;
 
         window.scrollTo({
-          top: offsetPosition,
+          top: Math.max(0, scrollPosition), // Ensure we don't scroll to negative position
           behavior: "smooth"
         });
       }
@@ -31,11 +40,12 @@ const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProp
       
       if (currentSection?.nextElementSibling) {
         const nextSection = currentSection.nextElementSibling as HTMLElement;
-        const elementPosition = nextSection.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - navbarHeight;
+        const rect = nextSection.getBoundingClientRect();
+        const elementTop = rect.top + window.scrollY;
+        const scrollPosition = elementTop - navbarHeight;
 
         window.scrollTo({
-          top: offsetPosition,
+          top: Math.max(0, scrollPosition),
           behavior: "smooth",
         });
       }
