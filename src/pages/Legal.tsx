@@ -13,7 +13,7 @@ const Legal = ({ title, content }: LegalProps) => {
     <div className="min-h-screen bg-brand-white">
       <Header variant="light" />
       
-      <main className="pt-20">
+      <main className="pt-16 md:pt-20">
         <section className="py-20 bg-brand-white">
           <div className="container mx-auto max-w-4xl">
             <Link

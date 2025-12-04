@@ -16,9 +16,9 @@ const About = () => {
       />
       <Header variant="light" />
       
-      <main className="pt-20">
+      <main className="pt-16 md:pt-20">
         {/* Hero */}
-        <Section variant="muted" className="py-16 md:py-20 lg:py-24">
+        <Section variant="muted" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               À propos
@@ -65,7 +65,7 @@ const About = () => {
         </Section>
 
         {/* Values */}
-        <Section variant="dark" className="min-h-[70vh] flex flex-col justify-center">
+        <Section variant="dark" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 md:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
@@ -105,7 +105,7 @@ const About = () => {
         </Section>
 
         {/* Zone */}
-        <Section variant="light" className="min-h-[60vh] flex flex-col justify-center">
+        <Section variant="light" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
           <div className="max-w-2xl mx-auto text-center space-y-4 md:space-y-5">
             <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mx-auto">
               <MapPin size={24} className="md:w-7 md:h-7" />
@@ -124,7 +124,7 @@ const About = () => {
         </Section>
 
         {/* CTA */}
-        <Section variant="muted" className="min-h-[50vh] flex flex-col justify-center">
+        <Section variant="muted" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
           <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
               Une question ? Un projet ?

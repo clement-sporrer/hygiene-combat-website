@@ -5,7 +5,7 @@ import { AlertTriangle, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const CombatSection = () => {
   return (
-    <Section variant="dark" id="protegez-vos-adherents" className="min-h-screen flex flex-col justify-center relative">
+    <Section variant="dark" id="protegez-vos-adherents" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center relative">
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
         {/* Left - Content */}
         <div className="space-y-6 md:space-y-8 animate-fade-in">

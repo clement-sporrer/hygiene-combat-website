@@ -15,7 +15,7 @@ const NotFound = () => {
     <div className="min-h-screen bg-brand-white">
       <Header variant="light" />
       
-      <main className="pt-20">
+      <main className="pt-16 md:pt-20">
         <section className="py-20 md:py-32 bg-brand-white">
           <div className="container mx-auto">
             <div className="max-w-2xl mx-auto text-center">
