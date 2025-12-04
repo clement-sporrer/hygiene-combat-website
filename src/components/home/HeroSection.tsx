@@ -9,9 +9,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
       <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center h-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center h-full pt-8 md:pt-12 lg:pt-16">
           {/* Left content */}
-          <div className="space-y-6 md:space-y-8 text-center lg:text-left animate-fade-in">
+          <div className="space-y-5 md:space-y-6 lg:space-y-7 text-center lg:text-left animate-fade-in">
             <div className="space-y-4 md:space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-brand-blue-dark/30 rounded-full text-xs md:text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
@@ -75,12 +75,12 @@ const HeroSection = () => {
 
           {/* Right content - Video */}
           <div className="relative order-first lg:order-last flex items-center justify-center h-full animate-fade-in delay-200">
-            <div className="relative w-full max-w-md lg:max-w-lg xl:max-w-xl flex items-center justify-center">
+            <div className="relative w-full max-w-xs lg:max-w-md xl:max-w-lg flex items-center justify-center">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75" />
               
               {/* Video container - aspect ratio vertical pour meilleur alignement */}
-              <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-glow">
+              <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden shadow-glow">
                 <video
                   autoPlay
                   loop
@@ -98,7 +98,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll arrow */}
-      <ScrollArrow targetId="client-logos" variant="dark" />
+      <ScrollArrow targetId="ce-que-fait-la-solution" variant="dark" />
     </section>
   );
 };

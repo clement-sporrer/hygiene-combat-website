@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
-import ClientLogos from "@/components/home/ClientLogos";
 import BenefitsSection from "@/components/home/BenefitsSection";
 import CombatSection from "@/components/home/CombatSection";
 import EconomySection from "@/components/home/EconomySection";
@@ -19,7 +18,6 @@ const Index = () => {
       <Header variant="dark" />
       <main>
         <HeroSection />
-        <ClientLogos />
         <BenefitsSection />
         <CombatSection />
         <EconomySection />
