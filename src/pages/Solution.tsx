@@ -53,9 +53,9 @@ const Solution = () => {
       />
       <Header variant="light" />
       
-      <main className="pt-16 md:pt-20">
+      <main>
         {/* Hero */}
-        <Section variant="muted" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="muted" fullScreen>
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Notre solution d'hygiène
@@ -67,7 +67,7 @@ const Solution = () => {
         </Section>
 
         {/* How it works */}
-        <Section variant="light" id="comment-ca-agit" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="light" id="comment-ca-agit" fullScreen>
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Comment ça agit
@@ -111,7 +111,7 @@ const Solution = () => {
         </Section>
 
         {/* Surfaces */}
-        <Section variant="dark" id="sur-quelles-surfaces" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="dark" id="sur-quelles-surfaces" fullScreen>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
             <div className="space-y-4 md:space-y-6">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -169,7 +169,7 @@ const Solution = () => {
         </Section>
 
         {/* Mode d'emploi */}
-        <Section variant="light" id="mode-emploi" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="light" id="mode-emploi" fullScreen>
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Comment l'utiliser
@@ -203,7 +203,7 @@ const Solution = () => {
         </Section>
 
         {/* FAQ */}
-        <Section variant="muted" id="questions-frequentes" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="muted" id="questions-frequentes" fullScreen>
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Questions fréquentes

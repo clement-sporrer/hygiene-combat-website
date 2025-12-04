@@ -50,9 +50,9 @@ const Contact = () => {
       />
       <Header variant="light" />
       
-      <main className="pt-16 md:pt-20">
+      <main>
         {/* Hero */}
-        <Section variant="muted" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="muted" fullScreen>
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Contact
@@ -64,7 +64,7 @@ const Contact = () => {
         </Section>
 
         {/* Contact content */}
-        <Section variant="light" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center">
+        <Section variant="light" fullScreen>
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 max-w-7xl mx-auto">
             {/* Form */}
             <div>

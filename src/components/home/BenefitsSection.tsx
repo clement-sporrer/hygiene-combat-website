@@ -48,7 +48,7 @@ const BenefitsSection = () => {
   const doubledLogos = logos.length > 0 ? [...logos, ...logos] : [];
 
   return (
-    <Section variant="light" id="ce-que-fait-la-solution" className="min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-center relative overflow-hidden">
+    <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden">
       <div className="w-full flex flex-col justify-center space-y-8 md:space-y-10 lg:space-y-12">
         {/* Client Logos Section */}
         {!isLoadingLogos && logos.length > 0 && (

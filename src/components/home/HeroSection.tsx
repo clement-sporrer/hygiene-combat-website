@@ -4,12 +4,12 @@ import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] bg-brand-black text-brand-white overflow-hidden flex items-center pt-16 md:pt-20">
+    <section className="relative min-h-screen bg-brand-black text-brand-white overflow-hidden pt-16 md:pt-20">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
-      <div className="container mx-auto relative z-10 px-6 md:px-12 lg:px-20 w-full h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full">
+      <div className="container mx-auto relative z-10 px-6 md:px-10 lg:px-16 w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-center justify-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center w-full py-8 md:py-0">
           {/* Left content */}
           <div className="space-y-4 md:space-y-5 lg:space-y-6 text-center lg:text-left animate-fade-in max-w-2xl mx-auto lg:mx-0">
             <div className="space-y-3 md:space-y-4 lg:space-y-5">
