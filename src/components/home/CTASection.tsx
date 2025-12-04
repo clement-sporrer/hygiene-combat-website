@@ -1,5 +1,6 @@
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { ArrowRight, MessageSquare } from "lucide-react";
 
 const CTASection = () => {
@@ -11,7 +12,7 @@ const CTASection = () => {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-dark rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center">
         <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6 lg:space-y-8 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Parlez-nous de votre salle
@@ -59,6 +60,10 @@ const CTASection = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll arrow (optional on last section but good for consistency if footer is considered next "step") */}
+      {/* Usually last section doesn't need arrow to footer, but request says "TOUTES les sections" */}
+      <ScrollArrow className="hidden md:flex" /> 
     </Section>
   );
 };

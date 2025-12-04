@@ -8,6 +8,7 @@ import FormField from "@/components/ui/FormField";
 import TextareaField from "@/components/ui/TextareaField";
 import SelectField from "@/components/ui/SelectField";
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Send, Truck, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { quoteFormSchema, type QuoteFormData } from "@/lib/validations";
@@ -53,7 +54,7 @@ const Quote = () => {
       
       <main>
         {/* Hero */}
-        <Section variant="muted" fullScreen>
+        <Section variant="muted" fullScreen className="relative">
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Demander un devis
@@ -63,10 +64,11 @@ const Quote = () => {
               adaptée à votre salle et à votre usage.
             </p>
           </div>
+          <ScrollArrow />
         </Section>
 
         {/* Form section */}
-        <Section variant="light" fullScreen>
+        <Section variant="light" fullScreen className="relative">
           <div className="max-w-3xl mx-auto w-full">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 md:space-y-10">
               {/* Contact info */}
@@ -209,6 +211,7 @@ const Quote = () => {
               </div>
             </div>
           </div>
+          <ScrollArrow className="hidden md:flex" />
         </Section>
       </main>
 

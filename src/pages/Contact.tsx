@@ -7,6 +7,7 @@ import Section from "@/components/layout/Section";
 import FormField from "@/components/ui/FormField";
 import TextareaField from "@/components/ui/TextareaField";
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Mail, Phone, MapPin, Clock, Calendar, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
@@ -52,7 +53,7 @@ const Contact = () => {
       
       <main>
         {/* Hero */}
-        <Section variant="muted" fullScreen>
+        <Section variant="muted" fullScreen className="relative">
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Contact
@@ -61,10 +62,11 @@ const Contact = () => {
               Une question ? Besoin d'informations ? Nous sommes là pour vous aider.
             </p>
           </div>
+          <ScrollArrow />
         </Section>
 
         {/* Contact content */}
-        <Section variant="light" fullScreen>
+        <Section variant="light" fullScreen className="relative">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 max-w-7xl mx-auto">
             {/* Form */}
             <div>
@@ -231,6 +233,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
+          <ScrollArrow className="hidden md:flex" />
         </Section>
       </main>
 

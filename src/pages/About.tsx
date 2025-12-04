@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Target, Heart, MapPin, ArrowRight } from "lucide-react";
 
 const About = () => {
@@ -18,7 +19,7 @@ const About = () => {
       
       <main>
         {/* Hero */}
-        <Section variant="muted" fullScreen>
+        <Section variant="muted" fullScreen className="relative">
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               À propos
@@ -27,10 +28,11 @@ const About = () => {
               Une solution née du terrain, pour répondre à un vrai problème.
             </p>
           </div>
+          <ScrollArrow />
         </Section>
 
         {/* Story */}
-        <Section variant="light" fullScreen>
+        <Section variant="light" fullScreen className="relative">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
               <div className="space-y-4 md:space-y-6">
@@ -62,10 +64,11 @@ const About = () => {
               </div>
             </div>
           </div>
+          <ScrollArrow />
         </Section>
 
         {/* Values */}
-        <Section variant="dark" fullScreen>
+        <Section variant="dark" fullScreen className="relative">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 md:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
@@ -102,10 +105,11 @@ const About = () => {
               ))}
             </div>
           </div>
+          <ScrollArrow variant="dark" />
         </Section>
 
         {/* Zone */}
-        <Section variant="light" fullScreen>
+        <Section variant="light" fullScreen className="relative">
           <div className="max-w-2xl mx-auto text-center space-y-4 md:space-y-5">
             <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mx-auto">
               <MapPin size={24} className="md:w-7 md:h-7" />
@@ -121,10 +125,11 @@ const About = () => {
               🇫🇷 Produit fabriqué en France
             </p>
           </div>
+          <ScrollArrow />
         </Section>
 
         {/* CTA */}
-        <Section variant="muted" fullScreen>
+        <Section variant="muted" fullScreen className="relative">
           <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
               Une question ? Un projet ?
@@ -155,6 +160,7 @@ const About = () => {
               </Button>
             </div>
           </div>
+          <ScrollArrow className="hidden md:flex" />
         </Section>
       </main>
 

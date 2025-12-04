@@ -9,10 +9,18 @@ interface ScrollArrowProps {
 
 const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProps) => {
   const handleClick = () => {
+    const navbarHeight = window.innerWidth >= 768 ? 80 : 64; // 5rem (80px) md, 4rem (64px) mobile
+    
     if (targetId) {
       const target = document.getElementById(targetId);
       if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
       }
     } else {
       // Scroll to next section
@@ -22,9 +30,13 @@ const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProp
       )?.closest("section");
       
       if (currentSection?.nextElementSibling) {
-        (currentSection.nextElementSibling as HTMLElement).scrollIntoView({
+        const nextSection = currentSection.nextElementSibling as HTMLElement;
+        const elementPosition = nextSection.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
           behavior: "smooth",
-          block: "start",
         });
       }
     }

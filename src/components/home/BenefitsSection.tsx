@@ -49,16 +49,18 @@ const BenefitsSection = () => {
 
   return (
     <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden">
-      <div className="w-full flex flex-col justify-center space-y-8 md:space-y-10 lg:space-y-12">
-        {/* Client Logos Section */}
-        {!isLoadingLogos && logos.length > 0 && (
-          <div className="animate-fade-in">
-            <p className="text-center text-sm text-muted-foreground mb-4 md:mb-6 uppercase tracking-wider">
-              Ils nous font confiance
-            </p>
-            
-            {/* Scrolling logos container */}
-            <div className="relative">
+      {/* Centered content wrapper */}
+      <div className="w-full flex-1 flex flex-col justify-center items-center">
+        <div className="w-full space-y-6 md:space-y-8 lg:space-y-10">
+          {/* Client Logos Section - Reduced top spacing */}
+          {!isLoadingLogos && logos.length > 0 && (
+            <div className="animate-fade-in">
+              <p className="text-center text-xs md:text-sm text-muted-foreground mb-3 md:mb-4 uppercase tracking-wider">
+                Ils nous font confiance
+              </p>
+              
+              {/* Scrolling logos container */}
+              <div className="relative">
               <div className="flex animate-scroll-logos">
                 {doubledLogos.map((logo, index) => (
                   <div
@@ -100,37 +102,38 @@ const BenefitsSection = () => {
           </div>
         )}
 
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
-            Ce que fait la solution
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Un seul produit pour nettoyer, désinfecter et désodoriser vos équipements.
-          </p>
-        </div>
+          {/* Header - Reduced spacing */}
+          <div className="text-center max-w-3xl mx-auto animate-fade-in pt-2 md:pt-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-2 md:mb-3">
+              Ce que fait la solution
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Un seul produit pour nettoyer, désinfecter et désodoriser vos équipements.
+            </p>
+          </div>
 
-        {/* Benefits grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
-          {benefits.map((benefit, index) => {
-            const delayClass = index === 0 ? "" : index === 1 ? "delay-200" : "delay-400";
-            return (
-              <div
-                key={benefit.title}
-                className={`group bg-card p-6 md:p-8 rounded-xl border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center animate-fade-up ${delayClass}`}
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-primary/10 text-primary mb-4 md:mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
-                  <benefit.icon size={24} className="md:w-7 md:h-7" />
+          {/* Benefits grid - Reduced height boxes */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto w-full">
+            {benefits.map((benefit, index) => {
+              const delayClass = index === 0 ? "" : index === 1 ? "delay-200" : "delay-400";
+              return (
+                <div
+                  key={benefit.title}
+                  className={`group bg-card p-5 md:p-6 rounded-xl border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center animate-fade-up ${delayClass} flex flex-col items-center justify-center`}
+                >
+                  <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mb-3 md:mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                    <benefit.icon size={24} className="md:w-6 md:h-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-brand-black mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                    {benefit.description}
+                  </p>
                 </div>
-                <h3 className="text-lg md:text-xl font-semibold text-brand-black mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
-                  {benefit.description}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
       

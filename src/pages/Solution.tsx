@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
+import ScrollArrow from "@/components/ui/ScrollArrow";
 import { 
   Sparkles, ShieldCheck, Wind, CheckCircle2, 
   Droplets, Clock, HelpCircle, ArrowRight 
@@ -55,7 +56,7 @@ const Solution = () => {
       
       <main>
         {/* Hero */}
-        <Section variant="muted" fullScreen>
+        <Section variant="muted" fullScreen className="relative">
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
               Notre solution d'hygiène
@@ -64,10 +65,11 @@ const Solution = () => {
               Biocide 3-en-1 professionnel pour tatamis, rings, machines et vestiaires.
             </p>
           </div>
+          <ScrollArrow targetId="comment-ca-agit" />
         </Section>
 
         {/* How it works */}
-        <Section variant="light" id="comment-ca-agit" fullScreen>
+        <Section variant="light" id="comment-ca-agit" fullScreen className="relative">
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Comment ça agit
@@ -108,10 +110,11 @@ const Solution = () => {
               </div>
             ))}
           </div>
+          <ScrollArrow targetId="sur-quelles-surfaces" />
         </Section>
 
         {/* Surfaces */}
-        <Section variant="dark" id="sur-quelles-surfaces" fullScreen>
+        <Section variant="dark" id="sur-quelles-surfaces" fullScreen className="relative">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
             <div className="space-y-4 md:space-y-6">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -166,10 +169,11 @@ const Solution = () => {
               </div>
             </div>
           </div>
+          <ScrollArrow targetId="mode-emploi" variant="dark" />
         </Section>
 
         {/* Mode d'emploi */}
-        <Section variant="light" id="mode-emploi" fullScreen>
+        <Section variant="light" id="mode-emploi" fullScreen className="relative">
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Comment l'utiliser
@@ -200,10 +204,11 @@ const Solution = () => {
               ))}
             </div>
           </div>
+          <ScrollArrow targetId="questions-frequentes" />
         </Section>
 
         {/* FAQ */}
-        <Section variant="muted" id="questions-frequentes" fullScreen>
+        <Section variant="muted" id="questions-frequentes" fullScreen className="relative">
           <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
               Questions fréquentes
@@ -226,10 +231,11 @@ const Solution = () => {
               </div>
             ))}
           </div>
+          <ScrollArrow className="hidden md:flex" />
         </Section>
 
         {/* CTA */}
-        <Section variant="dark">
+        <Section variant="dark" fullScreen className="relative">
           <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
               Prêt à améliorer l'hygiène de votre salle ?
@@ -249,6 +255,7 @@ const Solution = () => {
               Demander un devis
             </Button>
           </div>
+          <ScrollArrow className="hidden md:flex" variant="dark" />
         </Section>
       </main>
 
