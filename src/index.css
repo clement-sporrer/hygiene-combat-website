@@ -105,11 +105,37 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: "DM Sans", system-ui, sans-serif;
+    @apply text-base leading-relaxed;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "DM Sans", system-ui, sans-serif;
-    @apply font-semibold tracking-tight;
+  /* Typography scale - cohérent et lisible */
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold leading-tight tracking-tight;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold leading-snug tracking-tight;
+  }
+
+  h4 {
+    @apply text-lg sm:text-xl md:text-2xl font-semibold leading-snug;
+  }
+
+  h5 {
+    @apply text-base sm:text-lg font-semibold;
+  }
+
+  h6 {
+    @apply text-sm sm:text-base font-semibold;
+  }
+
+  /* Limiter largeur des textes pour lisibilité */
+  p {
+    @apply max-w-prose;
   }
 }
 
@@ -123,28 +149,35 @@
     @apply bg-brand-white text-brand-black;
   }
 
-  /* Button variants for brand */
+  /* Button variants for brand - standardisés */
   .btn-primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/90 
-           px-6 py-3 rounded-lg font-medium transition-all duration-300
-           hover:shadow-lg hover:-translate-y-0.5;
+           px-6 py-3 rounded-lg font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+           active:scale-[0.98];
   }
 
   .btn-secondary {
     @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 
-           px-6 py-3 rounded-lg font-medium transition-all duration-300;
+           px-6 py-3 rounded-lg font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2
+           active:scale-[0.98];
   }
 
   .btn-outline-light {
     @apply border-2 border-brand-white text-brand-white bg-transparent
            hover:bg-brand-white hover:text-brand-black
-           px-6 py-3 rounded-lg font-medium transition-all duration-300;
+           px-6 py-3 rounded-lg font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand-white focus:ring-offset-2
+           active:scale-[0.98];
   }
 
   .btn-outline-dark {
     @apply border-2 border-brand-black text-brand-black bg-transparent
            hover:bg-brand-black hover:text-brand-white
-           px-6 py-3 rounded-lg font-medium transition-all duration-300;
+           px-6 py-3 rounded-lg font-medium transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand-black focus:ring-offset-2
+           active:scale-[0.98];
   }
 
   /* Card styles */

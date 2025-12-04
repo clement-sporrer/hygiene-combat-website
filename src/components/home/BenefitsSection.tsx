@@ -1,3 +1,4 @@
+import Section from "@/components/layout/Section";
 import { Sparkles, ShieldCheck, Wind } from "lucide-react";
 
 const benefits = [
@@ -23,40 +24,37 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="bg-brand-white py-20 md:py-28">
-      <div className="container mx-auto">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
-            Une solution 3-en-1 complète
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Un seul produit pour nettoyer, désinfecter et désodoriser vos équipements.
-          </p>
-        </div>
-
-        {/* Benefits grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
-            <div
-              key={benefit.title}
-              className="group card-feature text-center"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                <benefit.icon size={28} />
-              </div>
-              <h3 className="text-xl font-semibold text-brand-black mb-3">
-                {benefit.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {benefit.description}
-              </p>
-            </div>
-          ))}
-        </div>
+    <Section variant="light" id="ce-que-fait-la-solution">
+      {/* Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-4 md:mb-6">
+          Ce que fait la solution
+        </h2>
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          Un seul produit pour nettoyer, désinfecter et désodoriser vos équipements.
+        </p>
       </div>
-    </section>
+
+      {/* Benefits grid */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {benefits.map((benefit) => (
+          <div
+            key={benefit.title}
+            className="group bg-card p-6 md:p-8 rounded-xl border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center"
+          >
+            <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-primary/10 text-primary mb-4 md:mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+              <benefit.icon size={24} className="md:w-7 md:h-7" />
+            </div>
+            <h3 className="text-lg md:text-xl font-semibold text-brand-black mb-3">
+              {benefit.title}
+            </h3>
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+              {benefit.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 };
 

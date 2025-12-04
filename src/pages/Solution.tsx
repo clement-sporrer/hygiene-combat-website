@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import Section from "@/components/layout/Section";
+import Button from "@/components/ui/Button";
 import { 
   Sparkles, ShieldCheck, Wind, CheckCircle2, 
   Droplets, Clock, HelpCircle, ArrowRight 
@@ -53,57 +54,60 @@ const Solution = () => {
       
       <main className="pt-20">
         {/* Hero */}
-        <section className="py-20 md:py-28 bg-gradient-to-b from-muted/50 to-background">
-          <div className="container mx-auto">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold text-brand-black">
-                Notre solution d'hygiène
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                Biocide 3-en-1 professionnel pour tatamis, rings, machines et vestiaires.
-              </p>
-            </div>
+        <Section variant="muted" className="py-16 md:py-20 lg:py-24">
+          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
+              Notre solution d'hygiène
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Biocide 3-en-1 professionnel pour tatamis, rings, machines et vestiaires.
+            </p>
           </div>
-        </section>
+        </Section>
 
         {/* How it works */}
-        <section className="py-20 bg-brand-white">
-          <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-brand-black text-center mb-16">
+        <Section variant="light" id="comment-ca-agit">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-4 md:mb-6">
               Comment ça agit
             </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: Sparkles,
-                  title: "Nettoie",
-                  description: "Élimine saleté, sueur et résidus organiques en profondeur.",
-                },
-                {
-                  icon: ShieldCheck,
-                  title: "Désinfecte",
-                  description: "Détruit les microbes responsables des infections cutanées (bactéries, champignons, virus).",
-                },
-                {
-                  icon: Wind,
-                  title: "Désodorise",
-                  description: "Supprime les odeurs de transpiration et laisse un parfum frais d'eucalyptus.",
-                },
-              ].map((item) => (
-                <div key={item.title} className="card-feature text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary mb-6">
-                    <item.icon size={28} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-black mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
-            </div>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Trois actions en une seule solution pour un nettoyage complet.
+            </p>
           </div>
-        </section>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                icon: Sparkles,
+                title: "Nettoie",
+                description: "Élimine saleté, sueur et résidus organiques en profondeur.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Désinfecte",
+                description: "Détruit les microbes responsables des infections cutanées (bactéries, champignons, virus).",
+              },
+              {
+                icon: Wind,
+                title: "Désodorise",
+                description: "Supprime les odeurs de transpiration et laisse un parfum frais d'eucalyptus.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="card-feature text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-primary/10 text-primary mb-4 md:mb-6">
+                  <item.icon size={24} className="md:w-7 md:h-7" />
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold text-brand-black mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Section>
 
         {/* Surfaces */}
         <section className="py-20 bg-brand-black text-brand-white">

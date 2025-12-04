@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
 import logoBlack from "@/assets/logo-black.png";
+import Button from "@/components/ui/Button";
 
 const navLinks = [
   { href: "/", label: "Accueil" },
@@ -17,56 +18,98 @@ interface HeaderProps {
 
 const Header = ({ variant = "dark" }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const isDark = variant === "dark";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isDark ? "bg-brand-black/95 backdrop-blur-sm" : "bg-brand-white/95 backdrop-blur-sm"
+        isDark
+          ? isScrolled
+            ? "bg-brand-black shadow-lg"
+            : "bg-brand-black/95 backdrop-blur-sm"
+          : isScrolled
+          ? "bg-brand-white shadow-lg"
+          : "bg-brand-white/95 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link
+            to="/"
+            className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
+            aria-label="Retour à l'accueil"
+          >
             <img
               src={isDark ? logoWhite : logoBlack}
               alt="Hygiène & Combat"
-              className="h-12 w-auto"
+              className="h-10 md:h-12 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`nav-link font-medium ${
-                  isDark ? "text-brand-white" : "text-brand-black"
-                } ${location.pathname === link.href ? "text-primary" : ""}`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`relative px-2 py-1 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md ${
+                    isDark ? "text-brand-white" : "text-brand-black"
+                  } ${
+                    isActive
+                      ? "text-primary"
+                      : isDark
+                      ? "hover:text-primary"
+                      : "hover:text-primary"
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* CTA Button */}
+          {/* Desktop CTA Button */}
           <div className="hidden md:block">
-            <Link
+            <Button
+              asLink
               to="/devis"
-              className={isDark ? "btn-primary" : "btn-secondary"}
+              variant={isDark ? "primary" : "secondary"}
+              size="md"
             >
               Demander un devis
-            </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 ${isDark ? "text-brand-white" : "text-brand-black"}`}
-            aria-label="Menu"
+            className={`md:hidden p-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+              isDark
+                ? "text-brand-white hover:bg-brand-blue-dark/20"
+                : "text-brand-black hover:bg-muted"
+            }`}
+            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -76,30 +119,44 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div
-          className={`md:hidden absolute top-20 left-0 right-0 ${
-            isDark ? "bg-brand-black" : "bg-brand-white"
-          } border-t border-border`}
+          className={`md:hidden absolute top-16 left-0 right-0 ${
+            isDark ? "bg-brand-black border-t border-brand-blue-dark/30" : "bg-brand-white border-t border-border"
+          } shadow-lg`}
         >
-          <nav className="container mx-auto py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
+          <nav className="container mx-auto px-4 py-6 flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`px-4 py-3 rounded-lg text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                    isActive
+                      ? isDark
+                        ? "bg-brand-blue-dark/30 text-primary"
+                        : "bg-primary/10 text-primary"
+                      : isDark
+                      ? "text-brand-white hover:bg-brand-blue-dark/20"
+                      : "text-brand-black hover:bg-muted"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <div className="mt-4 pt-4 border-t border-border">
+              <Button
+                asLink
+                to="/devis"
+                variant={isDark ? "primary" : "secondary"}
+                size="md"
+                className="w-full"
                 onClick={() => setIsMenuOpen(false)}
-                className={`py-2 font-medium ${
-                  isDark ? "text-brand-white" : "text-brand-black"
-                } ${location.pathname === link.href ? "text-primary" : ""}`}
               >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              to="/devis"
-              onClick={() => setIsMenuOpen(false)}
-              className={`mt-2 text-center ${isDark ? "btn-primary" : "btn-secondary"}`}
-            >
-              Demander un devis
-            </Link>
+                Demander un devis
+              </Button>
+            </div>
           </nav>
         </div>
       )}
