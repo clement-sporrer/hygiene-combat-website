@@ -21,11 +21,14 @@ const Section = ({
     muted: "bg-muted/30 text-foreground",
   };
 
+  // Don't apply default padding if h-screen is in className
+  const hasFullHeight = className?.includes("h-screen");
+  
   return (
     <section
       id={id}
       className={cn(
-        "py-16 md:py-20 lg:py-24",
+        !hasFullHeight && "py-16 md:py-20 lg:py-24",
         variants[variant],
         className
       )}
