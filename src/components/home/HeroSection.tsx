@@ -75,7 +75,7 @@ const HeroSection = () => {
 
           {/* Right content - Video */}
           <div className="relative order-first lg:order-last flex items-center justify-center h-full animate-fade-in delay-200">
-            <div className="relative w-full max-w-xs lg:max-w-md xl:max-w-lg flex items-center justify-center">
+            <div className="relative w-full max-w-[256px] lg:max-w-[358px] xl:max-w-[410px] flex items-center justify-center">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75" />
               

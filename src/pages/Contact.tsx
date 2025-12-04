@@ -217,8 +217,7 @@ const Contact = () => {
                       Planifiez un appel pour discuter de vos besoins.
                     </p>
                     <Button
-                      asLink
-                      to={import.meta.env.VITE_CALENDLY_LINK || "#"}
+                      href={import.meta.env.VITE_CALENDLY_LINK || "#"}
                       variant="secondary"
                       size="md"
                       className="w-full sm:w-auto"
