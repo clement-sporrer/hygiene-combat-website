@@ -60,10 +60,10 @@ export function generateContactEmailHTML(data: {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: #1b1f20; color: #fff; padding: 20px; text-align: center; }
+          .header { background: #000000; color: #fff; padding: 20px; text-align: center; }
           .content { background: #f9f9f9; padding: 20px; }
           .field { margin-bottom: 15px; }
-          .label { font-weight: bold; color: #1b1f20; }
+          .label { font-weight: bold; color: #000000; }
           .value { margin-top: 5px; }
         </style>
       </head>
@@ -138,10 +138,10 @@ export function generateQuoteEmailHTML(data: {
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: #1b1f20; color: #fff; padding: 20px; text-align: center; }
+          .header { background: #000000; color: #fff; padding: 20px; text-align: center; }
           .content { background: #f9f9f9; padding: 20px; }
           .field { margin-bottom: 15px; }
-          .label { font-weight: bold; color: #1b1f20; }
+          .label { font-weight: bold; color: #000000; }
           .value { margin-top: 5px; }
         </style>
       </head>

@@ -1,5 +1,5 @@
 import Section from "@/components/layout/Section";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 import { ArrowRight, MessageSquare } from "lucide-react";
 
 const CTASection = () => {

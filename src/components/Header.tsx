@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
 import logoBlack from "@/assets/logo-black.png";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 
 const navLinks = [
   { href: "/", label: "Accueil" },

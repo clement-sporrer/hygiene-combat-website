@@ -11,13 +11,13 @@
   :root {
     /* Brand Colors - Hygiène & Combat */
     --background: 200 5% 98%; /* #fefefe */
-    --foreground: 195 10% 12%; /* #1b1f20 */
+    --foreground: 0 0% 0%; /* Noir profond #000000 */
 
     --card: 200 5% 98%;
-    --card-foreground: 195 10% 12%;
+    --card-foreground: 0 0% 0%; /* Noir profond */
 
     --popover: 200 5% 98%;
-    --popover-foreground: 195 10% 12%;
+    --popover-foreground: 0 0% 0%; /* Noir profond */
 
     /* Blue-grey accent */
     --primary: 204 26% 63%; /* #87a6bb */
@@ -43,20 +43,20 @@
     --radius: 0.5rem;
 
     /* Custom brand tokens */
-    --brand-black: 195 10% 12%;
+    --brand-black: 0 0% 0%; /* Noir profond #000000 */
     --brand-white: 200 5% 98%;
     --brand-blue: 204 26% 63%;
     --brand-blue-dark: 200 20% 27%;
 
     /* Gradients */
-    --gradient-dark: linear-gradient(180deg, hsl(195 10% 12%) 0%, hsl(200 15% 8%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 100%);
     --gradient-light: linear-gradient(180deg, hsl(200 5% 98%) 0%, hsl(200 10% 95%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(204 26% 63%) 0%, hsl(200 20% 27%) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 2px 8px -2px hsl(195 10% 12% / 0.1);
-    --shadow-md: 0 8px 24px -8px hsl(195 10% 12% / 0.15);
-    --shadow-lg: 0 16px 48px -16px hsl(195 10% 12% / 0.2);
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 8px 24px -8px hsl(0 0% 0% / 0.15);
+    --shadow-lg: 0 16px 48px -16px hsl(0 0% 0% / 0.2);
     --shadow-glow: 0 0 40px hsl(204 26% 63% / 0.3);
 
     /* Transitions */
@@ -66,17 +66,17 @@
   }
 
   .dark {
-    --background: 195 10% 12%;
+    --background: 0 0% 0%; /* Noir profond */
     --foreground: 200 5% 98%;
 
-    --card: 200 15% 8%;
+    --card: 0 0% 5%;
     --card-foreground: 200 5% 98%;
 
-    --popover: 200 15% 8%;
+    --popover: 0 0% 5%;
     --popover-foreground: 200 5% 98%;
 
     --primary: 204 26% 63%;
-    --primary-foreground: 195 10% 12%;
+    --primary-foreground: 0 0% 0%; /* Noir profond */
 
     --secondary: 200 20% 27%;
     --secondary-foreground: 200 5% 98%;
@@ -85,7 +85,7 @@
     --muted-foreground: 200 10% 70%;
 
     --accent: 204 26% 63%;
-    --accent-foreground: 195 10% 12%;
+    --accent-foreground: 0 0% 0%; /* Noir profond */
 
     --border: 200 15% 20%;
     --input: 200 15% 20%;

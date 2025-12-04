@@ -1,5 +1,5 @@
 import Section from "@/components/layout/Section";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 import { AlertTriangle, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const CombatSection = () => {

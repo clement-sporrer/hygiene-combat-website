@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import Section from "@/components/layout/Section";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 import { 
   Sparkles, ShieldCheck, Wind, CheckCircle2, 
   Droplets, Clock, HelpCircle, ArrowRight 
