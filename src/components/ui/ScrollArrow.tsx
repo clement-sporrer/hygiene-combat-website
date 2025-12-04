@@ -15,15 +15,28 @@ const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProp
       ? header.getBoundingClientRect().height 
       : (window.innerWidth >= 768 ? 80 : 64); // Fallback: 5rem (80px) md, 4rem (64px) mobile
     
+    // Helper function to get absolute position of element in document
+    const getAbsoluteTop = (element: HTMLElement): number => {
+      let offsetTop = 0;
+      let currentElement: HTMLElement | null = element;
+      
+      while (currentElement) {
+        offsetTop += currentElement.offsetTop;
+        currentElement = currentElement.offsetParent as HTMLElement | null;
+      }
+      
+      return offsetTop;
+    };
+    
     if (targetId) {
       const target = document.getElementById(targetId);
       if (target) {
         // Get the absolute position of the section's top edge in the document
-        const rect = target.getBoundingClientRect();
-        const elementTop = rect.top + window.scrollY;
+        const elementTop = getAbsoluteTop(target);
         
         // Scroll so that the section's top edge is exactly navbarHeight pixels from viewport top
-        // This means the navbar will cover the first navbarHeight pixels of the section
+        // This means the navbar (fixed at top: 0) will cover the first navbarHeight pixels of the section
+        // Since sections have pt-16/20 (equal to navbar height), the navbar will cover the padding
         const scrollPosition = elementTop - navbarHeight;
 
         window.scrollTo({
@@ -40,8 +53,7 @@ const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProp
       
       if (currentSection?.nextElementSibling) {
         const nextSection = currentSection.nextElementSibling as HTMLElement;
-        const rect = nextSection.getBoundingClientRect();
-        const elementTop = rect.top + window.scrollY;
+        const elementTop = getAbsoluteTop(nextSection);
         const scrollPosition = elementTop - navbarHeight;
 
         window.scrollTo({
