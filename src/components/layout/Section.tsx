@@ -34,8 +34,6 @@ const Section = ({
       id={id}
       className={cn(
         variants[variant],
-        // Scroll margin for anchors
-        "scroll-mt-16 md:scroll-mt-20",
         fullScreen ? "min-h-screen pt-16 md:pt-20 flex flex-col" : "py-16 md:py-20 lg:py-24",
         className
       )}

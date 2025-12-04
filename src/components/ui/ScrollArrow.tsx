@@ -8,23 +8,22 @@ interface ScrollArrowProps {
 }
 
 /**
- * Obtient la hauteur réelle de la navbar depuis le DOM.
+ * Scroll vers une section en positionnant son haut réel en haut de la fenêtre.
+ * 
+ * Comportement simple :
+ * - Calcule la position absolue du haut de la section
+ * - Scroll à cette position
+ * - Le padding-top de la section gère l'espace sous la navbar
+ * - Pas besoin de connaître la hauteur de la navbar
  */
-const getNavbarHeight = (): number => {
-  const header = document.querySelector("header");
-  if (header) {
-    return header.getBoundingClientRect().height;
-  }
-  return window.innerWidth >= 768 ? 80 : 64;
-};
+const scrollToSection = (section: HTMLElement): void => {
+  const rect = section.getBoundingClientRect();
+  const absoluteTop = rect.top + window.scrollY;
 
-/**
- * Calcule la position absolue du haut d'un élément dans le document.
- * Utilise getBoundingClientRect() + window.scrollY pour une méthode robuste.
- */
-const getElementAbsoluteTop = (element: HTMLElement): number => {
-  const rect = element.getBoundingClientRect();
-  return rect.top + window.scrollY;
+  window.scrollTo({
+    top: absoluteTop,
+    behavior: "smooth",
+  });
 };
 
 /**
@@ -38,7 +37,8 @@ const getCurrentSection = (): HTMLElement | null => {
   const viewportCenter = scrollY + window.innerHeight / 2;
 
   for (const section of allSections) {
-    const sectionTop = getElementAbsoluteTop(section);
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top + window.scrollY;
     const sectionBottom = sectionTop + section.offsetHeight;
 
     if (viewportCenter >= sectionTop && viewportCenter <= sectionBottom) {
@@ -46,11 +46,13 @@ const getCurrentSection = (): HTMLElement | null => {
     }
   }
 
+  // Si aucune section ne contient le centre, trouve la section la plus proche
   let closestSection: HTMLElement | null = null;
   let minDistance = Infinity;
 
   for (const section of allSections) {
-    const sectionTop = getElementAbsoluteTop(section);
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top + window.scrollY;
     const distance = Math.abs(sectionTop - viewportCenter);
 
     if (distance < minDistance) {
@@ -63,7 +65,7 @@ const getCurrentSection = (): HTMLElement | null => {
 };
 
 /**
- * Trouve la section suivante.
+ * Trouve la section suivante après la section actuelle.
  */
 const getNextSection = (currentSection: HTMLElement | null): HTMLElement | null => {
   if (!currentSection) return null;
@@ -78,62 +80,16 @@ const getNextSection = (currentSection: HTMLElement | null): HTMLElement | null 
   return null;
 };
 
-/**
- * Scroll vers une section en positionnant son haut réel exactement sous la navbar.
- * 
- * MÉTHODE ROBUSTE :
- * 1. Désactive le scroll-margin-top via style inline (override la classe CSS)
- * 2. Calcule la position absolue du haut de la section
- * 3. Soustrait la hauteur de la navbar
- * 4. Scroll directement à cette position avec smooth
- * 5. Réactive le scroll-margin-top après le scroll
- */
-const scrollToSection = (section: HTMLElement): void => {
-  const navbarHeight = getNavbarHeight();
-  
-  // Désactive le scroll-margin-top en forçant 0 via style inline avec !important
-  // Cela override la classe CSS scroll-mt-16/md:scroll-mt-20
-  const originalScrollMarginTop = section.style.scrollMarginTop;
-  section.style.setProperty('scroll-margin-top', '0', 'important');
-  
-  // Utilise requestAnimationFrame pour s'assurer que le calcul se fait après le rendu
-  requestAnimationFrame(() => {
-    // Position absolue du haut de la section dans le document
-    // getBoundingClientRect() donne la position du bord de l'élément (avant le padding)
-    const rect = section.getBoundingClientRect();
-    const sectionAbsoluteTop = rect.top + window.scrollY;
-    
-    // Position de scroll = position absolue - hauteur navbar
-    // Le haut réel de la section sera à navbarHeight pixels sous le haut de la fenêtre
-    // La navbar (fixe) recouvrira donc les premiers pixels de la section
-    const targetScrollPosition = sectionAbsoluteTop - navbarHeight;
-    const finalScrollPosition = Math.max(0, targetScrollPosition);
-
-    // Scroll direct vers la position calculée
-    window.scrollTo({
-      top: finalScrollPosition,
-      behavior: "smooth",
-    });
-
-    // Réactive le scroll-margin-top après le scroll (pour les ancres)
-    setTimeout(() => {
-      if (originalScrollMarginTop) {
-        section.style.scrollMarginTop = originalScrollMarginTop;
-      } else {
-        section.style.removeProperty('scroll-margin-top');
-      }
-    }, 1000);
-  });
-};
-
 const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProps) => {
   const handleClick = () => {
     if (targetId) {
+      // Scroll vers une section spécifique par son ID
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         scrollToSection(targetSection);
       }
     } else {
+      // Scroll vers la section suivante
       const currentSection = getCurrentSection();
       const nextSection = getNextSection(currentSection);
       
