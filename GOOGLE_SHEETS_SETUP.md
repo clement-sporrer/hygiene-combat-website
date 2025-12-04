@@ -106,7 +106,7 @@ Cette feuille stocke les données du formulaire de demande de devis.
 
 ## 🔐 Configuration Google Cloud (uniquement pour les formulaires)
 
-**Note :** Cette configuration est uniquement nécessaire pour que les formulaires puissent écrire dans Google Sheets. Les logos utilisent un CSV public (voir ci-dessus).
+**Note pour le développeur :** Cette configuration est uniquement nécessaire pour que les formulaires puissent écrire dans Google Sheets. Les logos utilisent un CSV public (voir ci-dessus). Cette partie technique peut être gérée par le développeur.
 
 ### 1. Créer un projet Google Cloud
 
@@ -166,11 +166,16 @@ Copier `[SPREADSHEET_ID]` → Variable `GOOGLE_SHEETS_SPREADSHEET_ID`
 
 ## Test de configuration
 
-Pour tester si tout fonctionne :
+### Test des logos (CSV public)
+1. Vérifier que la feuille "Logos" existe
+2. Vérifier que la publication CSV est active
+3. Tester l'URL CSV directement dans le navigateur (doit afficher du texte CSV)
+4. Vérifier que les logos s'affichent sur la page d'accueil
 
-1. Vérifier que les 3 feuilles existent avec les bons noms
+### Test des formulaires (API Google Sheets)
+1. Vérifier que les feuilles "Contact" et "Devis" existent avec les bons noms
 2. Vérifier que les en-têtes sont corrects
-3. Vérifier que le compte de service a accès au Sheets
+3. Vérifier que le compte de service a accès au Sheets (droits "Editor")
 4. Tester un formulaire depuis le site
 5. Vérifier que les données apparaissent dans le Sheets
 
@@ -185,10 +190,12 @@ Pour tester si tout fonctionne :
 - Vérifier les logs dans Vercel
 
 ### Les logos ne s'affichent pas
-- Vérifier que la clé API publique est correcte
-- Vérifier que le spreadsheet ID est correct
-- Vérifier que la feuille "Logos" existe
-- Vérifier que les URLs Imgur sont valides
+- Vérifier que l'URL CSV publique (`VITE_GOOGLE_SHEETS_LOGOS_CSV_URL`) est correcte
+- Vérifier que la feuille "Logos" est bien publiée en CSV public
+- Vérifier que la publication CSV est active (aller dans "Fichier" > "Partager" > "Publier sur le web")
+- Vérifier que les URLs Imgur sont valides et accessibles
+- Vérifier la console du navigateur pour les erreurs de chargement
+- Tester l'URL CSV directement dans le navigateur (doit afficher du texte CSV)
 
 ### Erreur "Permission denied"
 - Vérifier que le compte de service a bien été ajouté au Sheets
