@@ -144,8 +144,8 @@ const Contact = () => {
               </form>
             </div>
 
-              {/* Contact info */}
-              <div className="space-y-8">
+            {/* Contact info */}
+            <div className="space-y-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-brand-black mb-6 md:mb-8">
                   Nos coordonnées
                 </h2>
@@ -231,7 +231,6 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
         </Section>
       </main>
 
