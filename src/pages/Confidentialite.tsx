@@ -1,4 +1,5 @@
 import Legal from "./Legal";
+import SEO from "@/components/SEO";
 
 const Confidentialite = () => {
   const content = `
@@ -129,7 +130,18 @@ const Confidentialite = () => {
     </p>
   `;
 
-  return <Legal title="Politique de confidentialité" content={content} />;
+  return (
+    <>
+      <SEO
+        title="Politique de Confidentialité | Hygiène & Combat"
+        description="Politique de confidentialité Hygiène & Combat. Protection des données personnelles, RGPD, droits d'accès et de rectification."
+        path="/confidentialite"
+        keywords="politique confidentialité, protection données, RGPD"
+        noindex={true}
+      />
+      <Legal title="Politique de confidentialité" content={content} />
+    </>
+  );
 };
 
 export default Confidentialite;

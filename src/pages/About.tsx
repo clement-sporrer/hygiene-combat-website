@@ -9,9 +9,10 @@ const About = () => {
   return (
     <div className="min-h-screen bg-brand-white">
       <SEO
-        title="À propos | Hygiène & Combat"
-        description="Hygiène & Combat est né d'un constat simple : trop d'infections, trop de surfaces mal entretenues. Une solution pensée par les gens du combat pour les gens du combat."
+        title="À Propos - Hygiène & Combat | Solution Hygiène Salle de Sport"
+        description="Hygiène & Combat : solution d'hygiène professionnelle née du terrain pour les salles de sport de combat. Réduire les infections cutanées avec un produit adapté aux tatamis, rings et vestiaires."
         path="/a-propos"
+        keywords="hygiène salle de sport, solution hygiène combat, produit hygiène professionnel, désinfectant salle sport combat"
       />
       <Header variant="light" />
       

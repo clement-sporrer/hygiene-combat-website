@@ -67,7 +67,7 @@ const ClientLogos = () => {
                 >
                   <img
                     src={logo.logoUrl}
-                    alt={logo.name}
+                    alt={`Logo ${logo.name} - Client Hygiène & Combat`}
                     className="max-w-full max-h-full object-contain"
                     loading="lazy"
                   />
@@ -76,7 +76,7 @@ const ClientLogos = () => {
                 <div className="w-32 h-16 flex items-center justify-center">
                   <img
                     src={logo.logoUrl}
-                    alt={logo.name}
+                    alt={`Logo ${logo.name} - Client Hygiène & Combat`}
                     className="max-w-full max-h-full object-contain"
                     loading="lazy"
                   />

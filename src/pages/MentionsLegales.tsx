@@ -1,4 +1,5 @@
 import Legal from "./Legal";
+import SEO from "@/components/SEO";
 
 const MentionsLegales = () => {
   const content = `
@@ -73,7 +74,18 @@ const MentionsLegales = () => {
     </p>
   `;
 
-  return <Legal title="Mentions légales" content={content} />;
+  return (
+    <>
+      <SEO
+        title="Mentions Légales | Hygiène & Combat"
+        description="Mentions légales du site Hygiène & Combat. Informations sur l'éditeur, l'hébergement, les données personnelles et les cookies."
+        path="/mentions-legales"
+        keywords="mentions légales hygiène combat"
+        noindex={true}
+      />
+      <Legal title="Mentions légales" content={content} />
+    </>
+  );
 };
 
 export default MentionsLegales;

@@ -87,7 +87,8 @@ const HeroSection = () => {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
-                  aria-label="Présentation du produit Hygiène & Combat"
+                  aria-label="Vidéo de présentation du biocide 3-en-1 Hygiène & Combat pour salles de sport"
+                  title="Biocide 3-en-1 Hygiène & Combat - Désinfectant salle de sport"
                 >
                   <source src="/videos/product-showcase.mp4" type="video/mp4" />
                 </video>

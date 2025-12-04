@@ -73,7 +73,7 @@ const BenefitsSection = () => {
                     >
                       <img
                         src={logo.logoUrl}
-                        alt={logo.name}
+                        alt={`Logo ${logo.name} - Client Hygiène & Combat`}
                         className="max-w-full max-h-full object-contain"
                         loading="lazy"
                       />
@@ -82,7 +82,7 @@ const BenefitsSection = () => {
                     <div className="w-28 h-14 md:w-32 md:h-16 flex items-center justify-center">
                       <img
                         src={logo.logoUrl}
-                        alt={logo.name}
+                        alt={`Logo ${logo.name} - Client Hygiène & Combat`}
                         className="max-w-full max-h-full object-contain"
                         loading="lazy"
                       />

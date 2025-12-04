@@ -6,9 +6,13 @@
     <title>Hygiène & Combat | Solution d'hygiène pour salles de sport de combat</title>
     <meta name="description" content="Biocide 3-en-1 professionnel pour tatamis, rings et vestiaires. Nettoie, désinfecte et désodorise en 5 minutes. Fabriqué en France." />
     <meta name="author" content="Hygiène & Combat" />
-    <meta name="keywords" content="hygiène salle de sport, désinfectant tatami, nettoyant MMA, produit hygiène combat, désinfection ring boxe" />
+    <meta name="keywords" content="désinfectant salle de sport, désinfectant tatami, nettoyant sports de combat, solution hygiène salle de sport, désinfectant ring, biocide tatami, nettoyant MMA, produit hygiène combat, désinfection ring boxe, désinfectant parquet sportif, désinfectant cage MMA, nettoyant tatami puzzle, solution hygiène vestiaire, biocide professionnel sport" />
     
     <link rel="canonical" href="https://hygiene-combat.fr" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <meta property="og:title" content="Hygiène & Combat | Solution d'hygiène pour salles de sport" />
     <meta property="og:description" content="Biocide 3-en-1 professionnel pour tatamis, rings et vestiaires. Nettoie, désinfecte et désodorise en 5 minutes." />
@@ -25,23 +29,29 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Hygiène & Combat",
+      "alternateName": "H&C",
       "url": "https://hygiene-combat.fr",
-      "logo": "https://hygiene-combat.fr/logo-black.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hygiene-combat.fr/logo-black.png",
+        "width": 200,
+        "height": 60
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+33-6-15-61-35-31",
         "contactType": "customer service",
         "email": "contact@hygiene-combat.fr",
         "areaServed": ["FR", "BE", "CH"],
-        "availableLanguage": "French"
+        "availableLanguage": ["French"]
       },
-      "sameAs": [],
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Hauts-de-Seine",
         "postalCode": "92",
         "addressCountry": "FR"
-      }
+      },
+      "sameAs": []
     }
     </script>
     <script type="application/ld+json">
@@ -49,20 +59,65 @@
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "Hygiène & Combat - Biocide 3-en-1",
-      "description": "Solution d'hygiène professionnelle pour salles de sport de combat. Nettoie, désinfecte et désodorise en 5 minutes. Sans alcool, pH non acide.",
+      "description": "Solution d'hygiène professionnelle pour salles de sport de combat. Nettoie, désinfecte et désodorise en 5 minutes. Sans alcool, pH non acide. Compatible avec tatamis, rings, cages MMA, sols de musculation et vestiaires.",
+      "image": "https://hygiene-combat.fr/og-image.jpg",
       "brand": {
         "@type": "Brand",
         "name": "Hygiène & Combat"
       },
-      "countryOfOrigin": "FR",
       "manufacturer": {
         "@type": "Organization",
-        "name": "Hygiène & Combat"
+        "name": "Hygiène & Combat",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "FR"
+        }
       },
+      "countryOfOrigin": "FR",
+      "category": "SportingGoods",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Type",
+          "value": "Biocide 3-en-1"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Temps d'action",
+          "value": "5 minutes"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Sans alcool",
+          "value": "Oui"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "pH",
+          "value": "Non acide"
+        }
+      ],
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
-        "priceCurrency": "EUR"
+        "priceCurrency": "EUR",
+        "url": "https://hygiene-combat.fr/devis"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Hygiène & Combat",
+      "url": "https://hygiene-combat.fr",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://hygiene-combat.fr/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     }
     </script>

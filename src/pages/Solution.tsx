@@ -46,9 +46,10 @@ const Solution = () => {
   return (
     <div className="min-h-screen bg-brand-white">
       <SEO
-        title="Notre solution d'hygiène | Hygiène & Combat"
-        description="Découvrez notre biocide 3-en-1 professionnel : nettoyage, désinfection et désodorisation en 5 minutes. Compatible avec tous types de surfaces (tatamis, rings, machines)."
+        title="Solution Désinfectant Tatami & Ring | Biocide 3-en-1 Professionnel"
+        description="Biocide 3-en-1 pour salles de sport : nettoyage, désinfection et désodorisation en 5 minutes. Compatible tatamis puzzle, rings de boxe, cages MMA, sols musculation. Sans alcool, pH non acide."
         path="/solution"
+        keywords="désinfectant tatami, désinfectant ring, biocide professionnel, nettoyant tatami puzzle, désinfectant cage MMA, solution hygiène vestiaire, biocide 3-en-1, désinfectant sol sportif"
       />
       <Header variant="light" />
       

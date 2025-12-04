@@ -11,9 +11,10 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Hygiène & Combat | Solution d'hygiène pour salles de sport de combat"
-        description="Biocide 3-en-1 professionnel pour tatamis, rings et vestiaires. Nettoie, désinfecte et désodorise en 5 minutes. Sans alcool, pH non acide. Fabriqué en France."
+        title="Désinfectant Salle de Sport & Tatami | Hygiène & Combat - Biocide 3-en-1"
+        description="Solution d'hygiène professionnelle pour salles de sport de combat. Désinfectant tatami, ring et vestiaires. Nettoie, désinfecte et désodorise en 5 minutes. Sans alcool, pH non acide. Fabriqué en France."
         path="/"
+        keywords="désinfectant salle de sport, désinfectant tatami, nettoyant sports de combat, solution hygiène salle de sport, désinfectant ring, biocide tatami, nettoyant MMA, produit hygiène combat, désinfection ring boxe, désinfectant parquet sportif"
       />
       <Header variant="dark" />
       <main>

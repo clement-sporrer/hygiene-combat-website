@@ -44,9 +44,10 @@ const Quote = () => {
   return (
     <div className="min-h-screen bg-brand-white">
       <SEO
-        title="Demander un devis | Hygiène & Combat"
-        description="Demandez un devis personnalisé pour votre salle de sport. Solution adaptée à votre surface, votre fréquentation et vos besoins spécifiques."
+        title="Devis Désinfectant Salle de Sport | Hygiène & Combat - Gratuit"
+        description="Demandez un devis personnalisé pour votre salle de sport. Solution d'hygiène adaptée à votre surface, fréquentation et besoins. Désinfectant tatami, ring, vestiaires. Réponse sous 24h."
         path="/devis"
+        keywords="devis désinfectant salle sport, devis produit hygiène tatami, devis biocide professionnel, prix désinfectant ring"
       />
       <Header variant="light" />
       

@@ -1,4 +1,5 @@
 import Legal from "./Legal";
+import SEO from "@/components/SEO";
 
 const CGV = () => {
   const content = `
@@ -105,7 +106,18 @@ const CGV = () => {
     </p>
   `;
 
-  return <Legal title="Conditions Générales de Vente" content={content} />;
+  return (
+    <>
+      <SEO
+        title="Conditions Générales de Vente | Hygiène & Combat"
+        description="CGV Hygiène & Combat. Conditions de vente, livraison, paiement et garantie pour nos produits d'hygiène professionnels pour salles de sport."
+        path="/cgv"
+        keywords="cgv hygiène combat, conditions générales vente"
+        noindex={true}
+      />
+      <Legal title="Conditions Générales de Vente" content={content} />
+    </>
+  );
 };
 
 export default CGV;

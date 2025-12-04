@@ -43,9 +43,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-brand-white">
       <SEO
-        title="Contact | Hygiène & Combat"
-        description="Contactez-nous pour toute question sur notre solution d'hygiène pour salles de sport de combat. Réponse sous 24h."
+        title="Contact - Hygiène & Combat | Devis Désinfectant Salle de Sport"
+        description="Contactez Hygiène & Combat pour vos questions sur notre solution d'hygiène professionnelle. Désinfectant tatami, ring et vestiaires. Réponse sous 24h. +33 6 15 61 35 31"
         path="/contact"
+        keywords="contact hygiène combat, devis désinfectant salle sport, contact produit hygiène tatami"
       />
       <Header variant="light" />
       
