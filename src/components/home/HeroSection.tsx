@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-brand-black text-brand-white overflow-hidden pt-16 md:pt-20">
+    <section className="relative min-h-screen bg-brand-black text-brand-white overflow-hidden pt-12 md:pt-16">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       

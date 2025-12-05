@@ -6,7 +6,7 @@ import { AlertTriangle, Users, CheckCircle2, ArrowRight } from "lucide-react";
 const CombatSection = () => {
   return (
     <Section variant="dark" id="protegez-vos-adherents" fullScreen className="relative">
-      <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-start max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-8 sm:-mt-12 md:-mt-16">
+      <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-start max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-8 sm:-mt-10 md:-mt-12">
         {/* Left - Content (ordre logique) - Plus haut */}
         <div className="space-y-3 sm:space-y-4 md:space-y-5 animate-fade-in">
           <div className="space-y-2 sm:space-y-3">

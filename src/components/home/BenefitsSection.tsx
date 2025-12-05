@@ -50,7 +50,7 @@ const BenefitsSection = () => {
   return (
     <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden">
       {/* Centered content wrapper */}
-      <div className="w-full flex-1 flex flex-col justify-center items-center">
+      <div className="w-full flex-1 flex flex-col justify-center items-center -mt-8 sm:-mt-10 md:-mt-12">
         <div className="w-full space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-14">
           {/* Client Logos Section */}
           {!isLoadingLogos && logos.length > 0 && (
