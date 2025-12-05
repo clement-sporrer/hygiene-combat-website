@@ -113,7 +113,7 @@ const BenefitsSection = () => {
           </div>
 
           {/* Benefits grid - Responsive: 1 col mobile, 2 tablet, 3 desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-4xl mx-auto w-full px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-2 sm:-mt-3 md:-mt-4">
             {benefits.map((benefit, index) => {
               const delayClass = index === 0 ? "" : index === 1 ? "delay-200" : "delay-400";
               return (
