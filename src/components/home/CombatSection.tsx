@@ -25,27 +25,27 @@ const CombatSection = () => {
           </p>
 
           {/* Cards côte à côte sur desktop pour gagner de l'espace */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4">
-            <div className="flex items-start gap-3 p-4 sm:p-5 bg-brand-blue-dark/20 rounded-lg border border-brand-blue-dark/30">
-              <AlertTriangle className="text-primary flex-shrink-0 mt-0.5" size={18} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3">
+            <div className="flex items-start gap-2 p-3 sm:p-4 bg-brand-blue-dark/20 rounded-md border border-brand-blue-dark/30">
+              <AlertTriangle className="text-primary flex-shrink-0 mt-0.5" size={14} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-1 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-white mb-0.5 text-xs sm:text-sm">
                   Risques courants
                 </h4>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
                   Herpès, teigne, impétigo, staphylocoque... Ces infections se propagent 
                   rapidement sur les surfaces mal entretenues.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-4 sm:p-5 bg-brand-blue-dark/20 rounded-lg border border-brand-blue-dark/30">
-              <Users className="text-primary flex-shrink-0 mt-0.5" size={18} />
+            <div className="flex items-start gap-2 p-3 sm:p-4 bg-brand-blue-dark/20 rounded-md border border-brand-blue-dark/30">
+              <Users className="text-primary flex-shrink-0 mt-0.5" size={14} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-1 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-white mb-0.5 text-xs sm:text-sm">
                   Rassurez vos pratiquants
                 </h4>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
                   Parents et adhérents veulent être sûrs que les tatamis sont propres. 
                   Une hygiène irréprochable renforce la confiance.
                 </p>
