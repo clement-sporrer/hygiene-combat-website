@@ -48,10 +48,10 @@ const BenefitsSection = () => {
   const doubledLogos = logos.length > 0 ? [...logos, ...logos] : [];
 
   return (
-    <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden overflow-x-hidden">
+    <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
       {/* Centered content wrapper */}
       <div className="w-full flex-1 flex flex-col justify-center items-center -mt-8 sm:-mt-10 md:-mt-12">
-        <div className="w-full space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-14">
+        <div className="w-full space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
           {/* Client Logos Section */}
           {!isLoadingLogos && logos.length > 0 && (
             <div className="animate-fade-in w-full overflow-hidden">
@@ -104,30 +104,30 @@ const BenefitsSection = () => {
 
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto animate-fade-in px-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 md:mb-5 leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-2 sm:mb-3 md:mb-4 leading-tight">
               Ce que fait la solution
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Un seul produit pour nettoyer, désinfecter et désodoriser vos équipements.
             </p>
           </div>
 
-          {/* Benefits grid - Responsive: 1 col mobile, 2 tablet, 3 desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-6 sm:-mt-8 md:-mt-10">
+          {/* Benefits grid - Responsive: 1 col mobile, 2 tablet, 3 desktop - Élargi */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-4 sm:-mt-5 md:-mt-6">
             {benefits.map((benefit, index) => {
               const delayClass = index === 0 ? "" : index === 1 ? "delay-200" : "delay-400";
               return (
                 <div
                   key={benefit.title}
-                  className={`group bg-card p-5 sm:p-6 md:p-7 rounded-lg border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center animate-fade-up ${delayClass} flex flex-col items-center justify-center h-full`}
+                  className={`group bg-card p-4 sm:p-5 md:p-6 rounded-lg border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center animate-fade-up ${delayClass} flex flex-col items-center justify-center h-full`}
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg bg-primary/10 text-primary mb-4 sm:mb-5 md:mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg bg-primary/10 text-primary mb-3 sm:mb-4 md:mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
                     <benefit.icon size={24} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-brand-black mb-2 sm:mb-3">
+                  <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-brand-black mb-1.5 sm:mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                  <p className="text-base sm:text-base text-muted-foreground leading-relaxed max-w-md mx-auto">
                     {benefit.description}
                   </p>
                 </div>

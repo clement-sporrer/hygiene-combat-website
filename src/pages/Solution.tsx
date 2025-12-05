@@ -65,16 +65,16 @@ const Solution = () => {
               Biocide 3-en-1 professionnel pour tatamis, rings, machines et vestiaires.
             </p>
           </div>
-          <ScrollArrow targetId="comment-ca-agit" />
+          <ScrollArrow targetId="comment-ca-agit" showOnMobile={true} />
         </Section>
 
         {/* How it works */}
-        <Section variant="light" id="comment-ca-agit" fullScreen className="relative overflow-x-hidden">
+        <Section variant="light" id="comment-ca-agit" fullScreen className="relative overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Comment ça agit
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Trois actions en une seule solution pour un nettoyage complet.
             </p>
           </div>
@@ -101,10 +101,10 @@ const Solution = () => {
                 <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-primary/10 text-primary mb-4 md:mb-6">
                   <item.icon size={24} className="md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-lg md:text-xl font-semibold text-brand-black mb-3">
+                <h3 className="text-xl md:text-xl font-semibold text-brand-black mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                <p className="text-base md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
                   {item.description}
                 </p>
               </div>
@@ -114,13 +114,13 @@ const Solution = () => {
         </Section>
 
         {/* Surfaces */}
-        <Section variant="dark" id="sur-quelles-surfaces" fullScreen className="relative overflow-x-hidden">
+        <Section variant="dark" id="sur-quelles-surfaces" fullScreen className="relative overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6">
             <div className="space-y-4 sm:space-y-5 md:space-y-6 order-2 lg:order-1">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+              <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                 Sur quelles surfaces ?
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 Notre solution est conçue pour tous les équipements et surfaces 
                 d'une salle de sport, en particulier les espaces à fort contact.
               </p>
@@ -129,7 +129,7 @@ const Solution = () => {
                 {surfaces.map((surface) => (
                   <li key={surface} className="flex items-start gap-2 sm:gap-3">
                     <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                    <span className="text-sm sm:text-base leading-relaxed">{surface}</span>
+                    <span className="text-base sm:text-base leading-relaxed">{surface}</span>
                   </li>
                 ))}
               </ul>
@@ -140,8 +140,8 @@ const Solution = () => {
                 <div className="flex items-start gap-3 md:gap-4">
                   <Clock className="text-primary flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h4 className="font-semibold text-base md:text-lg mb-1">Temps de contact</h4>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    <h4 className="font-semibold text-lg md:text-lg mb-1">Temps de contact</h4>
+                    <p className="text-base md:text-base text-muted-foreground leading-relaxed">
                       5 minutes suffisent
                     </p>
                   </div>
@@ -150,8 +150,8 @@ const Solution = () => {
                 <div className="flex items-start gap-3 md:gap-4">
                   <Droplets className="text-primary flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h4 className="font-semibold text-base md:text-lg mb-1">Sans alcool</h4>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    <h4 className="font-semibold text-lg md:text-lg mb-1">Sans alcool</h4>
+                    <p className="text-base md:text-base text-muted-foreground leading-relaxed">
                       Ne dessèche pas les surfaces
                     </p>
                   </div>
@@ -160,8 +160,8 @@ const Solution = () => {
                 <div className="flex items-start gap-3 md:gap-4">
                   <ShieldCheck className="text-primary flex-shrink-0 mt-1" size={24} />
                   <div>
-                    <h4 className="font-semibold text-base md:text-lg mb-1">pH non acide</h4>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    <h4 className="font-semibold text-lg md:text-lg mb-1">pH non acide</h4>
+                    <p className="text-base md:text-base text-muted-foreground leading-relaxed">
                       Préserve les revêtements
                     </p>
                   </div>
@@ -173,12 +173,12 @@ const Solution = () => {
         </Section>
 
         {/* Mode d'emploi */}
-        <Section variant="light" id="mode-emploi" fullScreen className="relative overflow-x-hidden">
+        <Section variant="light" id="mode-emploi" fullScreen className="relative overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Comment l'utiliser
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Un mode d'emploi simple en 3 étapes.
             </p>
           </div>
@@ -194,10 +194,10 @@ const Solution = () => {
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-primary-foreground text-xl md:text-2xl font-bold flex items-center justify-center mx-auto mb-4">
                     {item.step}
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-brand-black mb-2">
+                  <h3 className="text-xl md:text-xl font-semibold text-brand-black mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                  <p className="text-base md:text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
                     {item.desc}
                   </p>
                 </div>
@@ -208,12 +208,12 @@ const Solution = () => {
         </Section>
 
         {/* FAQ */}
-        <Section variant="muted" id="questions-frequentes" fullScreen className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+        <Section variant="muted" id="questions-frequentes" fullScreen className="relative py-20 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Questions fréquentes
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
               Les questions que se posent souvent les gérants de salles.
             </p>
           </div>
@@ -221,11 +221,11 @@ const Solution = () => {
           <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6">
             {faqs.map((faq) => (
               <div key={faq.question} className="bg-brand-white p-5 sm:p-6 md:p-7 lg:p-8 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-3 sm:mb-4 text-base sm:text-lg md:text-xl">
+                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-3 sm:mb-4 text-lg sm:text-lg md:text-xl">
                   <HelpCircle className="text-primary flex-shrink-0 mt-0.5" size={22} />
                   {faq.question}
                 </h3>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground pl-9 sm:pl-10 leading-relaxed">
+                <p className="text-base sm:text-base md:text-lg text-muted-foreground pl-9 sm:pl-10 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -234,12 +234,12 @@ const Solution = () => {
         </Section>
 
         {/* CTA */}
-        <Section variant="dark" fullScreen className="relative overflow-x-hidden">
+        <Section variant="dark" fullScreen className="relative overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
           <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-8 px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               Prêt à améliorer l'hygiène de votre salle ?
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Demandez un devis personnalisé en fonction de la taille de votre salle 
               et de vos besoins.
             </p>
@@ -255,7 +255,7 @@ const Solution = () => {
               Demander un devis
             </Button>
           </div>
-          <ScrollArrow className="hidden md:flex" variant="dark" />
+          <ScrollArrow variant="dark" />
         </Section>
       </main>
 

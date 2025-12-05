@@ -5,7 +5,7 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <Section variant="dark" id="cta-section" fullScreen className="relative overflow-hidden overflow-x-hidden">
+    <Section variant="dark" id="cta-section" fullScreen className="relative overflow-hidden overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
@@ -14,11 +14,11 @@ const CTASection = () => {
 
       <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 animate-fade-in w-full">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Parlez-nous de votre salle
           </h2>
           
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Chaque salle est différente. Contactez-nous pour une solution adaptée à votre 
             surface, votre fréquentation et vos besoins spécifiques.
           </p>
@@ -64,7 +64,7 @@ const CTASection = () => {
 
       {/* Scroll arrow (optional on last section but good for consistency if footer is considered next "step") */}
       {/* Usually last section doesn't need arrow to footer, but request says "TOUTES les sections" */}
-      <ScrollArrow className="hidden md:flex" /> 
+      <ScrollArrow /> 
     </Section>
   );
 };

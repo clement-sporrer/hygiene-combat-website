@@ -64,16 +64,16 @@ const Quote = () => {
               adaptée à votre salle et à votre usage.
             </p>
           </div>
-          <ScrollArrow />
+          <ScrollArrow showOnMobile={true} />
         </Section>
 
         {/* Form section */}
-        <Section variant="light" fullScreen className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+        <Section variant="light" fullScreen className="relative py-20 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 md:space-y-10">
               {/* Contact info */}
               <div className="space-y-5 sm:space-y-6 md:space-y-7">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-brand-black">
+                <h2 className="text-xl sm:text-xl md:text-2xl font-semibold text-brand-black">
                   Vos coordonnées
                 </h2>
                 
@@ -108,7 +108,7 @@ const Quote = () => {
 
               {/* Gym info */}
               <div className="space-y-5 sm:space-y-6 md:space-y-7 pt-6 sm:pt-8 md:pt-10 border-t border-border">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-brand-black">
+                <h2 className="text-xl sm:text-xl md:text-2xl font-semibold text-brand-black">
                   Votre salle
                 </h2>
 

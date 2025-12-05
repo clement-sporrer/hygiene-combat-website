@@ -5,6 +5,7 @@ interface ScrollArrowProps {
   targetId?: string;
   className?: string;
   variant?: "light" | "dark";
+  showOnMobile?: boolean;
 }
 
 /**
@@ -80,7 +81,7 @@ const getNextSection = (currentSection: HTMLElement | null): HTMLElement | null 
   return null;
 };
 
-const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProps) => {
+const ScrollArrow = ({ targetId, className, variant = "light", showOnMobile = false }: ScrollArrowProps) => {
   const handleClick = () => {
     if (targetId) {
       // Scroll vers une section spécifique par son ID
@@ -106,11 +107,13 @@ const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProp
       onClick={handleClick}
       className={cn(
         "absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10",
-        "flex flex-col items-center justify-center gap-1 sm:gap-2",
+        "flex-col items-center justify-center gap-1 sm:gap-2",
         "min-h-[44px] min-w-[44px] p-2",
         "opacity-60 hover:opacity-100 active:opacity-100 transition-opacity duration-300",
         "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-full",
         "touch-manipulation",
+        // Masquer sur mobile sauf si showOnMobile est true
+        showOnMobile ? "flex" : "hidden md:flex",
         className
       )}
       aria-label="Aller à la section suivante"

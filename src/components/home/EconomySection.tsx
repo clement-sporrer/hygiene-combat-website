@@ -4,7 +4,7 @@ import { Droplet, Calculator, Clock } from "lucide-react";
 
 const EconomySection = () => {
   return (
-    <Section variant="light" id="economie-usage" fullScreen className="relative overflow-x-hidden">
+    <Section variant="light" id="economie-usage" fullScreen className="relative overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
       <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-8 sm:-mt-10 md:-mt-12">
         {/* Left - Visual stats */}
         <div className="order-2 lg:order-1 animate-fade-in delay-200">
@@ -51,7 +51,7 @@ const EconomySection = () => {
             <span className="inline-block text-primary text-xs sm:text-sm font-medium uppercase tracking-wider">
               Économique et simple
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black leading-tight">
               Un produit concentré pour un usage quotidien économique
             </h2>
           </div>
@@ -62,10 +62,10 @@ const EconomySection = () => {
                 <Droplet className="text-primary" size={20} />
               </div>
               <div>
-                <h4 className="font-semibold text-brand-black mb-1.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-black mb-1.5 text-base sm:text-base">
                   Produit concentré
                 </h4>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
                   Diluer à 5% dans l'eau pour obtenir une solution prête à l'emploi. 
                   Simple et économique.
                 </p>
@@ -77,10 +77,10 @@ const EconomySection = () => {
                 <Clock className="text-primary" size={20} />
               </div>
               <div>
-                <h4 className="font-semibold text-brand-black mb-1.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-black mb-1.5 text-base sm:text-base">
                   Usage quotidien
                 </h4>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
                   Utilisation possible tous les jours sans risque pour vos surfaces. 
                   Idéal pour les salles à forte fréquentation.
                 </p>
@@ -92,10 +92,10 @@ const EconomySection = () => {
                 <Calculator className="text-primary" size={20} />
               </div>
               <div>
-                <h4 className="font-semibold text-brand-black mb-1.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-black mb-1.5 text-base sm:text-base">
                   Coût maîtrisé
                 </h4>
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
                   Un bidon de 5L dure plusieurs semaines selon la taille de votre salle. 
                   Livraison en 48h France métropolitaine.
                 </p>

@@ -5,7 +5,7 @@ import { AlertTriangle, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const CombatSection = () => {
   return (
-    <Section variant="dark" id="protegez-vos-adherents" fullScreen className="relative overflow-x-hidden">
+    <Section variant="dark" id="protegez-vos-adherents" fullScreen className="relative overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
       <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-start max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-8 sm:-mt-10 md:-mt-12">
         {/* Left - Content (ordre logique) - Plus haut */}
         <div className="space-y-3 sm:space-y-4 md:space-y-5 animate-fade-in">
@@ -13,12 +13,12 @@ const CombatSection = () => {
             <span className="inline-block text-primary text-xs sm:text-sm font-medium uppercase tracking-wider">
               Pensé pour le combat
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               Protégez vos adhérents des infections cutanées
             </h2>
           </div>
 
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+          <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
             Dans les sports, le contact peau à peau et le partage des surfaces 
             augmentent les risques d'infections. Un adhérent infecté, c'est plusieurs 
             semaines d'arrêt et une mauvaise image pour votre salle.
@@ -29,10 +29,10 @@ const CombatSection = () => {
             <div className="flex items-start gap-3 p-4 sm:p-5 bg-brand-blue-dark/20 rounded-lg border border-brand-blue-dark/30">
               <AlertTriangle className="text-primary flex-shrink-0 mt-0.5" size={18} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-1.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-white mb-1.5 text-base sm:text-base">
                   Risques courants
                 </h4>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-sm text-muted-foreground leading-relaxed">
                   Herpès, teigne, impétigo, staphylocoque... Ces infections se propagent 
                   rapidement sur les surfaces mal entretenues.
                 </p>
@@ -42,10 +42,10 @@ const CombatSection = () => {
             <div className="flex items-start gap-3 p-4 sm:p-5 bg-brand-blue-dark/20 rounded-lg border border-brand-blue-dark/30">
               <Users className="text-primary flex-shrink-0 mt-0.5" size={18} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-1.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-white mb-1.5 text-base sm:text-base">
                   Rassurez vos pratiquants
                 </h4>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-sm text-muted-foreground leading-relaxed">
                   Parents et adhérents veulent être sûrs que les tatamis sont propres. 
                   Une hygiène irréprochable renforce la confiance.
                 </p>
@@ -57,7 +57,7 @@ const CombatSection = () => {
         {/* Right - Solution garantit + bouton - Plus bas */}
         <div className="relative animate-fade-in delay-200 flex flex-col space-y-4 sm:space-y-5 pt-6 sm:pt-8 md:pt-10">
           <div className="bg-gradient-to-br from-brand-blue-dark to-secondary p-5 sm:p-6 md:p-7 lg:p-8 rounded-2xl shadow-lg border border-brand-blue-dark/20">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold text-brand-white mb-3 sm:mb-4">
+            <h3 className="text-lg sm:text-lg md:text-xl font-semibold text-brand-white mb-3 sm:mb-4">
               Notre solution garantit :
             </h3>
             
@@ -72,7 +72,7 @@ const CombatSection = () => {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span className="text-xs sm:text-sm leading-relaxed text-brand-white/90">{item}</span>
+                  <span className="text-sm sm:text-sm leading-relaxed text-brand-white/90">{item}</span>
                 </li>
               ))}
             </ul>

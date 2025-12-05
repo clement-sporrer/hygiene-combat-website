@@ -62,15 +62,15 @@ const Contact = () => {
               Une question ? Besoin d'informations ? Nous sommes là pour vous aider.
             </p>
           </div>
-          <ScrollArrow />
+          <ScrollArrow showOnMobile={true} />
         </Section>
 
         {/* Contact content */}
-        <Section variant="light" fullScreen className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+        <Section variant="light" fullScreen className="relative py-20 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 max-w-7xl mx-auto w-full px-4 sm:px-6">
             {/* Form */}
             <div className="w-full">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
+              <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
                 Envoyez-nous un message
               </h2>
               
@@ -178,7 +178,7 @@ const Contact = () => {
 
                 {/* Nos coordonnées - En dessous */}
                 <div className="pt-6 sm:pt-8 md:pt-10 border-t border-border">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
+                  <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
                     Nos coordonnées
                   </h2>
 
@@ -188,10 +188,10 @@ const Contact = () => {
                         <Mail className="text-primary" size={22} />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-base sm:text-lg">Email</h4>
+                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Email</h4>
                         <a 
                           href="mailto:contact@hygiene-combat.fr" 
-                          className="text-primary hover:underline text-sm sm:text-base md:text-lg transition-colors break-all"
+                          className="text-primary hover:underline text-base sm:text-base md:text-lg transition-colors break-all"
                         >
                           contact@hygiene-combat.fr
                         </a>
@@ -203,10 +203,10 @@ const Contact = () => {
                         <Phone className="text-primary" size={22} />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-base sm:text-lg">Téléphone</h4>
+                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Téléphone</h4>
                         <a 
                           href="tel:+33615613531" 
-                          className="text-primary hover:underline text-sm sm:text-base md:text-lg transition-colors"
+                          className="text-primary hover:underline text-base sm:text-base md:text-lg transition-colors"
                         >
                           +33 6 15 61 35 31
                         </a>
@@ -218,8 +218,8 @@ const Contact = () => {
                         <MapPin className="text-primary" size={22} />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-base sm:text-lg">Localisation</h4>
-                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Localisation</h4>
+                        <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
                           Hauts-de-Seine (92), région parisienne
                         </p>
                       </div>
@@ -230,8 +230,8 @@ const Contact = () => {
                         <Clock className="text-primary" size={22} />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-base sm:text-lg">Horaires</h4>
-                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Horaires</h4>
+                        <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
                           Lundi – Vendredi : 10h – 20h
                         </p>
                       </div>

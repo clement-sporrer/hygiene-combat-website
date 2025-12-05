@@ -135,7 +135,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll arrow */}
-      <ScrollArrow targetId="ce-que-fait-la-solution" variant="dark" />
+      <ScrollArrow targetId="ce-que-fait-la-solution" variant="dark" showOnMobile={true} />
     </section>
   );
 };

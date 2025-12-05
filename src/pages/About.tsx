@@ -28,21 +28,21 @@ const About = () => {
               Une solution née du terrain, pour répondre à un vrai problème.
             </p>
           </div>
-          <ScrollArrow />
+          <ScrollArrow showOnMobile={true} />
         </Section>
 
         {/* Story */}
-        <Section variant="light" fullScreen className="relative">
+        <Section variant="light" fullScreen className="relative pb-20 sm:pb-16 md:pb-0">
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
               <div className="space-y-4 md:space-y-6">
                 <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary">
                   <Target size={24} className="md:w-7 md:h-7" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
+                <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-brand-black">
                   Notre mission
                 </h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                   Réduire les infections cutanées dans les clubs de sport de combat 
                   et améliorer les standards d'hygiène avec une solution simple, 
                   efficace et adaptée au terrain.
@@ -53,10 +53,10 @@ const About = () => {
                 <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary">
                   <Heart size={24} className="md:w-7 md:h-7" />
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
+                <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-brand-black">
                   L'origine
                 </h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                   Hygiène & Combat est né d'un constat simple : trop d'infections, 
                   trop de surfaces mal entretenues, trop de produits inadaptés. 
                   Un pratiquant de sports de combat a voulu changer ça.
@@ -68,13 +68,13 @@ const About = () => {
         </Section>
 
         {/* Values */}
-        <Section variant="dark" fullScreen className="relative">
+        <Section variant="dark" fullScreen className="relative pb-20 sm:pb-16 md:pb-0">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 md:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+              <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
                 Notre philosophie
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 Les valeurs qui guident notre approche.
               </p>
             </div>
@@ -95,10 +95,10 @@ const About = () => {
                 },
               ].map((value) => (
                 <div key={value.title} className="text-center p-5 md:p-6">
-                  <h3 className="text-lg md:text-xl font-semibold text-primary mb-3">
+                  <h3 className="text-xl md:text-xl font-semibold text-primary mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                  <p className="text-base md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
                     {value.desc}
                   </p>
                 </div>
@@ -109,15 +109,15 @@ const About = () => {
         </Section>
 
         {/* Zone */}
-        <Section variant="light" fullScreen className="relative">
+        <Section variant="light" fullScreen className="relative pb-20 sm:pb-16 md:pb-0">
           <div className="max-w-2xl mx-auto text-center space-y-4 md:space-y-5">
             <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mx-auto">
               <MapPin size={24} className="md:w-7 md:h-7" />
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-brand-black">
               Zone de distribution
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+            <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
               Nous servons actuellement le marché francophone : France métropolitaine, 
               Corse, Belgique et Suisse. Livraison en 48h après facturation.
             </p>
@@ -129,12 +129,12 @@ const About = () => {
         </Section>
 
         {/* CTA */}
-        <Section variant="muted" fullScreen className="relative">
+        <Section variant="muted" fullScreen className="relative pb-20 sm:pb-16 md:pb-0">
           <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-brand-black">
               Une question ? Un projet ?
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Nous sommes là pour vous accompagner dans l'amélioration de l'hygiène 
               de votre salle.
             </p>
@@ -160,7 +160,7 @@ const About = () => {
               </Button>
             </div>
           </div>
-          <ScrollArrow className="hidden md:flex" />
+          <ScrollArrow />
         </Section>
       </main>
 
