@@ -29,10 +29,10 @@ const CombatSection = () => {
             <div className="flex items-start gap-2 p-3 sm:p-4 bg-brand-blue-dark/20 rounded-md border border-brand-blue-dark/30">
               <AlertTriangle className="text-primary flex-shrink-0 mt-0.5" size={14} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-0.5 text-xs sm:text-sm">
+                <h4 className="font-semibold text-brand-white mb-0.5 text-sm sm:text-base">
                   Risques courants
                 </h4>
-                <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   Herpès, teigne, impétigo, staphylocoque... Ces infections se propagent 
                   rapidement sur les surfaces mal entretenues.
                 </p>
@@ -42,10 +42,10 @@ const CombatSection = () => {
             <div className="flex items-start gap-2 p-3 sm:p-4 bg-brand-blue-dark/20 rounded-md border border-brand-blue-dark/30">
               <Users className="text-primary flex-shrink-0 mt-0.5" size={14} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-0.5 text-xs sm:text-sm">
+                <h4 className="font-semibold text-brand-white mb-0.5 text-sm sm:text-base">
                   Rassurez vos pratiquants
                 </h4>
-                <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   Parents et adhérents veulent être sûrs que les tatamis sont propres. 
                   Une hygiène irréprochable renforce la confiance.
                 </p>

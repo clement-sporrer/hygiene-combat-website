@@ -12,7 +12,7 @@ const CTASection = () => {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-dark rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center px-4 sm:px-6 -mt-8 sm:-mt-10 md:-mt-12">
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 animate-fade-in w-full">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             Parlez-nous de votre salle

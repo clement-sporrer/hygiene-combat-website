@@ -113,7 +113,7 @@ const BenefitsSection = () => {
           </div>
 
           {/* Benefits grid - Responsive: 1 col mobile, 2 tablet, 3 desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-2 sm:-mt-3 md:-mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-6 sm:-mt-8 md:-mt-10">
             {benefits.map((benefit, index) => {
               const delayClass = index === 0 ? "" : index === 1 ? "delay-200" : "delay-400";
               return (
@@ -124,10 +124,10 @@ const BenefitsSection = () => {
                   <div className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-3 sm:mb-4 md:mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
                     <benefit.icon size={20} className="sm:w-5 sm:h-5 md:w-5 md:h-5" />
                   </div>
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-brand-black mb-1.5 sm:mb-2">
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-brand-black mb-1.5 sm:mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
                     {benefit.description}
                   </p>
                 </div>
