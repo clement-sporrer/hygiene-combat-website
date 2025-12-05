@@ -34,13 +34,13 @@ const Section = ({
       id={id}
       className={cn(
         variants[variant],
-        fullScreen ? "min-h-screen pt-16 md:pt-20 flex flex-col" : "py-16 md:py-20 lg:py-24",
+        fullScreen ? "min-h-screen pt-16 md:pt-20 flex flex-col overflow-x-hidden" : "py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden",
         className
       )}
     >
       <div
         className={cn(
-          "container mx-auto px-6 md:px-10 lg:px-16",
+          "container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-2xl w-full",
           // If fullScreen, center content in the available space
           fullScreen && "flex-1 flex flex-col justify-center min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]",
           containerClassName

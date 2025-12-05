@@ -70,16 +70,16 @@ const Solution = () => {
 
         {/* How it works */}
         <Section variant="light" id="comment-ca-agit" fullScreen className="relative">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Comment ça agit
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Trois actions en une seule solution pour un nettoyage complet.
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-6xl mx-auto px-4 sm:px-6">
             {[
               {
                 icon: Sparkles,
@@ -115,27 +115,27 @@ const Solution = () => {
 
         {/* Surfaces */}
         <Section variant="dark" id="sur-quelles-surfaces" fullScreen className="relative">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto">
-            <div className="space-y-4 md:space-y-6">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6">
+            <div className="space-y-4 sm:space-y-5 md:space-y-6 order-2 lg:order-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                 Sur quelles surfaces ?
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 Notre solution est conçue pour tous les équipements et surfaces 
                 d'une salle de sport, en particulier les espaces à fort contact.
               </p>
               
-              <ul className="grid sm:grid-cols-2 gap-3 md:gap-4 pt-4">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4">
                 {surfaces.map((surface) => (
-                  <li key={surface} className="flex items-start gap-2 md:gap-3">
+                  <li key={surface} className="flex items-start gap-2 sm:gap-3">
                     <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                    <span className="text-sm md:text-base leading-relaxed">{surface}</span>
+                    <span className="text-sm sm:text-base leading-relaxed">{surface}</span>
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div className="bg-brand-blue-dark/30 p-6 md:p-8 rounded-2xl">
+            <div className="bg-brand-blue-dark/30 p-5 sm:p-6 md:p-8 rounded-2xl order-1 lg:order-2">
               <div className="space-y-5 md:space-y-6">
                 <div className="flex items-start gap-3 md:gap-4">
                   <Clock className="text-primary flex-shrink-0 mt-1" size={24} />
@@ -174,17 +174,17 @@ const Solution = () => {
 
         {/* Mode d'emploi */}
         <Section variant="light" id="mode-emploi" fullScreen className="relative">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Comment l'utiliser
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Un mode d'emploi simple en 3 étapes.
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
               {[
                 { step: "1", title: "Diluer", desc: "Mélanger à 5% dans l'eau (50ml pour 1L)" },
                 { step: "2", title: "Appliquer", desc: "Au pulvérisateur ou à la serpillière" },
@@ -208,39 +208,38 @@ const Solution = () => {
         </Section>
 
         {/* FAQ */}
-        <Section variant="muted" id="questions-frequentes" fullScreen className="relative">
-          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black mb-3 md:mb-4">
+        <Section variant="muted" id="questions-frequentes" fullScreen className="relative py-16 sm:py-20 md:py-24 lg:py-28">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Questions fréquentes
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
               Les questions que se posent souvent les gérants de salles.
             </p>
           </div>
           
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6">
             {faqs.map((faq) => (
-              <div key={faq.question} className="bg-brand-white p-5 md:p-6 rounded-xl border border-border">
-                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-3 text-base md:text-lg">
-                  <HelpCircle className="text-primary flex-shrink-0 mt-0.5" size={20} />
+              <div key={faq.question} className="bg-brand-white p-5 sm:p-6 md:p-7 lg:p-8 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-3 sm:mb-4 text-base sm:text-lg md:text-xl">
+                  <HelpCircle className="text-primary flex-shrink-0 mt-0.5" size={22} />
                   {faq.question}
                 </h3>
-                <p className="text-sm md:text-base text-muted-foreground pl-8 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-muted-foreground pl-9 sm:pl-10 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
             ))}
           </div>
-          <ScrollArrow className="hidden md:flex" />
         </Section>
 
         {/* CTA */}
         <Section variant="dark" fullScreen className="relative">
-          <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+          <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-8 px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               Prêt à améliorer l'hygiène de votre salle ?
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Demandez un devis personnalisé en fonction de la taille de votre salle 
               et de vos besoins.
             </p>
@@ -251,6 +250,7 @@ const Solution = () => {
               size="lg"
               icon={ArrowRight}
               iconPosition="right"
+              className="min-h-[44px]"
             >
               Demander un devis
             </Button>

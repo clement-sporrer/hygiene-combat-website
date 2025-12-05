@@ -105,10 +105,12 @@ const ScrollArrow = ({ targetId, className, variant = "light" }: ScrollArrowProp
     <button
       onClick={handleClick}
       className={cn(
-        "absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10",
-        "flex flex-col items-center gap-2",
-        "opacity-60 hover:opacity-100 transition-opacity duration-300",
+        "absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10",
+        "flex flex-col items-center justify-center gap-1 sm:gap-2",
+        "min-h-[44px] min-w-[44px] p-2",
+        "opacity-60 hover:opacity-100 active:opacity-100 transition-opacity duration-300",
         "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-full",
+        "touch-manipulation",
         className
       )}
       aria-label="Aller à la section suivante"

@@ -46,7 +46,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
           : "bg-brand-white/95 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-2xl">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link
@@ -56,13 +56,13 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
+            className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md min-h-[44px] min-w-[44px]"
             aria-label="Retour à l'accueil"
           >
             <img
               src={isDark ? logoWhite : logoBlack}
               alt="Hygiène & Combat"
-              className="h-10 md:h-12 w-auto"
+              className="h-12 sm:h-14 md:h-16 w-auto"
             />
           </Link>
 
@@ -110,10 +110,10 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Touch target 44x44px minimum */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+            className={`md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
               isDark
                 ? "text-brand-white hover:bg-brand-blue-dark/20"
                 : "text-brand-black hover:bg-muted"
@@ -129,11 +129,11 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div
-          className={`md:hidden absolute top-16 left-0 right-0 ${
+          className={`md:hidden absolute top-16 left-0 right-0 z-50 ${
             isDark ? "bg-brand-black border-t border-brand-blue-dark/30" : "bg-brand-white border-t border-border"
           } shadow-lg`}
         >
-          <nav className="container mx-auto px-4 py-6 flex flex-col gap-1">
+          <nav className="container mx-auto px-4 py-4 flex flex-col gap-2 max-w-screen-2xl">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
               return (
@@ -146,7 +146,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }
                   }}
-                  className={`px-4 py-3 rounded-lg text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                  className={`min-h-[44px] flex items-center px-4 py-3 rounded-lg text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                     isActive
                       ? isDark
                         ? "bg-brand-blue-dark/30 text-primary"
@@ -160,13 +160,13 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                 </Link>
               );
             })}
-            <div className="mt-4 pt-4 border-t border-border">
+            <div className="mt-2 pt-4 border-t border-border">
               <Button
                 asLink
                 to="/devis"
                 variant={isDark ? "primary" : "secondary"}
                 size="md"
-                className="w-full"
+                className="w-full min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Demander un devis

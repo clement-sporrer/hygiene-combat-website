@@ -68,16 +68,16 @@ const Quote = () => {
         </Section>
 
         {/* Form section */}
-        <Section variant="light" fullScreen className="relative">
-          <div className="max-w-3xl mx-auto w-full">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 md:space-y-10">
+        <Section variant="light" fullScreen className="relative py-16 sm:py-20 md:py-24 lg:py-28">
+          <div className="max-w-3xl mx-auto w-full px-4 sm:px-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 md:space-y-10">
               {/* Contact info */}
-              <div className="space-y-5 md:space-y-6">
-                <h2 className="text-xl md:text-2xl font-semibold text-brand-black">
+              <div className="space-y-5 sm:space-y-6 md:space-y-7">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-brand-black">
                   Vos coordonnées
                 </h2>
                 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     label="Nom / Prénom"
                     type="text"
@@ -107,12 +107,12 @@ const Quote = () => {
               </div>
 
               {/* Gym info */}
-              <div className="space-y-5 md:space-y-6 pt-6 md:pt-8 border-t border-border">
-                <h2 className="text-xl md:text-2xl font-semibold text-brand-black">
+              <div className="space-y-5 sm:space-y-6 md:space-y-7 pt-6 sm:pt-8 md:pt-10 border-t border-border">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-brand-black">
                   Votre salle
                 </h2>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <FormField
                     label="Nom de la salle"
                     type="text"
@@ -162,7 +162,7 @@ const Quote = () => {
               </div>
 
               {/* Message */}
-              <div className="space-y-5 md:space-y-6 pt-6 md:pt-8 border-t border-border">
+              <div className="space-y-5 sm:space-y-6 md:space-y-7 pt-6 sm:pt-8 md:pt-10 border-t border-border">
                 <TextareaField
                   label="Message / Besoins spécifiques"
                   rows={5}
@@ -179,31 +179,33 @@ const Quote = () => {
                 size="lg"
                 icon={Send}
                 iconPosition="right"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto min-h-[44px]"
               >
                 {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
               </Button>
             </form>
 
             {/* Delivery info */}
-            <div className="mt-10 md:mt-12 p-5 md:p-6 bg-muted/50 rounded-xl">
-              <div className="flex items-start gap-3 md:gap-4">
-                <Truck className="text-primary flex-shrink-0 mt-1" size={20} />
+            <div className="mt-10 sm:mt-12 md:mt-16 p-5 sm:p-6 md:p-7 lg:p-8 bg-muted/50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start gap-4 sm:gap-5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Truck className="text-primary flex-shrink-0" size={22} />
+                </div>
                 <div>
-                  <h4 className="font-semibold text-brand-black mb-2 text-sm md:text-base">
+                  <h4 className="font-semibold text-brand-black mb-3 sm:mb-4 text-base sm:text-lg md:text-xl">
                     Informations livraison
                   </h4>
-                  <ul className="space-y-2 text-sm md:text-base text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 size={16} className="text-primary flex-shrink-0" />
+                  <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base md:text-lg text-muted-foreground">
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" />
                       <span>France métropolitaine + Corse</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 size={16} className="text-primary flex-shrink-0" />
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" />
                       <span>Livraison sous 48h après facturation</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 size={16} className="text-primary flex-shrink-0" />
+                    <li className="flex items-center gap-2.5">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" />
                       <span>Devis personnalisé sous 24h</span>
                     </li>
                   </ul>
@@ -211,7 +213,6 @@ const Quote = () => {
               </div>
             </div>
           </div>
-          <ScrollArrow className="hidden md:flex" />
         </Section>
       </main>
 
