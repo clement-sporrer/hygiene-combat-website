@@ -69,8 +69,8 @@ const Solution = () => {
         </Section>
 
         {/* How it works */}
-        <Section variant="light" id="comment-ca-agit" fullScreen className="relative">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4">
+        <Section variant="light" id="comment-ca-agit" fullScreen className="relative overflow-x-hidden">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Comment ça agit
             </h2>
@@ -79,7 +79,7 @@ const Solution = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto px-4 sm:px-6">
             {[
               {
                 icon: Sparkles,
@@ -114,7 +114,7 @@ const Solution = () => {
         </Section>
 
         {/* Surfaces */}
-        <Section variant="dark" id="sur-quelles-surfaces" fullScreen className="relative">
+        <Section variant="dark" id="sur-quelles-surfaces" fullScreen className="relative overflow-x-hidden">
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6">
             <div className="space-y-4 sm:space-y-5 md:space-y-6 order-2 lg:order-1">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
@@ -173,8 +173,8 @@ const Solution = () => {
         </Section>
 
         {/* Mode d'emploi */}
-        <Section variant="light" id="mode-emploi" fullScreen className="relative">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4">
+        <Section variant="light" id="mode-emploi" fullScreen className="relative overflow-x-hidden">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Comment l'utiliser
             </h2>
@@ -208,8 +208,8 @@ const Solution = () => {
         </Section>
 
         {/* FAQ */}
-        <Section variant="muted" id="questions-frequentes" fullScreen className="relative py-16 sm:py-20 md:py-24 lg:py-28">
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16 px-4">
+        <Section variant="muted" id="questions-frequentes" fullScreen className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
               Questions fréquentes
             </h2>
@@ -234,7 +234,7 @@ const Solution = () => {
         </Section>
 
         {/* CTA */}
-        <Section variant="dark" fullScreen className="relative">
+        <Section variant="dark" fullScreen className="relative overflow-x-hidden">
           <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-8 px-4 sm:px-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               Prêt à améliorer l'hygiène de votre salle ?
@@ -250,7 +250,7 @@ const Solution = () => {
               size="lg"
               icon={ArrowRight}
               iconPosition="right"
-              className="min-h-[44px]"
+              className="w-full sm:w-auto"
             >
               Demander un devis
             </Button>

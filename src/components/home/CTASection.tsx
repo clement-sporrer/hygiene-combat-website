@@ -5,7 +5,7 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <Section variant="dark" id="cta-section" fullScreen className="relative overflow-hidden">
+    <Section variant="dark" id="cta-section" fullScreen className="relative overflow-hidden overflow-x-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
@@ -31,7 +31,7 @@ const CTASection = () => {
               size="lg"
               icon={ArrowRight}
               iconPosition="right"
-              className="min-h-[44px]"
+              className="w-full sm:w-auto"
             >
               Demander un devis
             </Button>
@@ -40,7 +40,7 @@ const CTASection = () => {
               to="/contact"
               variant="outline"
               size="lg"
-              className="border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black min-h-[44px]"
+              className="w-full sm:w-auto border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
               icon={MessageSquare}
               iconPosition="left"
             >

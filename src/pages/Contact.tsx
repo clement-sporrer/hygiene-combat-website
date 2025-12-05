@@ -66,8 +66,8 @@ const Contact = () => {
         </Section>
 
         {/* Contact content */}
-        <Section variant="light" fullScreen className="relative py-16 sm:py-20 md:py-24 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 max-w-7xl mx-auto w-full px-4 sm:px-6">
+        <Section variant="light" fullScreen className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 max-w-7xl mx-auto w-full px-4 sm:px-6">
             {/* Form */}
             <div className="w-full">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
@@ -75,7 +75,7 @@ const Contact = () => {
               </h2>
               
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6 md:space-y-7">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <FormField
                     label="Nom"
                     type="text"
@@ -94,7 +94,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <FormField
                     label="Téléphone"
                     type="tel"
@@ -109,7 +109,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <FormField
                     label="Ville"
                     type="text"
@@ -140,7 +140,7 @@ const Contact = () => {
                   size="lg"
                   icon={Send}
                   iconPosition="right"
-                  className="w-full sm:w-auto min-h-[44px]"
+                  className="w-full sm:w-auto"
                 >
                   {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                 </Button>

@@ -5,7 +5,7 @@ import { AlertTriangle, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
 const CombatSection = () => {
   return (
-    <Section variant="dark" id="protegez-vos-adherents" fullScreen className="relative">
+    <Section variant="dark" id="protegez-vos-adherents" fullScreen className="relative overflow-x-hidden">
       <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-start max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-8 sm:-mt-10 md:-mt-12">
         {/* Left - Content (ordre logique) - Plus haut */}
         <div className="space-y-3 sm:space-y-4 md:space-y-5 animate-fade-in">
@@ -25,11 +25,11 @@ const CombatSection = () => {
           </p>
 
           {/* Cards côte à côte sur desktop pour gagner de l'espace */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-3">
-            <div className="flex items-start gap-2 p-3 sm:p-4 bg-brand-blue-dark/20 rounded-md border border-brand-blue-dark/30">
-              <AlertTriangle className="text-primary flex-shrink-0 mt-0.5" size={14} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4">
+            <div className="flex items-start gap-3 p-4 sm:p-5 bg-brand-blue-dark/20 rounded-lg border border-brand-blue-dark/30">
+              <AlertTriangle className="text-primary flex-shrink-0 mt-0.5" size={18} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-0.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-white mb-1.5 text-sm sm:text-base">
                   Risques courants
                 </h4>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -39,10 +39,10 @@ const CombatSection = () => {
               </div>
             </div>
 
-            <div className="flex items-start gap-2 p-3 sm:p-4 bg-brand-blue-dark/20 rounded-md border border-brand-blue-dark/30">
-              <Users className="text-primary flex-shrink-0 mt-0.5" size={14} />
+            <div className="flex items-start gap-3 p-4 sm:p-5 bg-brand-blue-dark/20 rounded-lg border border-brand-blue-dark/30">
+              <Users className="text-primary flex-shrink-0 mt-0.5" size={18} />
               <div>
-                <h4 className="font-semibold text-brand-white mb-0.5 text-sm sm:text-base">
+                <h4 className="font-semibold text-brand-white mb-1.5 text-sm sm:text-base">
                   Rassurez vos pratiquants
                 </h4>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
@@ -85,7 +85,7 @@ const CombatSection = () => {
             size="md"
             icon={ArrowRight}
             iconPosition="right"
-            className="min-h-[44px] w-full sm:w-auto"
+            className="w-full sm:w-auto"
           >
             En savoir plus
           </Button>

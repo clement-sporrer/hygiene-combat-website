@@ -4,12 +4,12 @@ import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-brand-black text-brand-white overflow-hidden pt-12 md:pt-16">
+    <section className="relative min-h-screen bg-brand-black text-brand-white overflow-hidden pt-12 md:pt-16 overflow-x-hidden">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
-      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 max-w-screen-2xl w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-center justify-center">
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center w-full py-8 sm:py-12 md:py-16 lg:py-0">
+      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 max-w-screen-2xl w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-x-hidden">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center w-full py-6 sm:py-8 md:py-12 lg:py-0">
           {/* Left content */}
           <div className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 text-center lg:text-left animate-fade-in max-w-2xl mx-auto lg:mx-0 w-full">
             <div className="space-y-4 sm:space-y-5 md:space-y-6">
@@ -38,6 +38,7 @@ const HeroSection = () => {
                 size="lg"
                 icon={ArrowRight}
                 iconPosition="right"
+                className="w-full sm:w-auto"
               >
                 Découvrir la solution
               </Button>
@@ -46,7 +47,7 @@ const HeroSection = () => {
                 to="/devis"
                 variant="outline"
                 size="lg"
-                className="border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
+                className="w-full sm:w-auto border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
               >
                 Demander un devis
               </Button>
@@ -104,15 +105,15 @@ const HeroSection = () => {
               </div>
 
               {/* Mobile/Tablet: comportement responsive actuel */}
-              <div className="lg:hidden relative w-full">
+              <div className="lg:hidden relative w-full max-w-[90vw] mx-auto">
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-75" />
                 
                 {/* Video container - proportions fluides: plus large et moins haut sur mobile */}
                 <div 
-                  className="relative w-full rounded-3xl overflow-hidden shadow-glow transition-all duration-300"
+                  className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-glow transition-all duration-300"
                   style={{
-                    aspectRatio: 'clamp(0.7, calc(100vw / 450), 0.75)'
+                    aspectRatio: 'clamp(0.75, calc(100vw / 400), 0.85)'
                   }}
                 >
                   <video

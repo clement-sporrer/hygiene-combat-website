@@ -4,7 +4,7 @@ import { Droplet, Calculator, Clock } from "lucide-react";
 
 const EconomySection = () => {
   return (
-    <Section variant="light" id="economie-usage" fullScreen className="relative">
+    <Section variant="light" id="economie-usage" fullScreen className="relative overflow-x-hidden">
       <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6 -mt-8 sm:-mt-10 md:-mt-12">
         {/* Left - Visual stats */}
         <div className="order-2 lg:order-1 animate-fade-in delay-200">

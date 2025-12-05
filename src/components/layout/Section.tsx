@@ -43,6 +43,8 @@ const Section = ({
           "container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-screen-2xl w-full",
           // If fullScreen, center content in the available space
           fullScreen && "flex-1 flex flex-col justify-center min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]",
+          // Prevent horizontal overflow on mobile
+          "overflow-x-hidden",
           containerClassName
         )}
       >

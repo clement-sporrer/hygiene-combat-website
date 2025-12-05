@@ -68,7 +68,7 @@ const Quote = () => {
         </Section>
 
         {/* Form section */}
-        <Section variant="light" fullScreen className="relative py-16 sm:py-20 md:py-24 lg:py-28">
+        <Section variant="light" fullScreen className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 md:space-y-10">
               {/* Contact info */}
@@ -77,7 +77,7 @@ const Quote = () => {
                   Vos coordonnées
                 </h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <FormField
                     label="Nom / Prénom"
                     type="text"
@@ -112,7 +112,7 @@ const Quote = () => {
                   Votre salle
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <FormField
                     label="Nom de la salle"
                     type="text"
@@ -179,7 +179,7 @@ const Quote = () => {
                 size="lg"
                 icon={Send}
                 iconPosition="right"
-                className="w-full sm:w-auto min-h-[44px]"
+                className="w-full sm:w-auto"
               >
                 {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
               </Button>

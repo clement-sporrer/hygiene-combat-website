@@ -34,6 +34,18 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -129,11 +141,11 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div
-          className={`md:hidden absolute top-16 left-0 right-0 z-50 ${
+          className={`md:hidden fixed top-16 left-0 right-0 bottom-0 z-50 overflow-y-auto ${
             isDark ? "bg-brand-black border-t border-brand-blue-dark/30" : "bg-brand-white border-t border-border"
           } shadow-lg`}
         >
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-2 max-w-screen-2xl">
+          <nav className="container mx-auto px-4 py-6 flex flex-col gap-3 max-w-screen-2xl">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
               return (
@@ -146,7 +158,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }
                   }}
-                  className={`min-h-[44px] flex items-center px-4 py-3 rounded-lg text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                  className={`min-h-[48px] flex items-center px-4 py-3 rounded-lg text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                     isActive
                       ? isDark
                         ? "bg-brand-blue-dark/30 text-primary"
@@ -160,13 +172,13 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                 </Link>
               );
             })}
-            <div className="mt-2 pt-4 border-t border-border">
+            <div className="mt-4 pt-4 border-t border-border">
               <Button
                 asLink
                 to="/devis"
                 variant={isDark ? "primary" : "secondary"}
                 size="md"
-                className="w-full min-h-[44px]"
+                className="w-full min-h-[48px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Demander un devis

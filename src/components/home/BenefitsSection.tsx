@@ -48,10 +48,10 @@ const BenefitsSection = () => {
   const doubledLogos = logos.length > 0 ? [...logos, ...logos] : [];
 
   return (
-    <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden">
+    <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden overflow-x-hidden">
       {/* Centered content wrapper */}
       <div className="w-full flex-1 flex flex-col justify-center items-center -mt-8 sm:-mt-10 md:-mt-12">
-        <div className="w-full space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-14">
+        <div className="w-full space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-14">
           {/* Client Logos Section */}
           {!isLoadingLogos && logos.length > 0 && (
             <div className="animate-fade-in w-full overflow-hidden">
@@ -113,21 +113,21 @@ const BenefitsSection = () => {
           </div>
 
           {/* Benefits grid - Responsive: 1 col mobile, 2 tablet, 3 desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-6 sm:-mt-8 md:-mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 max-w-4xl mx-auto w-full px-4 sm:px-6 -mt-6 sm:-mt-8 md:-mt-10">
             {benefits.map((benefit, index) => {
               const delayClass = index === 0 ? "" : index === 1 ? "delay-200" : "delay-400";
               return (
                 <div
                   key={benefit.title}
-                  className={`group bg-card p-4 sm:p-5 md:p-5 rounded-lg border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center animate-fade-up ${delayClass} flex flex-col items-center justify-center h-full`}
+                  className={`group bg-card p-5 sm:p-6 md:p-7 rounded-lg border border-border transition-all duration-200 hover:shadow-md hover:-translate-y-1 text-center animate-fade-up ${delayClass} flex flex-col items-center justify-center h-full`}
                 >
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-3 sm:mb-4 md:mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
-                    <benefit.icon size={20} className="sm:w-5 sm:h-5 md:w-5 md:h-5" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg bg-primary/10 text-primary mb-4 sm:mb-5 md:mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                    <benefit.icon size={24} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-brand-black mb-1.5 sm:mb-2">
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-brand-black mb-2 sm:mb-3">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
                     {benefit.description}
                   </p>
                 </div>
