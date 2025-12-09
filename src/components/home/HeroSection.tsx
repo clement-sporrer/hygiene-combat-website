@@ -39,24 +39,24 @@ const HeroSection = () => {
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
-      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 max-w-screen-2xl w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-start overflow-x-hidden pt-8 sm:pt-12 md:pt-16 lg:pt-20">
-        <div className="grid lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-10 xl:gap-14 items-start w-full py-2 sm:py-4 md:py-6 lg:py-0">
-          {/* Left content */}
-          <div className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-9 text-center lg:text-left animate-fade-in max-w-2xl mx-auto lg:mx-0 lg:ml-12 xl:ml-20 2xl:ml-32 w-full" style={{ fontSize: '1.10em' }}>
-            <div className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold leading-tight tracking-tight">
+      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 max-w-screen-2xl w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-start overflow-x-hidden pt-4 sm:pt-8 md:pt-12 lg:pt-16">
+        <div className="grid lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-10 xl:gap-14 items-start w-full py-0 sm:py-2 md:py-4 lg:py-0">
+          {/* Left content - 2/3 width */}
+          <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 text-center lg:text-left animate-fade-in lg:col-span-2 lg:ml-8 xl:ml-12 2xl:ml-16 w-full" style={{ fontSize: '1.15em' }}>
+            <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-tight tracking-tight">
                 Un produit pensé{" "}
                 <span className="text-primary">PAR</span> les gens du combat{" "}
                 <span className="text-primary">POUR</span> les gens du combat
               </h1>
               
-              <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 Nettoie, désinfecte et enlève les mauvaises odeurs en 5 minutes, 
                 sans rendre les surfaces glissantes.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-3">
               <Button
                 asLink
                 to="#ce-que-fait-la-solution"
@@ -81,8 +81,8 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right content - Video */}
-          <div className="relative order-first lg:order-last flex items-start justify-center animate-fade-in delay-200 w-full -mt-4 sm:-mt-6 md:-mt-8">
+          {/* Right content - Video - 1/3 width */}
+          <div className="relative order-first lg:order-last flex items-start justify-center animate-fade-in delay-200 lg:col-span-1 w-full -mt-2 sm:-mt-4 md:-mt-6">
             <div 
               className="relative w-full flex items-center justify-center mx-auto"
               style={{ 
