@@ -1,13 +1,23 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import HeroSection from "@/components/home/HeroSection";
-import BenefitsSection from "@/components/home/BenefitsSection";
-import CombatSection from "@/components/home/CombatSection";
-import EconomySection from "@/components/home/EconomySection";
+import SolutionSummarySection from "@/components/home/SolutionSummarySection";
+import AboutSummarySection from "@/components/home/AboutSummarySection";
 import CTASection from "@/components/home/CTASection";
 
 const Index = () => {
+  useEffect(() => {
+    // Add scroll snap class to html element
+    document.documentElement.classList.add("home-page");
+    
+    return () => {
+      // Remove class when component unmounts
+      document.documentElement.classList.remove("home-page");
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       <SEO
@@ -19,9 +29,8 @@ const Index = () => {
       <Header variant="dark" />
       <main>
         <HeroSection />
-        <BenefitsSection />
-        <CombatSection />
-        <EconomySection />
+        <SolutionSummarySection />
+        <AboutSummarySection />
         <CTASection />
       </main>
       <Footer />

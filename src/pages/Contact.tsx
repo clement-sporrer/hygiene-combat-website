@@ -7,7 +7,6 @@ import Section from "@/components/layout/Section";
 import FormField from "@/components/ui/FormField";
 import TextareaField from "@/components/ui/TextareaField";
 import Button from "@/components/ui/button";
-import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Mail, Phone, MapPin, Clock, Calendar, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
@@ -52,21 +51,20 @@ const Contact = () => {
       <Header variant="light" />
       
       <main>
-        {/* Hero */}
-        <Section variant="muted" fullScreen className="relative">
-          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
+        {/* Hero - Compact */}
+        <Section variant="dark" className="relative py-12 sm:py-14 md:py-16 flex items-center">
+          <div className="max-w-3xl mx-auto text-center space-y-3 md:space-y-4 w-full pt-16 md:pt-20">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
               Contact
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Une question ? Besoin d'informations ? Nous sommes là pour vous aider.
             </p>
           </div>
-          <ScrollArrow showOnMobile={true} />
         </Section>
 
         {/* Contact content */}
-        <Section variant="light" fullScreen className="relative py-20 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+        <Section variant="light" className="relative py-16 sm:py-20 md:py-24 overflow-x-hidden">
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 max-w-7xl mx-auto w-full px-4 sm:px-6">
             {/* Form */}
             <div className="w-full">
@@ -220,7 +218,7 @@ const Contact = () => {
                       <div>
                         <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Localisation</h4>
                         <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                          Hauts-de-Seine (92), région parisienne
+                          Hauts-de-Seine (92), Ile de France
                         </p>
                       </div>
                     </div>

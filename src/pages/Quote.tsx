@@ -8,7 +8,6 @@ import FormField from "@/components/ui/FormField";
 import TextareaField from "@/components/ui/TextareaField";
 import SelectField from "@/components/ui/SelectField";
 import Button from "@/components/ui/button";
-import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Send, Truck, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { quoteFormSchema, type QuoteFormData } from "@/lib/validations";
@@ -53,10 +52,10 @@ const Quote = () => {
       <Header variant="light" />
       
       <main>
-        {/* Hero */}
-        <Section variant="muted" fullScreen className="relative">
-          <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-5">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-black">
+        {/* Hero - Compact */}
+        <Section variant="dark" className="relative py-12 sm:py-14 md:py-16 flex items-center">
+          <div className="max-w-3xl mx-auto text-center space-y-3 md:space-y-4 w-full pt-16 md:pt-20">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
               Demander un devis
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -64,11 +63,10 @@ const Quote = () => {
               adaptée à votre salle et à votre usage.
             </p>
           </div>
-          <ScrollArrow showOnMobile={true} />
         </Section>
 
         {/* Form section */}
-        <Section variant="light" fullScreen className="relative py-20 sm:py-16 md:py-20 lg:py-24 overflow-x-hidden">
+        <Section variant="light" className="relative py-16 sm:py-20 md:py-24 overflow-x-hidden">
           <div className="max-w-3xl mx-auto w-full px-4 sm:px-6">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 md:space-y-10">
               {/* Contact info */}
@@ -148,15 +146,29 @@ const Quote = () => {
                 />
 
                 <SelectField
-                  label="Nombre approximatif d'adhérents"
-                  {...register("members")}
+                  label="Surfaces en m²"
+                  {...register("surfaceArea")}
                   options={[
                     { value: "", label: "Sélectionner..." },
-                    { value: "0-50", label: "Moins de 50" },
-                    { value: "50-100", label: "50 - 100" },
-                    { value: "100-200", label: "100 - 200" },
-                    { value: "200-500", label: "200 - 500" },
-                    { value: "500+", label: "Plus de 500" },
+                    { value: "0-150", label: "0 à 150 m²" },
+                    { value: "150-350", label: "150 à 350 m²" },
+                    { value: "350-600", label: "350 à 600 m²" },
+                    { value: "600+", label: "+600 m²" },
+                  ]}
+                />
+
+                <SelectField
+                  label="Fréquence d'activités hebdomadaire"
+                  {...register("frequency")}
+                  options={[
+                    { value: "", label: "Sélectionner..." },
+                    { value: "1j/7", label: "1j/7" },
+                    { value: "2j/7", label: "2j/7" },
+                    { value: "3j/7", label: "3j/7" },
+                    { value: "4j/7", label: "4j/7" },
+                    { value: "5j/7", label: "5j/7" },
+                    { value: "6j/7", label: "6j/7" },
+                    { value: "7j/7", label: "7j/7" },
                   ]}
                 />
               </div>

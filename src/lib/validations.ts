@@ -18,7 +18,8 @@ export const quoteFormSchema = z.object({
   location: z.string().min(2, 'La localisation est requise'),
   activities: z.string().optional(),
   surfaces: z.string().optional(),
-  members: z.string().optional(),
+  surfaceArea: z.string().optional(),
+  frequency: z.string().optional(),
   message: z.string().optional(),
 });
 

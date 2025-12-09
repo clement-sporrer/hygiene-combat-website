@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import Section from "@/components/layout/Section";
 import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Sparkles, ShieldCheck, Wind } from "lucide-react";
-import { fetchClientLogos, type ClientLogo } from "@/lib/googleSheets";
 
 const benefits = [
   {
@@ -26,82 +24,11 @@ const benefits = [
 ];
 
 const BenefitsSection = () => {
-  const [logos, setLogos] = useState<ClientLogo[]>([]);
-  const [isLoadingLogos, setIsLoadingLogos] = useState(true);
-
-  useEffect(() => {
-    const loadLogos = async () => {
-      try {
-        const clientLogos = await fetchClientLogos();
-        setLogos(clientLogos);
-      } catch (error) {
-        console.error("Error loading client logos:", error);
-      } finally {
-        setIsLoadingLogos(false);
-      }
-    };
-
-    loadLogos();
-  }, []);
-
-  // Double the logos for seamless loop
-  const doubledLogos = logos.length > 0 ? [...logos, ...logos] : [];
-
   return (
     <Section variant="light" id="ce-que-fait-la-solution" fullScreen className="relative overflow-hidden overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
       {/* Centered content wrapper */}
       <div className="w-full flex-1 flex flex-col justify-center items-center -mt-8 sm:-mt-10 md:-mt-12">
         <div className="w-full space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
-          {/* Client Logos Section */}
-          {!isLoadingLogos && logos.length > 0 && (
-            <div className="animate-fade-in w-full overflow-hidden">
-              <p className="text-center text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-5 md:mb-6 uppercase tracking-wider px-4">
-                Ils nous font confiance
-              </p>
-              
-              {/* Scrolling logos container */}
-              <div className="relative w-full">
-                <div className="flex animate-scroll-logos">
-                  {doubledLogos.map((logo, index) => (
-                    <div
-                      key={`${logo.name}-${index}`}
-                      className="flex-shrink-0 mx-4 sm:mx-6 md:mx-8 lg:mx-10 xl:mx-12"
-                    >
-                      {logo.websiteUrl ? (
-                        <a
-                          href={logo.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 flex items-center justify-center hover:opacity-80 transition-opacity"
-                        >
-                          <img
-                            src={logo.logoUrl}
-                            alt={`Logo ${logo.name} - Client Hygiène & Combat`}
-                            className="max-w-full max-h-full object-contain"
-                            loading="lazy"
-                          />
-                        </a>
-                      ) : (
-                        <div className="w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 flex items-center justify-center">
-                          <img
-                            src={logo.logoUrl}
-                            alt={`Logo ${logo.name} - Client Hygiène & Combat`}
-                            className="max-w-full max-h-full object-contain"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Fade edges */}
-                <div className="absolute inset-y-0 left-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-brand-white to-transparent pointer-events-none z-10" />
-                <div className="absolute inset-y-0 right-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-brand-white to-transparent pointer-events-none z-10" />
-              </div>
-            </div>
-          )}
-
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto animate-fade-in px-4">
             <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-2 sm:mb-3 md:mb-4 leading-tight">

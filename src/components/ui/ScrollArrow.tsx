@@ -106,7 +106,7 @@ const ScrollArrow = ({ targetId, className, variant = "light", showOnMobile = fa
     <button
       onClick={handleClick}
       className={cn(
-        "absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10",
+        "absolute bottom-3 sm:bottom-5 md:bottom-7 left-1/2 -translate-x-1/2 z-10",
         "flex-col items-center justify-center gap-1 sm:gap-2",
         "min-h-[44px] min-w-[44px] p-2",
         "opacity-60 hover:opacity-100 active:opacity-100 transition-opacity duration-300",
