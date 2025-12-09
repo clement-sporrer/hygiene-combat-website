@@ -333,5 +333,5 @@ img, video, iframe {
 }
 
 .animate-scroll-logos {
-  animation: scroll-logos 30s linear infinite;
+  animation: scroll-logos 25s linear infinite;
 }

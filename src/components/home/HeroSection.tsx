@@ -39,24 +39,24 @@ const HeroSection = () => {
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20" />
       
-      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 max-w-screen-2xl w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-start justify-center overflow-x-hidden pt-16 sm:pt-20 md:pt-24 lg:pt-28">
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-start w-full py-6 sm:py-8 md:py-12 lg:py-0">
+      <div className="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 max-w-screen-2xl w-full min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col justify-start overflow-x-hidden pt-8 sm:pt-12 md:pt-16 lg:pt-20">
+        <div className="grid lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-10 xl:gap-14 items-start w-full py-2 sm:py-4 md:py-6 lg:py-0">
           {/* Left content */}
-          <div className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 text-center lg:text-left animate-fade-in max-w-2xl mx-auto lg:mx-0 w-full">
-            <div className="space-y-4 sm:space-y-5 md:space-y-6">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
+          <div className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-9 text-center lg:text-left animate-fade-in max-w-2xl mx-auto lg:mx-0 lg:ml-12 xl:ml-20 2xl:ml-32 w-full" style={{ fontSize: '1.10em' }}>
+            <div className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold leading-tight tracking-tight">
                 Un produit pensé{" "}
                 <span className="text-primary">PAR</span> les gens du combat{" "}
                 <span className="text-primary">POUR</span> les gens du combat
               </h1>
               
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-sm sm:text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Nettoie, désinfecte et enlève les mauvaises odeurs en 5 minutes, 
                 sans rendre les surfaces glissantes.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-4">
               <Button
                 asLink
                 to="#ce-que-fait-la-solution"
@@ -79,60 +79,10 @@ const HeroSection = () => {
                 Demander un devis
               </Button>
             </div>
-
-            {/* Client Logos Section - Ils nous font confiance */}
-            {!isLoadingLogos && logos.length > 0 && (
-              <div className="pt-6 sm:pt-8 md:pt-10 animate-fade-in w-full overflow-hidden">
-                <p className="text-center lg:text-left text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-5 md:mb-6 uppercase tracking-wider">
-                  Ils nous font confiance
-                </p>
-                
-                {/* Scrolling logos container */}
-                <div className="relative w-full">
-                  <div className="flex animate-scroll-logos">
-                    {doubledLogos.map((logo, index) => (
-                      <div
-                        key={`${logo.name}-${index}`}
-                        className="flex-shrink-0 mx-4 sm:mx-6 md:mx-8 lg:mx-10 xl:mx-12"
-                      >
-                        {logo.websiteUrl ? (
-                          <a
-                            href={logo.websiteUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 flex items-center justify-center hover:opacity-80 transition-opacity"
-                          >
-                            <img
-                              src={logo.logoUrl}
-                              alt={`Logo ${logo.name} - Client Hygiène & Combat`}
-                              className="max-w-full max-h-full object-contain"
-                              loading="lazy"
-                            />
-                          </a>
-                        ) : (
-                          <div className="w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 flex items-center justify-center">
-                            <img
-                              src={logo.logoUrl}
-                              alt={`Logo ${logo.name} - Client Hygiène & Combat`}
-                              className="max-w-full max-h-full object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Fade edges */}
-                  <div className="absolute inset-y-0 left-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-brand-black to-transparent pointer-events-none z-10" />
-                  <div className="absolute inset-y-0 right-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-brand-black to-transparent pointer-events-none z-10" />
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Right content - Video */}
-          <div className="relative order-first lg:order-last flex items-start justify-center animate-fade-in delay-200 w-full">
+          <div className="relative order-first lg:order-last flex items-start justify-center animate-fade-in delay-200 w-full -mt-4 sm:-mt-6 md:-mt-8">
             <div 
               className="relative w-full flex items-center justify-center mx-auto"
               style={{ 
@@ -183,6 +133,56 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Client Logos Section - Ils nous font confiance - Full width band */}
+        {!isLoadingLogos && logos.length > 0 && (
+          <div className="w-full mt-6 sm:mt-8 md:mt-10 lg:mt-12 animate-fade-in overflow-hidden">
+            <p className="text-center text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 md:mb-5 uppercase tracking-wider">
+              Ils nous font confiance
+            </p>
+            
+            {/* Scrolling logos container */}
+            <div className="relative w-full">
+              <div className="flex animate-scroll-logos">
+                {doubledLogos.map((logo, index) => (
+                  <div
+                    key={`${logo.name}-${index}`}
+                    className="flex-shrink-0 mx-4 sm:mx-6 md:mx-8 lg:mx-10 xl:mx-12"
+                  >
+                    {logo.websiteUrl ? (
+                      <a
+                        href={logo.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 flex items-center justify-center hover:opacity-80 transition-opacity"
+                      >
+                        <img
+                          src={logo.logoUrl}
+                          alt={`Logo ${logo.name} - Client Hygiène & Combat`}
+                          className="max-w-full max-h-full object-contain"
+                          loading="lazy"
+                        />
+                      </a>
+                    ) : (
+                      <div className="w-24 h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 flex items-center justify-center">
+                        <img
+                          src={logo.logoUrl}
+                          alt={`Logo ${logo.name} - Client Hygiène & Combat`}
+                          className="max-w-full max-h-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              
+              {/* Fade edges */}
+              <div className="absolute inset-y-0 left-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-brand-black to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-y-0 right-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-brand-black to-transparent pointer-events-none z-10" />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Scroll arrow */}
