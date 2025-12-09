@@ -136,7 +136,7 @@ const HeroSection = () => {
 
         {/* Client Logos Section - Ils nous font confiance - Full width band */}
         {!isLoadingLogos && logos.length > 0 && (
-          <div className="w-full mt-6 sm:mt-8 md:mt-10 lg:mt-12 animate-fade-in overflow-hidden">
+          <div className="w-full mt-4 sm:mt-6 md:mt-8 lg:mt-10 animate-fade-in overflow-hidden">
             <p className="text-center text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 md:mb-5 uppercase tracking-wider">
               Ils nous font confiance
             </p>
