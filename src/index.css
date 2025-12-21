@@ -265,7 +265,7 @@ img, video, iframe {
     --cta-foreground: 0 0% 100%;
     
     /* Hero gradient */
-    --hero-gradient: linear-gradient(to bottom, #384a54, #87a6bb);
+    --hero-gradient: linear-gradient(to bottom, #87a6bb, #384a54);
   }
 
   /* Dark mode class (for Tailwind compatibility) */
@@ -303,7 +303,7 @@ img, video, iframe {
   
   /* Gradient background for degrade theme */
   [data-theme="degrade"] .section-dark {
-    background: linear-gradient(to bottom, #384a54, #87a6bb);
+    background: linear-gradient(to bottom, #87a6bb, #384a54);
   }
   
   .section-light {

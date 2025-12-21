@@ -41,7 +41,7 @@ export const themes: Record<ThemeId, ThemeConfig> = {
     id: 'degrade',
     name: 'Dégradé',
     description: 'Dégradé bleu subtil',
-    previewColor: 'linear-gradient(to bottom, #384a54, #87a6bb)',
+    previewColor: 'linear-gradient(to bottom, #87a6bb, #384a54)',
     useLightTextOnDark: true,
   },
 };
@@ -142,7 +142,7 @@ export function useThemeClasses() {
     
     // Background classes
     bgDark: theme === 'degrade' 
-      ? 'bg-gradient-to-b from-[#384a54] to-[#87a6bb]'
+      ? 'bg-gradient-to-b from-[#87a6bb] to-[#384a54]'
       : theme === 'bleu-clair'
         ? 'bg-[#87a6bb]'
         : theme === 'bleu-fonce'
