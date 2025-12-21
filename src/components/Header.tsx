@@ -19,7 +19,6 @@ interface HeaderProps {
 
 const Header = ({ variant = "dark" }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeTheme, setActiveTheme] = useState<"dark" | "light">(variant);
   const location = useLocation();
 
@@ -48,7 +47,6 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
       updateThemeFromSections();
     };
 
@@ -80,20 +78,11 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
     };
   }, [isMenuOpen]);
 
+  // isDark = section underneath is dark, so we need light text
   const isDark = activeTheme === "dark";
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isDark
-          ? isScrolled
-            ? "bg-brand-black/95 shadow-md backdrop-blur-md"
-            : "bg-transparent"
-          : isScrolled
-          ? "bg-brand-white/95 shadow-md backdrop-blur-md"
-          : "bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50">
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -110,7 +99,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
             <img
               src={isDark ? logoWhite : logoBlack}
               alt="Hygiène & Combat"
-              className="h-10 sm:h-12 md:h-14 w-auto transition-opacity duration-300"
+              className="h-10 sm:h-12 md:h-14 w-auto transition-opacity duration-200"
             />
           </Link>
 
@@ -127,12 +116,12 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }
                   }}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md ${
-                    isDark ? "text-brand-white" : "text-brand-black"
-                  } ${
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
                     isActive
                       ? "text-primary"
-                      : "hover:text-primary"
+                      : isDark 
+                        ? "text-white hover:text-primary" 
+                        : "text-brand-black hover:text-primary"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
@@ -150,9 +139,8 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
             <Button
               asLink
               to="/devis"
-              variant={isDark ? "primary" : "secondary"}
+              variant="primary"
               size="md"
-              className="transition-all duration-300"
             >
               Demander un devis
             </Button>
@@ -161,10 +149,10 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors duration-300 ${
+            className={`md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors duration-200 ${
               isDark
-                ? "text-brand-white hover:bg-brand-blue-dark/20"
-                : "text-brand-black hover:bg-muted"
+                ? "text-white hover:text-primary"
+                : "text-brand-black hover:text-primary"
             }`}
             aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isMenuOpen}
@@ -202,7 +190,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                         ? "bg-brand-blue-dark/30 text-primary"
                         : "bg-primary/10 text-primary"
                       : isDark
-                      ? "text-brand-white hover:bg-brand-blue-dark/20"
+                      ? "text-white hover:bg-brand-blue-dark/20"
                       : "text-brand-black hover:bg-muted"
                   }`}
                   aria-current={isActive ? "page" : undefined}
@@ -215,7 +203,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
               <Button
                 asLink
                 to="/devis"
-                variant={isDark ? "primary" : "secondary"}
+                variant="primary"
                 size="md"
                 className="w-full min-h-[48px]"
                 onClick={() => setIsMenuOpen(false)}
