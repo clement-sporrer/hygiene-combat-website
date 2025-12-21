@@ -88,6 +88,14 @@ img, video, iframe {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
+    /* Status colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 204 26% 63%;
+    --info-foreground: 0 0% 100%;
+
     --border: 200 10% 85%;
     --input: 200 10% 85%;
     --ring: 204 26% 63%;
@@ -100,21 +108,10 @@ img, video, iframe {
     --brand-blue: 204 26% 63%;
     --brand-blue-dark: 200 20% 27%;
 
-    /* Gradients */
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 100%);
-    --gradient-light: linear-gradient(180deg, hsl(200 5% 98%) 0%, hsl(200 10% 95%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(204 26% 63%) 0%, hsl(200 20% 27%) 100%);
-
-    /* Shadows */
-    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 8px 24px -8px hsl(0 0% 0% / 0.15);
-    --shadow-lg: 0 16px 48px -16px hsl(0 0% 0% / 0.2);
-    --shadow-glow: 0 0 40px hsl(204 26% 63% / 0.3);
-
     /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -157,52 +154,58 @@ img, video, iframe {
   body {
     @apply bg-background text-foreground antialiased;
     font-family: "DM Sans", system-ui, sans-serif;
-    @apply text-base leading-relaxed;
-    /* Ensure minimum font size on mobile for readability */
     font-size: 16px;
-  }
-  
-  /* Mobile-first: ensure readable text sizes */
-  @media (max-width: 640px) {
-    body {
-      font-size: 16px;
-      line-height: 1.6;
-    }
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography scale - cohérent et lisible, mobile-first */
+  /* Typography scale - Consistent, mobile-first */
   h1 {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight;
+    letter-spacing: -0.02em;
   }
 
   h2 {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] tracking-tight;
+    letter-spacing: -0.01em;
   }
 
   h3 {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-snug tracking-tight;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug tracking-tight;
   }
 
   h4 {
-    @apply text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-snug;
+    @apply text-lg sm:text-xl md:text-2xl font-semibold leading-snug;
   }
 
   h5 {
-    @apply text-sm sm:text-base md:text-lg font-semibold;
+    @apply text-base sm:text-lg font-semibold leading-snug;
   }
 
   h6 {
-    @apply text-xs sm:text-sm md:text-base font-semibold;
+    @apply text-sm sm:text-base font-semibold;
   }
 
-  /* Limiter largeur des textes pour lisibilité, mais pas trop restrictif sur mobile */
+  /* Paragraphs with optimal line length */
   p {
-    @apply max-w-prose;
+    @apply text-base leading-relaxed;
+    max-width: 65ch;
+  }
+
+  /* Links */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 }
 
 @layer components {
-  /* Section variants */
+  /* Section variants - Standardized */
   .section-dark {
     @apply bg-brand-black text-brand-white;
   }
@@ -211,41 +214,13 @@ img, video, iframe {
     @apply bg-brand-white text-brand-black;
   }
 
-  /* Button variants for brand - standardisés */
-  .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 
-           px-6 py-3 rounded-lg font-medium transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
-           active:scale-[0.98];
+  /* Card component - Standardized */
+  .card {
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-200;
   }
 
-  .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 
-           px-6 py-3 rounded-lg font-medium transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2
-           active:scale-[0.98];
-  }
-
-  .btn-outline-light {
-    @apply border-2 border-brand-white text-brand-white bg-transparent
-           hover:bg-brand-white hover:text-brand-black
-           px-6 py-3 rounded-lg font-medium transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-brand-white focus:ring-offset-2
-           active:scale-[0.98];
-  }
-
-  .btn-outline-dark {
-    @apply border-2 border-brand-black text-brand-black bg-transparent
-           hover:bg-brand-black hover:text-brand-white
-           px-6 py-3 rounded-lg font-medium transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-brand-black focus:ring-offset-2
-           active:scale-[0.98];
-  }
-
-  /* Card styles */
   .card-feature {
-    @apply bg-card p-6 rounded-xl border border-border 
-           transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+    @apply card hover:shadow-md hover:-translate-y-0.5;
   }
 
   /* Text utilities */
@@ -255,10 +230,47 @@ img, video, iframe {
 
   /* Link styles */
   .nav-link {
-    @apply relative text-current transition-colors duration-300 hover:text-primary
+    @apply relative text-current transition-colors duration-200 hover:text-primary
            after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 
-           after:bg-primary after:transition-all after:duration-300
+           after:bg-primary after:transition-all after:duration-200
            hover:after:w-full;
+  }
+
+  /* Container utilities - Consistent max-widths and padding */
+  .container-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Hero section pattern - Consistent across all pages */
+  .hero-content {
+    @apply text-center space-y-4 pt-16 md:pt-20;
+  }
+
+  /* Section header pattern - Consistent spacing */
+  .section-header {
+    @apply text-center space-y-4 mb-12 md:mb-16;
+  }
+
+  /* Content block pattern - Optimal line length */
+  .content-block {
+    @apply max-w-prose mx-auto;
+  }
+
+  /* Grid spacing - Consistent gaps */
+  .grid-content {
+    @apply gap-6 md:gap-8 lg:gap-12;
+  }
+
+  .grid-tight {
+    @apply gap-4 md:gap-6;
   }
 }
 

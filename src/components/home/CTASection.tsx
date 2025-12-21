@@ -4,60 +4,61 @@ import { ArrowRight, MessageSquare } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <Section variant="light" id="cta-section" fullScreen className="relative overflow-hidden overflow-x-hidden pb-20 sm:pb-16 md:pb-0">
+    <Section variant="light" id="cta-section" fullScreen size="narrow" className="relative">
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-dark rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 animate-fade-in w-full">
-          <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black leading-tight">
-            Parlez-nous de votre salle
-          </h2>
+      <div className="relative z-10 text-center space-y-8 animate-fade-in">
+        <div className="section-header">
+          <h2>Parlez-nous de votre salle</h2>
           
-          <p className="text-lg sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground content-block">
             Chaque salle est différente. Contactez-nous pour une solution adaptée à votre 
             surface, votre fréquentation et vos besoins spécifiques.
           </p>
+        </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4">
-            <Button
-              asLink
-              to="/devis"
-              variant="primary"
-              size="lg"
-              icon={ArrowRight}
-              iconPosition="right"
-              className="w-full sm:w-auto"
-            >
-              Demander un devis
-            </Button>
-            <Button
-              asLink
-              to="/contact"
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto border-brand-black text-brand-black hover:bg-brand-black hover:text-brand-white"
-              icon={MessageSquare}
-              iconPosition="left"
-            >
-              Nous contacter
-            </Button>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            asLink
+            to="/devis"
+            variant="primary"
+            size="lg"
+            icon={ArrowRight}
+            iconPosition="right"
+            className="w-full sm:w-auto"
+          >
+            Demander un devis
+          </Button>
+          <Button
+            asLink
+            to="/contact"
+            variant="outline"
+            size="lg"
+            className="w-full sm:w-auto border-2 border-brand-black text-brand-black hover:bg-brand-black hover:text-brand-white"
+            icon={MessageSquare}
+            iconPosition="left"
+          >
+            Nous contacter
+          </Button>
+        </div>
 
-          <div className="pt-5 sm:pt-6 md:pt-8 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-muted-foreground">
-            <span className="flex items-center gap-2">
-              ✓ Réponse sous 24h
-            </span>
-            <span className="flex items-center gap-2">
-              ✓ Livraison 48h
-            </span>
-            <span className="flex items-center gap-2">
-              ✓ Fabriqué en France
-            </span>
-          </div>
+        <div className="pt-8 flex flex-wrap justify-center gap-6 md:gap-8 text-sm text-muted-foreground">
+          <span className="flex items-center gap-2">
+            <span aria-hidden="true">✓</span>
+            Réponse sous 24h
+          </span>
+          <span className="flex items-center gap-2">
+            <span aria-hidden="true">✓</span>
+            Livraison 48h
+          </span>
+          <span className="flex items-center gap-2">
+            <span aria-hidden="true">✓</span>
+            Fabriqué en France
+          </span>
         </div>
       </div>
     </Section>

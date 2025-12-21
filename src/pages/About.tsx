@@ -17,50 +17,41 @@ const About = () => {
       <Header variant="light" />
       
       <main>
-        {/* Hero - Compact */}
-        <Section variant="dark" className="relative py-12 sm:py-14 md:py-16 flex items-center">
-          <div className="max-w-3xl mx-auto text-center space-y-3 md:space-y-4 w-full pt-16 md:pt-20">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-              À propos
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        {/* Hero */}
+        <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
+          <div className="hero-content">
+            <h1>À propos</h1>
+            <p className="text-lg md:text-xl text-muted-foreground content-block">
               Une solution née du terrain, pour répondre à un vrai problème.
             </p>
           </div>
         </Section>
 
         {/* Bloc 1 : Origine, mission, philosophie */}
-        <Section variant="light" id="origine-mission-philosophie" className="relative py-16 sm:py-20 md:py-24">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-8 sm:mb-10 md:mb-12">
-              <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4">
-                Origine, mission et philosophie
-              </h2>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 mb-10 md:mb-12">
-              <div className="space-y-4 md:space-y-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary">
-                  <Heart size={24} className="md:w-7 md:h-7" />
+        <Section variant="light" id="origine-mission-philosophie" size="default">
+          <div className="section-header">
+            <h2>Origine, mission et philosophie</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 grid-content mb-12 md:mb-16">
+              <div className="space-y-6">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
+                  <Heart size={24} aria-hidden="true" />
                 </div>
-                <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black">
-                  L'origine
-                </h3>
-                <p className="text-lg md:text-lg text-muted-foreground leading-relaxed">
+                <h3>L'origine</h3>
+                <p className="text-lg text-muted-foreground content-block">
                   Hygiène & Combat est né d'un constat simple : trop d'infections, 
                   trop de surfaces mal entretenues, trop de produits inadaptés. 
                   Un pratiquant de sports de combat a voulu changer ça.
                 </p>
               </div>
 
-              <div className="space-y-4 md:space-y-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary">
-                  <Target size={24} className="md:w-7 md:h-7" />
+              <div className="space-y-6">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
+                  <Target size={24} aria-hidden="true" />
                 </div>
-                <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black">
-                  Notre mission
-                </h3>
-                <p className="text-lg md:text-lg text-muted-foreground leading-relaxed">
+                <h3>Notre mission</h3>
+                <p className="text-lg text-muted-foreground content-block">
                   Réduire les infections cutanées dans les clubs de sport de combat 
                   et améliorer les standards d'hygiène avec une solution simple, 
                   efficace et adaptée au terrain.
@@ -68,17 +59,15 @@ const About = () => {
               </div>
             </div>
             
-            <div className="bg-muted/50 p-6 sm:p-7 md:p-8 rounded-xl border border-border">
-              <div className="text-center mb-6 md:mb-8">
-                <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-3 md:mb-4">
-                  Notre philosophie
-                </h3>
-                <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <div className="card p-8">
+              <div className="section-header mb-8">
+                <h3>Notre philosophie</h3>
+                <p className="text-lg text-muted-foreground content-block">
                   Les valeurs qui guident notre approche.
                 </p>
               </div>
               
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 grid-tight">
                 {[
                   {
                     title: "Simplicité",
@@ -93,71 +82,64 @@ const About = () => {
                     desc: "Pas de jargon marketing, on explique ce que fait le produit simplement.",
                   },
                 ].map((value) => (
-                  <div key={value.title} className="text-center p-5 md:p-6">
-                    <h4 className="text-xl md:text-xl font-semibold text-primary mb-3">
+                  <div key={value.title} className="text-center p-6">
+                    <h4 className="text-xl font-semibold text-primary mb-3">
                       {value.title}
                     </h4>
-                    <p className="text-base md:text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                    <p className="text-base text-muted-foreground content-block">
                       {value.desc}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
         </Section>
 
         {/* Bloc 2 : Distribution */}
-        <Section variant="dark" id="distribution" className="relative py-16 sm:py-20 md:py-24">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="text-center space-y-4 md:space-y-5">
-              <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mx-auto">
-                <MapPin size={24} className="md:w-7 md:h-7" />
-              </div>
-              <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-                Distribution
-              </h2>
-              <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Nous servons actuellement le marché francophone : France métropolitaine, Corse, Belgique. Livraison en 48h après facturation.
-              </p>
-              <p className="text-sm md:text-base text-muted-foreground text-center mx-auto">
-                🇫🇷 Produit fabriqué en France
-              </p>
+        <Section variant="dark" id="distribution" size="narrow">
+          <div className="section-header">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mx-auto">
+              <MapPin size={24} aria-hidden="true" />
             </div>
+            <h2>Distribution</h2>
+            <p className="text-lg text-muted-foreground content-block">
+              Nous servons actuellement le marché francophone : France métropolitaine, Corse, Belgique. Livraison en 48h après facturation.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              🇫🇷 Produit fabriqué en France
+            </p>
           </div>
         </Section>
 
         {/* CTA */}
-        <Section variant="light" id="cta-about" className="relative py-16 sm:py-20 md:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-5 md:space-y-6 px-4 sm:px-6">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-brand-black">
-              Une question ? Un projet ?
-            </h2>
-            <p className="text-lg md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        <Section variant="light" id="cta-about" size="narrow">
+          <div className="section-header">
+            <h2>Une question ? Un projet ?</h2>
+            <p className="text-lg text-muted-foreground content-block">
               Nous sommes là pour vous accompagner dans l'amélioration de l'hygiène 
               de votre salle.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Button
-                asLink
-                to="/contact"
-                variant="secondary"
-                size="lg"
-              >
-                Nous contacter
-              </Button>
-              <Button
-                asLink
-                to="/devis"
-                variant="outline"
-                size="lg"
-                className="border-brand-black text-brand-black hover:bg-brand-black hover:text-brand-white"
-                icon={ArrowRight}
-                iconPosition="right"
-              >
-                Demander un devis
-              </Button>
-            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asLink
+              to="/contact"
+              variant="secondary"
+              size="lg"
+            >
+              Nous contacter
+            </Button>
+            <Button
+              asLink
+              to="/devis"
+              variant="outline"
+              size="lg"
+              className="border-brand-black text-brand-black hover:bg-brand-black hover:text-brand-white"
+              icon={ArrowRight}
+              iconPosition="right"
+            >
+              Demander un devis
+            </Button>
           </div>
         </Section>
       </main>

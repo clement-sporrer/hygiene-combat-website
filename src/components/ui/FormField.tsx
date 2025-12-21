@@ -16,22 +16,23 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
       <div className="space-y-2">
         <label
           htmlFor={fieldId}
-          className="block text-sm font-medium text-brand-black"
+          className="block text-sm font-medium text-foreground"
         >
           {label}
-          {props.required && <span className="text-destructive ml-1">*</span>}
+          {props.required && <span className="text-destructive ml-1" aria-label="requis">*</span>}
         </label>
         <input
           ref={ref}
           id={fieldId}
           className={cn(
-            "w-full px-4 py-3 text-base border rounded-lg",
-            "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+            "w-full h-11 px-4 text-base border rounded-lg bg-background",
+            "focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent",
             "transition-all duration-200",
+            "placeholder:text-muted-foreground",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             error
               ? "border-destructive focus:ring-destructive"
-              : "border-border",
+              : "border-border hover:border-foreground/20",
             className
           )}
           aria-invalid={error ? "true" : "false"}
@@ -43,15 +44,15 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
         {error && (
           <p
             id={`${fieldId}-error`}
-            className="text-sm text-destructive flex items-center gap-1.5"
+            className="text-sm text-destructive flex items-center gap-1.5 mt-1"
             role="alert"
           >
-            <AlertCircle size={14} className="flex-shrink-0" />
+            <AlertCircle size={14} className="flex-shrink-0" aria-hidden="true" />
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={`${fieldId}-helper`} className="text-sm text-muted-foreground">
+          <p id={`${fieldId}-helper`} className="text-sm text-muted-foreground mt-1">
             {helperText}
           </p>
         )}

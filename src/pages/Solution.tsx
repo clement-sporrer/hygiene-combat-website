@@ -55,30 +55,28 @@ const Solution = () => {
       <Header variant="light" />
       
       <main>
-        {/* Hero - Compact */}
-        <Section variant="dark" className="relative py-12 sm:py-14 md:py-16 flex items-center">
-          <div className="max-w-3xl mx-auto text-center space-y-3 md:space-y-4 w-full pt-16 md:pt-20">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-              Notre solution d'hygiène
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        {/* Hero */}
+        <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
+          <div className="hero-content">
+            <h1>Notre solution d'hygiène</h1>
+            <p className="text-lg md:text-xl text-muted-foreground content-block">
               Biocide 3-en-1 professionnel pour tatamis, rings, machines et vestiaires.
             </p>
           </div>
         </Section>
 
         {/* 1. Bloc présentation du produit */}
-        <Section variant="light" id="presentation-produit" className="relative overflow-x-hidden py-16 sm:py-20 md:py-24">
-          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6">
-            <div className="space-y-4 sm:space-y-5 md:space-y-6 order-2 lg:order-1 lg:col-span-2">
-              <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black leading-tight">
-                Produit 3-en-1
-              </h2>
-              <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Une seule solution pour nettoyer, désinfecter et désodoriser vos équipements en 5 minutes.
-              </p>
+        <Section variant="light" id="presentation-produit" size="wide">
+          <div className="grid lg:grid-cols-3 grid-content items-center">
+            <div className="space-y-6 order-2 lg:order-1 lg:col-span-2">
+              <div className="space-y-4">
+                <h2>Produit 3-en-1</h2>
+                <p className="text-lg text-muted-foreground content-block">
+                  Une seule solution pour nettoyer, désinfecter et désinfecter vos équipements en 5 minutes.
+                </p>
+              </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 pt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 grid-tight pt-4">
                 {[
                   {
                     icon: Sparkles,
@@ -96,14 +94,14 @@ const Solution = () => {
                     description: "Supprime les odeurs de transpiration et laisse un parfum frais d'eucalyptus.",
                   },
                 ].map((item) => (
-                  <div key={item.title} className="text-center p-4 bg-card rounded-lg border border-border">
-                    <div className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-primary/10 text-primary mb-3">
-                      <item.icon size={20} className="md:w-6 md:h-6" />
+                  <div key={item.title} className="text-center p-6 card">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-4">
+                      <item.icon size={24} aria-hidden="true" />
                     </div>
-                    <h3 className="text-base md:text-lg font-semibold text-brand-black mb-2">
+                    <h3 className="text-lg font-semibold text-brand-black mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -139,31 +137,29 @@ const Solution = () => {
         </Section>
 
         {/* 2. Bloc mode d'emploi */}
-        <Section variant="dark" id="mode-emploi" className="relative overflow-x-hidden py-16 sm:py-20 md:py-24">
-          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
-              Mode d'emploi
-            </h2>
-            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        <Section variant="dark" id="mode-emploi" size="default">
+          <div className="section-header">
+            <h2>Mode d'emploi</h2>
+            <p className="text-lg text-muted-foreground content-block">
               Un mode d'emploi simple en 3 étapes.
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-content">
               {[
                 { step: "1", title: "Diluer", desc: "Mélanger à 5% dans l'eau (50ml pour 1L)" },
                 { step: "2", title: "Appliquer", desc: "Au pulvérisateur ou à la serpillière" },
                 { step: "3", title: "Laisser agir", desc: "5 minutes, puis surface prête" },
               ].map((item) => (
                 <div key={item.step} className="text-center">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-primary-foreground text-xl md:text-2xl font-bold flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold flex items-center justify-center mx-auto mb-4">
                     {item.step}
                   </div>
-                  <h3 className="text-xl md:text-xl font-semibold text-brand-white mb-2">
+                  <h3 className="text-xl font-semibold text-brand-white mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-base md:text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                  <p className="text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
                     {item.desc}
                   </p>
                 </div>
@@ -173,54 +169,54 @@ const Solution = () => {
         </Section>
 
         {/* 3. Bloc surfaces d'application */}
-        <Section variant="light" id="surfaces-application" className="relative overflow-x-hidden py-16 sm:py-20 md:py-24">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6">
-            <div className="space-y-4 sm:space-y-5 md:space-y-6 order-2 lg:order-1">
-              <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                Surfaces d'application
-              </h2>
-              <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Notre solution est conçue pour tous les équipements et surfaces 
-                d'une salle de sport, en particulier les espaces à fort contact.
-              </p>
+        <Section variant="light" id="surfaces-application" size="wide">
+          <div className="grid lg:grid-cols-2 grid-content items-center">
+            <div className="space-y-6 order-2 lg:order-1">
+              <div className="space-y-4">
+                <h2>Surfaces d'application</h2>
+                <p className="text-lg text-muted-foreground content-block">
+                  Notre solution est conçue pour tous les équipements et surfaces 
+                  d'une salle de sport, en particulier les espaces à fort contact.
+                </p>
+              </div>
               
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 grid-tight pt-4">
                 {surfaces.map((surface) => (
-                  <li key={surface} className="flex items-start gap-2 sm:gap-3">
-                    <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                    <span className="text-base sm:text-base leading-relaxed">{surface}</span>
+                  <li key={surface} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={20} aria-hidden="true" />
+                    <span className="text-base leading-relaxed">{surface}</span>
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div className="bg-brand-blue-dark/30 p-5 sm:p-6 md:p-8 rounded-2xl order-1 lg:order-2">
-              <div className="space-y-5 md:space-y-6">
-                <div className="flex items-start gap-3 md:gap-4">
-                  <Clock className="text-primary flex-shrink-0 mt-1" size={24} />
+            <div className="card p-8 order-1 lg:order-2">
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <Clock className="text-primary flex-shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
-                    <h4 className="font-semibold text-lg md:text-lg mb-1">Temps de contact</h4>
-                    <p className="text-base md:text-base text-muted-foreground leading-relaxed">
+                    <h4 className="font-semibold text-lg mb-1">Temps de contact</h4>
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       5 minutes suffisent
                     </p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3 md:gap-4">
-                  <Droplets className="text-primary flex-shrink-0 mt-1" size={24} />
+                <div className="flex items-start gap-4">
+                  <Droplets className="text-primary flex-shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
-                    <h4 className="font-semibold text-lg md:text-lg mb-1">Sans alcool</h4>
-                    <p className="text-base md:text-base text-muted-foreground leading-relaxed">
+                    <h4 className="font-semibold text-lg mb-1">Sans alcool</h4>
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Ne dessèche pas les surfaces
                     </p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-3 md:gap-4">
-                  <ShieldCheck className="text-primary flex-shrink-0 mt-1" size={24} />
+                <div className="flex items-start gap-4">
+                  <ShieldCheck className="text-primary flex-shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
-                    <h4 className="font-semibold text-lg md:text-lg mb-1">pH non acide</h4>
-                    <p className="text-base md:text-base text-muted-foreground leading-relaxed">
+                    <h4 className="font-semibold text-lg mb-1">pH non acide</h4>
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Préserve les revêtements
                     </p>
                   </div>
@@ -231,8 +227,8 @@ const Solution = () => {
         </Section>
 
         {/* 4. Bloc Économique et Simple */}
-        <Section variant="dark" id="economique-simple" className="relative overflow-x-hidden py-16 sm:py-20 md:py-24">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center max-w-7xl mx-auto w-full px-4 sm:px-6">
+        <Section variant="dark" id="economique-simple" size="wide">
+          <div className="grid lg:grid-cols-2 grid-content items-center">
             {/* Left - Visual stats */}
             <div className="order-2 lg:order-1 animate-fade-in delay-200">
               <div className="bg-gradient-to-br from-brand-blue-dark/30 to-brand-blue-dark/20 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-2xl border border-brand-blue-dark/30">
@@ -273,56 +269,56 @@ const Solution = () => {
             </div>
 
             {/* Right - Content */}
-            <div className="order-1 lg:order-2 space-y-5 sm:space-y-6 md:space-y-8 animate-fade-in">
-              <div className="space-y-3 sm:space-y-4">
-                <span className="inline-block text-primary text-xs sm:text-sm font-medium uppercase tracking-wider">
+            <div className="order-1 lg:order-2 space-y-8 animate-fade-in">
+              <div className="space-y-4">
+                <span className="inline-block text-primary text-sm font-medium uppercase tracking-wider">
                   Économique et simple
                 </span>
-                <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                   Un produit concentré pour un usage quotidien économique
                 </h2>
               </div>
 
-              <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Droplet className="text-primary" size={20} />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Droplet className="text-primary" size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1.5 text-base sm:text-base">
+                    <h4 className="font-semibold mb-2 text-base">
                       Produit concentré
                     </h4>
-                    <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Diluer à 5% dans l'eau pour obtenir une solution prête à l'emploi. 
                       Simple et économique.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="text-primary" size={20} />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Clock className="text-primary" size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1.5 text-base sm:text-base">
+                    <h4 className="font-semibold mb-2 text-base">
                       Usage quotidien
                     </h4>
-                    <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Utilisation possible tous les jours sans risque pour vos surfaces. 
                       Idéal pour les salles à forte fréquentation.
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Calculator className="text-primary" size={20} />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Calculator className="text-primary" size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1.5 text-base sm:text-base">
+                    <h4 className="font-semibold mb-2 text-base">
                       Coût maîtrisé
                     </h4>
-                    <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
+                    <p className="text-base text-muted-foreground leading-relaxed">
                       Un bidon de 5L dure plusieurs semaines selon la taille de votre salle. 
                       Livraison en 48h France métropolitaine.
                     </p>
@@ -334,24 +330,22 @@ const Solution = () => {
         </Section>
 
         {/* 5. Bloc Questions fréquentes */}
-        <Section variant="light" id="questions-frequentes" className="relative py-16 sm:py-20 md:py-24 overflow-x-hidden">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-4">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-3 sm:mb-4 leading-tight">
-              Questions fréquentes
-            </h2>
-            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+        <Section variant="light" id="questions-frequentes" size="narrow">
+          <div className="section-header">
+            <h2>Questions fréquentes</h2>
+            <p className="text-lg text-muted-foreground content-block">
               Les questions que se posent souvent les gérants de salles.
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5 md:space-y-6 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto space-y-6">
             {faqs.map((faq) => (
-              <div key={faq.question} className="bg-brand-white p-5 sm:p-6 md:p-7 lg:p-8 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-3 sm:mb-4 text-lg sm:text-lg md:text-xl">
-                  <HelpCircle className="text-primary flex-shrink-0 mt-0.5" size={22} />
+              <div key={faq.question} className="card p-6 md:p-8">
+                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-4 text-lg md:text-xl">
+                  <HelpCircle className="text-primary flex-shrink-0 mt-0.5" size={22} aria-hidden="true" />
                   {faq.question}
                 </h3>
-                <p className="text-base sm:text-base md:text-lg text-muted-foreground pl-9 sm:pl-10 leading-relaxed">
+                <p className="text-base md:text-lg text-muted-foreground pl-9 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -360,15 +354,15 @@ const Solution = () => {
         </Section>
 
         {/* 6. CTA final */}
-        <Section variant="dark" id="cta-final" className="relative overflow-x-hidden py-16 sm:py-20 md:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-5 sm:space-y-6 md:space-y-8 px-4 sm:px-6">
-            <h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-              Prêt à améliorer l'hygiène de votre salle ?
-            </h2>
-            <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        <Section variant="dark" id="cta-final" size="narrow">
+          <div className="section-header">
+            <h2>Prêt à améliorer l'hygiène de votre salle ?</h2>
+            <p className="text-lg text-muted-foreground content-block">
               Demandez un devis personnalisé en fonction de la taille de votre salle 
               et de vos besoins.
             </p>
+          </div>
+          <div className="flex justify-center">
             <Button
               asLink
               to="/devis"

@@ -51,29 +51,27 @@ const Contact = () => {
       <Header variant="light" />
       
       <main>
-        {/* Hero - Compact */}
-        <Section variant="dark" className="relative py-12 sm:py-14 md:py-16 flex items-center">
-          <div className="max-w-3xl mx-auto text-center space-y-3 md:space-y-4 w-full pt-16 md:pt-20">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-              Contact
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        {/* Hero */}
+        <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
+          <div className="hero-content">
+            <h1>Contact</h1>
+            <p className="text-lg md:text-xl text-muted-foreground content-block">
               Une question ? Besoin d'informations ? Nous sommes là pour vous aider.
             </p>
           </div>
         </Section>
 
         {/* Contact content */}
-        <Section variant="light" className="relative py-16 sm:py-20 md:py-24 overflow-x-hidden">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 max-w-7xl mx-auto w-full px-4 sm:px-6">
+        <Section variant="light" size="wide" spacing="relaxed">
+          <div className="grid lg:grid-cols-2 grid-content">
             {/* Form */}
             <div className="w-full">
-              <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-black mb-8">
                 Envoyez-nous un message
               </h2>
               
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6 md:space-y-7">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <FormField
                     label="Nom"
                     type="text"
@@ -92,7 +90,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <FormField
                     label="Téléphone"
                     type="tel"
@@ -107,7 +105,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <FormField
                     label="Ville"
                     type="text"
@@ -146,90 +144,88 @@ const Contact = () => {
             </div>
 
             {/* Contact info */}
-            <div className="space-y-6 sm:space-y-8 md:space-y-10">
-                {/* Calendly link - En premier */}
-                <div>
-                  <div className="bg-muted/50 p-5 sm:p-6 md:p-7 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-                      <Calendar className="text-primary flex-shrink-0" size={22} />
-                      <h4 className="font-semibold text-brand-black text-base sm:text-lg">Prendre rendez-vous</h4>
-                    </div>
-                    <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-5 leading-relaxed">
-                      Planifiez un appel pour discuter de vos besoins.
-                    </p>
-                    <a
-                      href={import.meta.env.VITE_CALENDLY_LINK || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex"
-                    >
-                      <Button
-                        variant="secondary"
-                        size="md"
-                        className="w-full sm:w-auto min-h-[44px]"
-                      >
-                        Réserver un créneau
-                      </Button>
-                    </a>
+            <div className="space-y-8">
+                {/* Calendly link */}
+                <div className="card p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <Calendar className="text-primary flex-shrink-0" size={22} aria-hidden="true" />
+                    <h4 className="font-semibold text-brand-black text-lg">Prendre rendez-vous</h4>
                   </div>
+                  <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+                    Planifiez un appel pour discuter de vos besoins.
+                  </p>
+                  <a
+                    href={import.meta.env.VITE_CALENDLY_LINK || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex"
+                  >
+                    <Button
+                      variant="secondary"
+                      size="md"
+                      className="w-full sm:w-auto"
+                    >
+                      Réserver un créneau
+                    </Button>
+                  </a>
                 </div>
 
-                {/* Nos coordonnées - En dessous */}
-                <div className="pt-6 sm:pt-8 md:pt-10 border-t border-border">
-                  <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-6 sm:mb-8 md:mb-10">
+                {/* Nos coordonnées */}
+                <div className="pt-8 border-t border-border">
+                  <h2 className="text-2xl md:text-3xl font-bold text-brand-black mb-8">
                     Nos coordonnées
                   </h2>
 
-                  <div className="space-y-5 sm:space-y-6 md:space-y-7">
-                    <div className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors duration-200">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Mail className="text-primary" size={22} />
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4 p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Mail className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Email</h4>
+                        <h4 className="font-semibold text-brand-black mb-2">Email</h4>
                         <a 
                           href="mailto:contact@hygiene-combat.fr" 
-                          className="text-primary hover:underline text-base sm:text-base md:text-lg transition-colors break-all"
+                          className="text-primary hover:underline text-base transition-colors break-all"
                         >
                           contact@hygiene-combat.fr
                         </a>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors duration-200">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Phone className="text-primary" size={22} />
+                    <div className="flex items-start gap-4 p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Phone className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Téléphone</h4>
+                        <h4 className="font-semibold text-brand-black mb-2">Téléphone</h4>
                         <a 
                           href="tel:+33615613531" 
-                          className="text-primary hover:underline text-base sm:text-base md:text-lg transition-colors"
+                          className="text-primary hover:underline text-base transition-colors"
                         >
                           +33 6 15 61 35 31
                         </a>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors duration-200">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <MapPin className="text-primary" size={22} />
+                    <div className="flex items-start gap-4 p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <MapPin className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Localisation</h4>
-                        <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                        <h4 className="font-semibold text-brand-black mb-2">Localisation</h4>
+                        <p className="text-base text-muted-foreground leading-relaxed">
                           Hauts-de-Seine (92), Ile de France
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors duration-200">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Clock className="text-primary" size={22} />
+                    <div className="flex items-start gap-4 p-5 bg-muted/30 rounded-xl hover:bg-muted/40 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Clock className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2 text-lg sm:text-lg">Horaires</h4>
-                        <p className="text-base sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                        <h4 className="font-semibold text-brand-black mb-2">Horaires</h4>
+                        <p className="text-base text-muted-foreground leading-relaxed">
                           Lundi – Vendredi : 10h – 20h
                         </p>
                       </div>

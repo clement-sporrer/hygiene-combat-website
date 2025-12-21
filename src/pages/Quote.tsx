@@ -52,13 +52,11 @@ const Quote = () => {
       <Header variant="light" />
       
       <main>
-        {/* Hero - Compact */}
-        <Section variant="dark" className="relative py-12 sm:py-14 md:py-16 flex items-center">
-          <div className="max-w-3xl mx-auto text-center space-y-3 md:space-y-4 w-full pt-16 md:pt-20">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-              Demander un devis
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+        {/* Hero */}
+        <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
+          <div className="hero-content">
+            <h1>Demander un devis</h1>
+            <p className="text-lg md:text-xl text-muted-foreground content-block">
               Remplissez ce formulaire et nous vous proposons une solution 
               adaptée à votre salle et à votre usage.
             </p>
@@ -66,16 +64,15 @@ const Quote = () => {
         </Section>
 
         {/* Form section */}
-        <Section variant="light" className="relative py-16 sm:py-20 md:py-24 overflow-x-hidden">
-          <div className="max-w-3xl mx-auto w-full px-4 sm:px-6">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8 md:space-y-10">
+        <Section variant="light" size="narrow" spacing="relaxed">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 md:space-y-10">
               {/* Contact info */}
-              <div className="space-y-5 sm:space-y-6 md:space-y-7">
-                <h2 className="text-xl sm:text-xl md:text-2xl font-semibold text-brand-black">
+              <div className="space-y-6">
+                <h2 className="text-xl md:text-2xl font-semibold text-brand-black">
                   Vos coordonnées
                 </h2>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <FormField
                     label="Nom / Prénom"
                     type="text"
@@ -105,12 +102,12 @@ const Quote = () => {
               </div>
 
               {/* Gym info */}
-              <div className="space-y-5 sm:space-y-6 md:space-y-7 pt-6 sm:pt-8 md:pt-10 border-t border-border">
-                <h2 className="text-xl sm:text-xl md:text-2xl font-semibold text-brand-black">
+              <div className="space-y-6 pt-8 border-t border-border">
+                <h2 className="text-xl md:text-2xl font-semibold text-brand-black">
                   Votre salle
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <FormField
                     label="Nom de la salle"
                     type="text"
@@ -174,7 +171,7 @@ const Quote = () => {
               </div>
 
               {/* Message */}
-              <div className="space-y-5 sm:space-y-6 md:space-y-7 pt-6 sm:pt-8 md:pt-10 border-t border-border">
+              <div className="pt-8 border-t border-border">
                 <TextareaField
                   label="Message / Besoins spécifiques"
                   rows={5}
@@ -198,33 +195,32 @@ const Quote = () => {
             </form>
 
             {/* Delivery info */}
-            <div className="mt-10 sm:mt-12 md:mt-16 p-5 sm:p-6 md:p-7 lg:p-8 bg-muted/50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start gap-4 sm:gap-5">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Truck className="text-primary flex-shrink-0" size={22} />
+            <div className="mt-12 md:mt-16 card p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Truck className="text-primary flex-shrink-0" size={22} aria-hidden="true" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-brand-black mb-3 sm:mb-4 text-base sm:text-lg md:text-xl">
+                  <h4 className="font-semibold text-brand-black mb-4 text-lg">
                     Informations livraison
                   </h4>
-                  <ul className="space-y-2.5 sm:space-y-3 text-sm sm:text-base md:text-lg text-muted-foreground">
-                    <li className="flex items-center gap-2.5">
-                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" />
+                  <ul className="space-y-3 text-base text-muted-foreground">
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" aria-hidden="true" />
                       <span>France métropolitaine + Corse</span>
                     </li>
-                    <li className="flex items-center gap-2.5">
-                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" />
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" aria-hidden="true" />
                       <span>Livraison sous 48h après facturation</span>
                     </li>
-                    <li className="flex items-center gap-2.5">
-                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" />
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 size={18} className="text-primary flex-shrink-0" aria-hidden="true" />
                       <span>Devis personnalisé sous 24h</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-          </div>
         </Section>
       </main>
 
