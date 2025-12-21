@@ -119,7 +119,7 @@ const HeroSection = () => {
             </div>
 
             {/* Trust row - Desktop only (inside left column) */}
-            <div className="hidden lg:block pt-6">
+            <div className="hidden lg:block pt-8">
               <TrustRow 
                 logos={logos}
                 doubledLogos={doubledLogos}
@@ -133,12 +133,12 @@ const HeroSection = () => {
 
           {/* Right column: Video (cols 7-12 on desktop) */}
           <div className="lg:col-span-6 flex items-center justify-center order-1 lg:order-2">
-            <div className="relative w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[360px] xl:max-w-[400px]">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] xl:max-w-[420px]">
               {/* Aspect ratio wrapper - 3:4 for vertical video */}
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
                 {/* Video glow effect */}
                 <div 
-                  className="absolute -inset-2 bg-gradient-to-br from-primary/15 to-transparent rounded-3xl blur-xl opacity-60 -z-10" 
+                  className="absolute -inset-2 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl blur-xl opacity-50 -z-10" 
                   aria-hidden="true" 
                 />
                 
@@ -164,7 +164,7 @@ const HeroSection = () => {
         </div>
 
         {/* Trust row - Mobile/Tablet (below grid) */}
-        <div className="lg:hidden mt-8">
+        <div className="lg:hidden mt-10">
           <TrustRow 
             logos={logos}
             doubledLogos={doubledLogos}
@@ -209,20 +209,20 @@ const TrustRow = ({
   carouselRef 
 }: TrustRowProps) => {
   if (isLoading || logos.length === 0) {
-    return <div className="h-12" aria-hidden="true" />;
+    return <div className="h-16" aria-hidden="true" />;
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {/* Label */}
-      <p className="text-[10px] sm:text-xs text-white/40 uppercase tracking-[0.15em] font-medium text-center lg:text-left">
+      <p className="text-xs sm:text-sm text-white/50 uppercase tracking-[0.15em] font-medium text-center lg:text-left">
         Ils nous font confiance
       </p>
 
       {/* Logo carousel */}
       <div
         ref={carouselRef}
-        className="relative w-full overflow-hidden h-8 sm:h-9"
+        className="relative w-full overflow-hidden h-12 sm:h-14 lg:h-16"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -233,29 +233,29 @@ const TrustRow = ({
           {doubledLogos.map((logo, index) => (
             <div
               key={`${logo.name}-${index}`}
-              className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-full flex items-center"
+              className="flex-shrink-0 mx-5 sm:mx-8 lg:mx-10 h-full flex items-center"
             >
               {logo.websiteUrl ? (
                 <a
                   href={logo.websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-6 sm:h-7 w-auto opacity-50 hover:opacity-100 transition-opacity duration-200 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                  className="block h-10 sm:h-11 lg:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity duration-200 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
                   aria-label={`Visiter le site de ${logo.name}`}
                 >
                   <img
                     src={logo.logoUrl}
                     alt={`Logo ${logo.name}`}
-                    className="h-full w-auto object-contain brightness-0 invert"
+                    className="h-full w-auto object-contain"
                     loading="lazy"
                   />
                 </a>
               ) : (
-                <div className="h-6 sm:h-7 w-auto opacity-50">
+                <div className="h-10 sm:h-11 lg:h-12 w-auto opacity-70">
                   <img
                     src={logo.logoUrl}
                     alt={`Logo ${logo.name}`}
-                    className="h-full w-auto object-contain brightness-0 invert"
+                    className="h-full w-auto object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -266,11 +266,11 @@ const TrustRow = ({
 
         {/* Fade edges */}
         <div 
-          className="absolute inset-y-0 left-0 w-12 sm:w-16 lg:w-20 bg-gradient-to-r from-brand-black to-transparent pointer-events-none" 
+          className="absolute inset-y-0 left-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-brand-black to-transparent pointer-events-none" 
           aria-hidden="true" 
         />
         <div 
-          className="absolute inset-y-0 right-0 w-12 sm:w-16 lg:w-20 bg-gradient-to-l from-brand-black to-transparent pointer-events-none" 
+          className="absolute inset-y-0 right-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l from-brand-black to-transparent pointer-events-none" 
           aria-hidden="true" 
         />
       </div>
