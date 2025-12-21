@@ -14,7 +14,10 @@ const HeroSection = () => {
         const clientLogos = await fetchClientLogos();
         setLogos(clientLogos);
       } catch (error) {
-        console.error("Error loading client logos:", error);
+        // Only log in development
+        if (import.meta.env.DEV) {
+          console.error("Error loading client logos:", error);
+        }
       } finally {
         setIsLoadingLogos(false);
       }
@@ -99,9 +102,15 @@ const HeroSection = () => {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-cover"
                     aria-label="Vidéo de présentation du biocide 3-en-1 Hygiène & Combat pour salles de sport"
                     title="Biocide 3-en-1 Hygiène & Combat - Désinfectant salle de sport"
+                    onError={(e) => {
+                      // Fallback: hide video on error
+                      const target = e.target as HTMLVideoElement;
+                      target.style.display = 'none';
+                    }}
                   >
                     <source src="/videos/bidon h&c.mp4" type="video/mp4" />
                   </video>
@@ -122,9 +131,15 @@ const HeroSection = () => {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-contain"
                     aria-label="Vidéo de présentation du biocide 3-en-1 Hygiène & Combat pour salles de sport"
                     title="Biocide 3-en-1 Hygiène & Combat - Désinfectant salle de sport"
+                    onError={(e) => {
+                      // Fallback: hide video on error
+                      const target = e.target as HTMLVideoElement;
+                      target.style.display = 'none';
+                    }}
                   >
                     <source src="/videos/bidon h&c.mp4" type="video/mp4" />
                   </video>

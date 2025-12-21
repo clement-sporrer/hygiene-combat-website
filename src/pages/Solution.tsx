@@ -120,9 +120,15 @@ const Solution = () => {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="w-full h-full object-cover"
                     aria-label="Vidéo de présentation du biocide 3-en-1 Hygiène & Combat"
                     title="Biocide 3-en-1 Hygiène & Combat"
+                    onError={(e) => {
+                      // Fallback: hide video on error
+                      const target = e.target as HTMLVideoElement;
+                      target.style.display = 'none';
+                    }}
                   >
                     <source src="/videos/bidon h&c.mp4" type="video/mp4" />
                   </video>

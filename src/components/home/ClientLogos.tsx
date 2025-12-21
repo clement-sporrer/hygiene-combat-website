@@ -12,7 +12,10 @@ const ClientLogos = () => {
         const clientLogos = await fetchClientLogos();
         setLogos(clientLogos);
       } catch (error) {
-        console.error("Error loading client logos:", error);
+        // Only log in development
+        if (import.meta.env.DEV) {
+          console.error("Error loading client logos:", error);
+        }
       } finally {
         setIsLoading(false);
       }

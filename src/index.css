@@ -327,11 +327,3 @@ img, video, iframe {
   50% { transform: translateY(-10px); }
 }
 
-@keyframes scroll-logos {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-scroll-logos {
-  animation: scroll-logos 25s linear infinite;
-}

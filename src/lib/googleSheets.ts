@@ -58,7 +58,10 @@ export async function fetchClientLogos(): Promise<ClientLogo[]> {
   const csvUrl = import.meta.env.VITE_GOOGLE_SHEETS_LOGOS_CSV_URL;
 
   if (!csvUrl) {
-    console.warn('Google Sheets logos CSV URL not configured');
+    // Only warn in development
+    if (import.meta.env.DEV) {
+      console.warn('Google Sheets logos CSV URL not configured');
+    }
     return [];
   }
 
@@ -79,7 +82,10 @@ export async function fetchClientLogos(): Promise<ClientLogo[]> {
       websiteUrl: row[2] || undefined,
     })).filter((logo: ClientLogo) => logo.name && logo.logoUrl);
   } catch (error) {
-    console.error('Error fetching client logos:', error);
+    // Only log in development
+    if (import.meta.env.DEV) {
+      console.error('Error fetching client logos:', error);
+    }
     return [];
   }
 }
