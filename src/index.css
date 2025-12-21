@@ -365,6 +365,11 @@ img, video, iframe {
   .text-subtle-dark {
     color: hsl(var(--text-muted-dark));
   }
+  
+  /* Muted foreground alias for compatibility */
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+  }
 
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;

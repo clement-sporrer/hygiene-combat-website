@@ -2,18 +2,13 @@ import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
 import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Sparkles, ShieldCheck, Wind, ArrowRight } from "lucide-react";
-import { ThemeVariant } from "@/lib/themeVariants";
 
-interface SolutionSummarySectionProps {
-  themeVariant?: ThemeVariant;
-}
-
-const SolutionSummarySection = ({ themeVariant }: SolutionSummarySectionProps) => {
+const SolutionSummarySection = () => {
   return (
     <Section variant="light" id="solution-summary" fullScreen size="default">
       <div className="section-header">
-        <h2>Notre solution</h2>
-        <p className="text-lg text-muted-foreground content-block">
+        <h2 className="text-heading">Notre solution</h2>
+        <p className="text-lg text-subtle content-block">
           Biocide 3-en-1 professionnel pour nettoyer, désinfecter et désodoriser vos équipements en 5 minutes.
         </p>
       </div>
@@ -40,10 +35,10 @@ const SolutionSummarySection = ({ themeVariant }: SolutionSummarySectionProps) =
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-4">
               <item.icon size={24} aria-hidden="true" />
             </div>
-            <h3 className="text-xl font-semibold text-brand-black mb-3">
+            <h3 className="text-xl font-semibold text-heading mb-3">
               {item.title}
             </h3>
-            <p className="text-base text-muted-foreground leading-relaxed">
+            <p className="text-base text-subtle leading-relaxed">
               {item.description}
             </p>
           </div>
@@ -70,4 +65,3 @@ const SolutionSummarySection = ({ themeVariant }: SolutionSummarySectionProps) =
 };
 
 export default SolutionSummarySection;
-

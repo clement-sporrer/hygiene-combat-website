@@ -1,16 +1,16 @@
 /**
  * HeroSection - Homepage Hero
  * 
- * Full-viewport hero with 12-column grid layout:
- * - Desktop: Left (cols 1-6) text/CTAs/trust, Right (cols 7-12) video
- * - Mobile: Stacked - text, video, trust row
- * - 100svh height, vertically centered content
+ * Full-viewport hero with 12-column grid layout.
+ * Uses theme-aware classes for dynamic theming.
  */
 
 import { useEffect, useState, useRef } from "react";
 import Button from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { fetchClientLogos, type ClientLogo } from "@/lib/googleSheets";
+import { useTheme } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 const NEXT_SECTION_ID = "solution-summary";
 
@@ -19,6 +19,8 @@ const HeroSection = () => {
   const [isLoadingLogos, setIsLoadingLogos] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+  
+  const { theme, useLightText } = useTheme();
 
   useEffect(() => {
     const loadLogos = async () => {
@@ -50,15 +52,26 @@ const HeroSection = () => {
 
   const doubledLogos = logos.length > 0 ? [...logos, ...logos] : [];
 
+  // Theme-aware text colors
+  const textColor = useLightText ? "text-white" : "text-brand-black";
+  const textMuted = useLightText ? "text-white/70" : "text-brand-black/70";
+  const textSubtle = useLightText ? "text-white/50" : "text-brand-black/50";
+
+  // Outline button style based on theme
+  const outlineButtonClass = useLightText
+    ? "border-2 border-white/50 text-white hover:bg-white hover:text-brand-black hover:border-white"
+    : "border-2 border-brand-black/50 text-brand-black hover:bg-brand-black hover:text-white hover:border-brand-black";
+
   return (
     <section
       id="home-hero"
       aria-labelledby="hero-heading"
-      className="relative min-h-[100svh] bg-brand-black text-brand-white flex flex-col"
+      className="relative min-h-[100svh] section-dark flex flex-col"
     >
-      {/* Background gradient */}
+      {/* Background gradient overlay */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black/95 to-brand-blue-dark/30 pointer-events-none" 
+        className="absolute inset-0 pointer-events-none" 
+        style={{ background: 'var(--hero-gradient)' }}
         aria-hidden="true" 
       />
       
@@ -68,19 +81,22 @@ const HeroSection = () => {
         aria-hidden="true" 
       />
 
-      {/* Main content area - flex-1 to fill available space */}
+      {/* Main content area */}
       <div className="relative z-10 flex-1 flex flex-col justify-center w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-20 md:pt-24 pb-4">
         
         {/* 12-column grid container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           
-          {/* Left column: Text + CTAs (cols 1-6 on desktop) */}
+          {/* Left column: Text + CTAs */}
           <div className="lg:col-span-6 flex flex-col gap-5 lg:gap-6 text-center lg:text-left order-2 lg:order-1">
             
             {/* H1 Headline */}
             <h1 
               id="hero-heading"
-              className="text-[clamp(1.75rem,5vw,3.5rem)] leading-[1.1] font-bold tracking-tight"
+              className={cn(
+                "text-[clamp(1.75rem,5vw,3.5rem)] leading-[1.1] font-bold tracking-tight",
+                textColor
+              )}
             >
               Un produit pensé{" "}
               <span className="text-primary">PAR</span> les gens du combat{" "}
@@ -88,7 +104,10 @@ const HeroSection = () => {
             </h1>
 
             {/* Subtext */}
-            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-white/70 max-w-[50ch] mx-auto lg:mx-0">
+            <p className={cn(
+              "text-base sm:text-lg lg:text-xl leading-relaxed max-w-[50ch] mx-auto lg:mx-0",
+              textMuted
+            )}>
               Nettoie, désinfecte et enlève les mauvaises odeurs en 5 minutes, 
               sans rendre les surfaces glissantes.
             </p>
@@ -112,13 +131,13 @@ const HeroSection = () => {
                 to="/devis"
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-2 border-white/50 text-white hover:bg-white hover:text-brand-black hover:border-white transition-all duration-200"
+                className={cn("w-full sm:w-auto transition-all duration-200", outlineButtonClass)}
               >
                 Demander un devis
               </Button>
             </div>
 
-            {/* Trust row - Desktop only (inside left column) */}
+            {/* Trust row - Desktop only */}
             <div className="hidden lg:block pt-8">
               <TrustRow 
                 logos={logos}
@@ -127,14 +146,15 @@ const HeroSection = () => {
                 isPaused={isPaused}
                 setIsPaused={setIsPaused}
                 carouselRef={carouselRef}
+                textSubtle={textSubtle}
+                theme={theme}
               />
             </div>
           </div>
 
-          {/* Right column: Video (cols 7-12 on desktop) */}
+          {/* Right column: Video */}
           <div className="lg:col-span-6 flex items-center justify-center order-1 lg:order-2">
             <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] xl:max-w-[420px]">
-              {/* Aspect ratio wrapper - 3:4 for vertical video */}
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
                 {/* Video glow effect */}
                 <div 
@@ -163,7 +183,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Trust row - Mobile/Tablet (below grid) */}
+        {/* Trust row - Mobile/Tablet */}
         <div className="lg:hidden mt-10">
           <TrustRow 
             logos={logos}
@@ -172,15 +192,20 @@ const HeroSection = () => {
             isPaused={isPaused}
             setIsPaused={setIsPaused}
             carouselRef={carouselRef}
+            textSubtle={textSubtle}
+            theme={theme}
           />
         </div>
       </div>
 
-      {/* Scroll indicator - fixed height at bottom */}
+      {/* Scroll indicator */}
       <div className="relative z-10 shrink-0 h-14 flex items-center justify-center">
         <button
           onClick={scrollToNextSection}
-          className="group flex items-center justify-center p-2 min-h-[44px] min-w-[44px] rounded-full text-white/40 hover:text-white/80 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black motion-safe:animate-bounce-subtle"
+          className={cn(
+            "group flex items-center justify-center p-2 min-h-[44px] min-w-[44px] rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-safe:animate-bounce-subtle",
+            useLightText ? "text-white/40 hover:text-white/80" : "text-brand-black/40 hover:text-brand-black/80"
+          )}
           aria-label="Défiler vers la section suivante"
         >
           <ChevronDown size={24} />
@@ -198,6 +223,8 @@ interface TrustRowProps {
   isPaused: boolean;
   setIsPaused: (paused: boolean) => void;
   carouselRef: React.RefObject<HTMLDivElement>;
+  textSubtle: string;
+  theme: string;
 }
 
 const TrustRow = ({ 
@@ -206,20 +233,30 @@ const TrustRow = ({
   isLoading, 
   isPaused, 
   setIsPaused, 
-  carouselRef 
+  carouselRef,
+  textSubtle,
+  theme,
 }: TrustRowProps) => {
   if (isLoading || logos.length === 0) {
     return <div className="h-16" aria-hidden="true" />;
   }
 
+  // Fade gradient color based on theme
+  const fadeFromClass = theme === 'bleu-clair' 
+    ? 'from-[#87a6bb]' 
+    : theme === 'bleu-fonce'
+      ? 'from-[#384a54]'
+      : 'from-brand-black';
+
   return (
     <div className="space-y-4">
-      {/* Label */}
-      <p className="text-xs sm:text-sm text-white/50 uppercase tracking-[0.15em] font-medium text-center lg:text-left">
+      <p className={cn(
+        "text-xs sm:text-sm uppercase tracking-[0.15em] font-medium text-center lg:text-left",
+        textSubtle
+      )}>
         Ils nous font confiance
       </p>
 
-      {/* Logo carousel */}
       <div
         ref={carouselRef}
         className="relative w-full overflow-hidden h-12 sm:h-14 lg:h-16"
@@ -264,13 +301,19 @@ const TrustRow = ({
           ))}
         </div>
 
-        {/* Fade edges */}
+        {/* Fade edges - theme aware */}
         <div 
-          className="absolute inset-y-0 left-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-brand-black to-transparent pointer-events-none" 
+          className={cn(
+            "absolute inset-y-0 left-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r to-transparent pointer-events-none",
+            fadeFromClass
+          )}
           aria-hidden="true" 
         />
         <div 
-          className="absolute inset-y-0 right-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l from-brand-black to-transparent pointer-events-none" 
+          className={cn(
+            "absolute inset-y-0 right-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l to-transparent pointer-events-none",
+            fadeFromClass
+          )}
           aria-hidden="true" 
         />
       </div>

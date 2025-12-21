@@ -2,38 +2,20 @@ import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
 import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Target, Heart, ArrowRight } from "lucide-react";
-import { ThemeVariant, shouldUseLightText } from "@/lib/themeVariants";
+import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
-interface AboutSummarySectionProps {
-  themeVariant?: ThemeVariant;
-}
-
-const AboutSummarySection = ({ themeVariant }: AboutSummarySectionProps) => {
-  // Get background class based on variant
-  const getSectionBgClass = () => {
-    if (!themeVariant || themeVariant === 'noir') return '';
-    if (themeVariant === 'bleu-clair') return 'bg-[#87a6bb]';
-    if (themeVariant === 'bleu-fonce') return 'bg-[#384a54]';
-    if (themeVariant === 'gradient-clair-fonce') return 'bg-gradient-to-b from-[#87a6bb] to-[#384a54]';
-    if (themeVariant === 'gradient-fonce-clair') return 'bg-gradient-to-b from-[#384a54] to-[#87a6bb]';
-    return '';
-  };
-
-  const sectionBgClass = getSectionBgClass();
-  const useLightText = !themeVariant || themeVariant !== 'bleu-clair';
+const AboutSummarySection = () => {
+  const { useLightText } = useTheme();
+  
+  const textColor = useLightText ? "text-white" : "text-brand-black";
+  const textMuted = useLightText ? "text-white/70" : "text-brand-black/70";
 
   return (
-    <Section 
-      variant="dark" 
-      id="about-summary" 
-      fullScreen 
-      size="default"
-      className={sectionBgClass}
-    >
+    <Section variant="dark" id="about-summary" fullScreen size="default">
       <div className="section-header">
-        <h2>À propos</h2>
-        <p className="text-lg text-muted-foreground content-block">
+        <h2 className={textColor}>À propos</h2>
+        <p className={cn("text-lg content-block", textMuted)}>
           Une solution née du terrain, pour répondre à un vrai problème d'hygiène.
         </p>
       </div>
@@ -43,10 +25,10 @@ const AboutSummarySection = ({ themeVariant }: AboutSummarySectionProps) => {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
             <Heart size={24} aria-hidden="true" />
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold">
+          <h3 className={cn("text-2xl md:text-3xl font-bold", textColor)}>
             L'origine
           </h3>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className={cn("text-lg leading-relaxed", textMuted)}>
             Hygiène & Combat est né d'un constat simple : trop d'infections, 
             trop de surfaces mal entretenues, trop de produits inadaptés. 
             Un pratiquant de sports de combat a voulu changer ça.
@@ -57,10 +39,10 @@ const AboutSummarySection = ({ themeVariant }: AboutSummarySectionProps) => {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
             <Target size={24} aria-hidden="true" />
           </div>
-          <h3 className="text-2xl md:text-3xl font-bold">
+          <h3 className={cn("text-2xl md:text-3xl font-bold", textColor)}>
             Notre mission
           </h3>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className={cn("text-lg leading-relaxed", textMuted)}>
             Réduire les infections cutanées dans les clubs de sport de combat 
             et améliorer les standards d'hygiène avec une solution simple, 
             efficace et adaptée au terrain.
@@ -88,4 +70,3 @@ const AboutSummarySection = ({ themeVariant }: AboutSummarySectionProps) => {
 };
 
 export default AboutSummarySection;
-

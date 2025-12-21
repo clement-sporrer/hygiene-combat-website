@@ -21,9 +21,10 @@ const Section = ({
   size = "wide",
   spacing = "default",
 }: SectionProps) => {
+  // Use theme-aware classes from CSS
   const variants = {
-    light: "bg-brand-white text-brand-black",
-    dark: "bg-brand-black text-brand-white",
+    light: "section-light",
+    dark: "section-dark",
     muted: "bg-muted/30 text-foreground",
   };
 
@@ -33,11 +34,6 @@ const Section = ({
     wide: "container-wide",
   };
 
-  // Refined spacing scale based on content density:
-  // compact: py-12 sm:py-16 md:py-20 (for dense content)
-  // default: py-16 sm:py-20 md:py-24 lg:py-32 (standard sections)
-  // relaxed: py-20 sm:py-24 md:py-32 lg:py-40 (spacious sections)
-  // hero: py-16 sm:py-20 md:py-24 (hero sections, compact)
   const spacingClasses = {
     compact: "py-12 sm:py-16 md:py-20",
     default: "py-16 sm:py-20 md:py-24 lg:py-32",
@@ -45,8 +41,6 @@ const Section = ({
     hero: "py-16 sm:py-20 md:py-24",
   };
 
-  // Navbar heights: h-16 (4rem/64px) mobile, h-20 (5rem/80px) desktop
-  
   return (
     <section
       id={id}
@@ -74,4 +68,3 @@ const Section = ({
 };
 
 export default Section;
-

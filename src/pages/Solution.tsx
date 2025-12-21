@@ -8,6 +8,8 @@ import {
   Droplets, Clock, HelpCircle, ArrowRight,
   Calculator, Droplet
 } from "lucide-react";
+import { useTheme } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 const surfaces = [
   "Tatamis (puzzle, vinyle, canvas)",
@@ -44,8 +46,14 @@ const faqs = [
 ];
 
 const Solution = () => {
+  const { useLightText } = useTheme();
+  
+  // Theme-aware text classes for dark sections
+  const darkTextColor = useLightText ? "text-white" : "text-brand-black";
+  const darkTextMuted = useLightText ? "text-white/70" : "text-brand-black/70";
+
   return (
-    <div className="min-h-screen bg-brand-white">
+    <div className="min-h-screen bg-background">
       <SEO
         title="Solution Désinfectant Tatami & Ring | Biocide 3-en-1 Professionnel"
         description="Biocide 3-en-1 pour salles de sport : nettoyage, désinfection et désodorisation en 5 minutes. Compatible tatamis puzzle, rings de boxe, cages MMA, sols musculation. Sans alcool, pH non acide."
@@ -58,8 +66,8 @@ const Solution = () => {
         {/* Hero */}
         <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
           <div className="hero-content">
-            <h1>Notre solution d'hygiène</h1>
-            <p className="text-lg md:text-xl text-muted-foreground content-block">
+            <h1 className={darkTextColor}>Notre solution d'hygiène</h1>
+            <p className={cn("text-lg md:text-xl content-block", darkTextMuted)}>
               Biocide 3-en-1 professionnel pour tatamis, rings, machines et vestiaires.
             </p>
           </div>
@@ -70,9 +78,9 @@ const Solution = () => {
           <div className="grid lg:grid-cols-3 grid-content items-center">
             <div className="space-y-6 order-2 lg:order-1 lg:col-span-2">
               <div className="space-y-4">
-                <h2>Produit 3-en-1</h2>
+                <h2 className="text-heading">Produit 3-en-1</h2>
                 <p className="text-lg text-muted-foreground content-block">
-                  Une seule solution pour nettoyer, désinfecter et désinfecter vos équipements en 5 minutes.
+                  Une seule solution pour nettoyer, désinfecter et désodoriser vos équipements en 5 minutes.
                 </p>
               </div>
               
@@ -96,12 +104,12 @@ const Solution = () => {
                 ].map((item) => (
                   <div 
                     key={item.title} 
-                    className="text-center p-6 card cursor-pointer transition-all duration-200 hover:bg-muted/50 hover:shadow-md hover:border-primary/30"
+                    className="card-interactive text-center p-6"
                   >
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-4">
                       <item.icon size={24} aria-hidden="true" />
                     </div>
-                    <h3 className="text-lg font-semibold text-brand-black mb-2">
+                    <h3 className="text-lg font-semibold text-heading mb-2">
                       {item.title}
                     </h3>
                     <p className="text-base text-muted-foreground leading-relaxed">
@@ -129,8 +137,8 @@ const Solution = () => {
         {/* 2. Bloc mode d'emploi */}
         <Section variant="dark" id="mode-emploi" size="default">
           <div className="section-header">
-            <h2>Mode d'emploi</h2>
-            <p className="text-lg text-muted-foreground content-block">
+            <h2 className={darkTextColor}>Mode d'emploi</h2>
+            <p className={cn("text-lg content-block", darkTextMuted)}>
               Un mode d'emploi simple en 3 étapes.
             </p>
           </div>
@@ -146,10 +154,10 @@ const Solution = () => {
                   <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold flex items-center justify-center mx-auto mb-4">
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-semibold text-brand-white mb-2">
+                  <h3 className={cn("text-xl font-semibold mb-2", darkTextColor)}>
                     {item.title}
                   </h3>
-                  <p className="text-base text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                  <p className={cn("text-base leading-relaxed max-w-xs mx-auto", darkTextMuted)}>
                     {item.desc}
                   </p>
                 </div>
@@ -163,7 +171,7 @@ const Solution = () => {
           <div className="grid lg:grid-cols-2 grid-content items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <div className="space-y-4">
-                <h2>Surfaces d'application</h2>
+                <h2 className="text-heading">Surfaces d'application</h2>
                 <p className="text-lg text-muted-foreground content-block">
                   Notre solution est conçue pour tous les équipements et surfaces 
                   d'une salle de sport, en particulier les espaces à fort contact.
@@ -185,7 +193,7 @@ const Solution = () => {
                 <div className="flex items-start gap-4">
                   <Clock className="text-primary flex-shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Temps de contact</h4>
+                    <h4 className="font-semibold text-lg mb-1 text-heading">Temps de contact</h4>
                     <p className="text-base text-muted-foreground leading-relaxed">
                       5 minutes suffisent
                     </p>
@@ -195,7 +203,7 @@ const Solution = () => {
                 <div className="flex items-start gap-4">
                   <Droplets className="text-primary flex-shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Sans alcool</h4>
+                    <h4 className="font-semibold text-lg mb-1 text-heading">Sans alcool</h4>
                     <p className="text-base text-muted-foreground leading-relaxed">
                       Ne dessèche pas les surfaces
                     </p>
@@ -205,7 +213,7 @@ const Solution = () => {
                 <div className="flex items-start gap-4">
                   <ShieldCheck className="text-primary flex-shrink-0 mt-1" size={24} aria-hidden="true" />
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">pH non acide</h4>
+                    <h4 className="font-semibold text-lg mb-1 text-heading">pH non acide</h4>
                     <p className="text-base text-muted-foreground leading-relaxed">
                       Préserve les revêtements
                     </p>
@@ -221,21 +229,21 @@ const Solution = () => {
           <div className="grid lg:grid-cols-2 grid-content items-center">
             {/* Left - Visual stats */}
             <div className="order-2 lg:order-1 animate-fade-in delay-200">
-              <div className="bg-gradient-to-br from-brand-blue-dark/30 to-brand-blue-dark/20 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-2xl border border-brand-blue-dark/30">
+              <div className="bg-secondary/30 p-5 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-2xl border border-secondary/30">
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-                  <div className="text-center p-3 sm:p-4 md:p-6 bg-brand-blue-dark/40 rounded-xl shadow-sm">
+                  <div className="text-center p-3 sm:p-4 md:p-6 bg-secondary/40 rounded-xl shadow-sm">
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
                       5L
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
+                    <p className={cn("text-xs sm:text-sm", darkTextMuted)}>
                       Bidon concentré
                     </p>
                   </div>
-                  <div className="text-center p-3 sm:p-4 md:p-6 bg-brand-blue-dark/40 rounded-xl shadow-sm">
+                  <div className="text-center p-3 sm:p-4 md:p-6 bg-secondary/40 rounded-xl shadow-sm">
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
                       =
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
+                    <p className={cn("text-xs sm:text-sm", darkTextMuted)}>
                       équivaut à
                     </p>
                   </div>
@@ -243,14 +251,14 @@ const Solution = () => {
                     <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-2">
                       100L
                     </div>
-                    <p className="text-sm sm:text-base text-muted-foreground">
+                    <p className={cn("text-sm sm:text-base", darkTextMuted)}>
                       de solution prête à l'emploi
                     </p>
                   </div>
                 </div>
                 
-                <div className="mt-5 sm:mt-6 md:mt-8 pt-5 sm:pt-6 md:pt-8 border-t border-brand-blue-dark/30">
-                  <p className="text-center text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed px-2">
+                <div className="mt-5 sm:mt-6 md:mt-8 pt-5 sm:pt-6 md:pt-8 border-t border-secondary/30">
+                  <p className={cn("text-center text-xs sm:text-sm md:text-base leading-relaxed px-2", darkTextMuted)}>
                     Dilution à <span className="font-semibold">5%</span> = 
                     économie maximale pour un usage quotidien
                   </p>
@@ -264,7 +272,7 @@ const Solution = () => {
                 <span className="inline-block text-primary text-sm font-medium uppercase tracking-wider">
                   Économique et simple
                 </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                <h2 className={cn("text-3xl md:text-4xl lg:text-5xl font-bold", darkTextColor)}>
                   Un produit concentré pour un usage quotidien économique
                 </h2>
               </div>
@@ -275,10 +283,10 @@ const Solution = () => {
                     <Droplet className="text-primary" size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-base">
+                    <h4 className={cn("font-semibold mb-2 text-base", darkTextColor)}>
                       Produit concentré
                     </h4>
-                    <p className="text-base text-muted-foreground leading-relaxed">
+                    <p className={cn("text-base leading-relaxed", darkTextMuted)}>
                       Diluer à 5% dans l'eau pour obtenir une solution prête à l'emploi. 
                       Simple et économique.
                     </p>
@@ -290,10 +298,10 @@ const Solution = () => {
                     <Clock className="text-primary" size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-base">
+                    <h4 className={cn("font-semibold mb-2 text-base", darkTextColor)}>
                       Usage quotidien
                     </h4>
-                    <p className="text-base text-muted-foreground leading-relaxed">
+                    <p className={cn("text-base leading-relaxed", darkTextMuted)}>
                       Utilisation possible tous les jours sans risque pour vos surfaces. 
                       Idéal pour les salles à forte fréquentation.
                     </p>
@@ -305,10 +313,10 @@ const Solution = () => {
                     <Calculator className="text-primary" size={20} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-base">
+                    <h4 className={cn("font-semibold mb-2 text-base", darkTextColor)}>
                       Coût maîtrisé
                     </h4>
-                    <p className="text-base text-muted-foreground leading-relaxed">
+                    <p className={cn("text-base leading-relaxed", darkTextMuted)}>
                       Un bidon de 5L dure plusieurs semaines selon la taille de votre salle. 
                       Livraison en 48h France métropolitaine.
                     </p>
@@ -322,7 +330,7 @@ const Solution = () => {
         {/* 5. Bloc Questions fréquentes */}
         <Section variant="light" id="questions-frequentes" size="narrow">
           <div className="section-header">
-            <h2>Questions fréquentes</h2>
+            <h2 className="text-heading">Questions fréquentes</h2>
             <p className="text-lg text-muted-foreground content-block">
               Les questions que se posent souvent les gérants de salles.
             </p>
@@ -331,7 +339,7 @@ const Solution = () => {
           <div className="max-w-4xl mx-auto space-y-6">
             {faqs.map((faq) => (
               <div key={faq.question} className="card p-6 md:p-8">
-                <h3 className="flex items-start gap-3 font-semibold text-brand-black mb-4 text-lg md:text-xl">
+                <h3 className="flex items-start gap-3 font-semibold text-heading mb-4 text-lg md:text-xl">
                   <HelpCircle className="text-primary flex-shrink-0 mt-0.5" size={22} aria-hidden="true" />
                   {faq.question}
                 </h3>
@@ -346,8 +354,8 @@ const Solution = () => {
         {/* 6. CTA final */}
         <Section variant="dark" id="cta-final" size="narrow">
           <div className="section-header">
-            <h2>Prêt à améliorer l'hygiène de votre salle ?</h2>
-            <p className="text-lg text-muted-foreground content-block">
+            <h2 className={darkTextColor}>Prêt à améliorer l'hygiène de votre salle ?</h2>
+            <p className={cn("text-lg content-block", darkTextMuted)}>
               Demandez un devis personnalisé en fonction de la taille de votre salle 
               et de vos besoins.
             </p>
@@ -360,7 +368,7 @@ const Solution = () => {
               size="lg"
               icon={ArrowRight}
               iconPosition="right"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto btn-cta"
             >
               Demander un devis
             </Button>
