@@ -3,10 +3,10 @@
  * 
  * Structure en 3 zones verticales dans un container 100svh :
  * - Zone A : Contenu principal (texte + vidéo) - flex-1, centré
- * - Zone B : Carrousel "Ils nous font confiance" - hauteur fixe
- * - Zone C : Espace + flèche de navigation - hauteur fixe
+ * - Zone B : Carrousel "Ils nous font confiance" - hauteur fixe, proche du contenu
+ * - Zone C : Flèche de navigation - hauteur compacte
  * 
- * Breakpoints vérifiés : 375px, 390-430px, 768px, 1024px, 1280px, 1440px, 1920px
+ * Design: Premium, wide layout, impactful typography
  */
 
 import { useEffect, useState, useRef } from "react";
@@ -14,7 +14,6 @@ import Button from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { fetchClientLogos, type ClientLogo } from "@/lib/googleSheets";
 
-// ID de la section suivante pour le scroll
 const NEXT_SECTION_ID = "solution-summary";
 
 const HeroSection = () => {
@@ -23,7 +22,6 @@ const HeroSection = () => {
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Charger les logos clients
   useEffect(() => {
     const loadLogos = async () => {
       try {
@@ -40,7 +38,6 @@ const HeroSection = () => {
     loadLogos();
   }, []);
 
-  // Scroll vers la section suivante
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(NEXT_SECTION_ID);
     if (nextSection) {
@@ -48,13 +45,11 @@ const HeroSection = () => {
     }
   };
 
-  // Scroll vers la solution (CTA)
   const handleDiscoverClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     scrollToNextSection();
   };
 
-  // Double les logos pour le loop infini
   const doubledLogos = logos.length > 0 ? [...logos, ...logos] : [];
 
   return (
@@ -64,41 +59,44 @@ const HeroSection = () => {
         relative min-h-[100svh] overflow-hidden
         bg-brand-black text-brand-white
         flex flex-col
-        pt-20 md:pt-24 lg:pt-24
-        pb-0
       "
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black to-brand-blue-dark/20 pointer-events-none" />
+      {/* Background avec gradient premium */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-black/95 to-brand-blue-dark/30 pointer-events-none" />
+      
+      {/* Subtle glow effect */}
+      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
 
       {/* ============================================================
-          ZONE A : Contenu principal (texte + vidéo)
-          flex-1 pour occuper l'espace restant, centré verticalement
+          ZONE A : Contenu principal - WIDE LAYOUT
           ============================================================ */}
       <div className="
         relative z-10 flex-1 min-h-0
-        flex items-center justify-center
-        w-full max-w-7xl mx-auto
-        px-4 sm:px-6 lg:px-8
+        flex items-center
+        w-full max-w-[1600px] mx-auto
+        px-5 sm:px-8 lg:px-12 xl:px-16
+        pt-24 md:pt-28 lg:pt-28
+        pb-6 md:pb-8
       ">
         <div className="
           w-full
-          grid grid-cols-1 lg:grid-cols-2
-          gap-8 lg:gap-12 xl:gap-16
+          grid grid-cols-1 lg:grid-cols-12
+          gap-8 lg:gap-10 xl:gap-16
           items-center
         ">
-          {/* Colonne gauche : Texte + CTA */}
+          {/* Colonne gauche : Texte + CTA - 7 colonnes sur 12 */}
           <div className="
-            flex flex-col gap-5 lg:gap-6
+            lg:col-span-7
+            flex flex-col gap-6 lg:gap-8
             text-center lg:text-left
             order-2 lg:order-1
           ">
-            {/* H1 - Taille responsive avec clamp */}
+            {/* H1 - Plus grand, plus impactant */}
             <h1 className="
-              text-[clamp(1.75rem,5vw,3.5rem)]
-              leading-[1.08]
-              font-bold tracking-tight
-              max-w-[20ch] lg:max-w-[22ch]
+              text-[clamp(2rem,6vw,4.5rem)]
+              leading-[1.05]
+              font-bold tracking-[-0.02em]
+              max-w-[18ch]
               mx-auto lg:mx-0
             ">
               Un produit pensé{" "}
@@ -106,24 +104,24 @@ const HeroSection = () => {
               <span className="text-primary">POUR</span> les gens du combat
             </h1>
 
-            {/* Sous-titre */}
+            {/* Sous-titre - Plus lisible */}
             <p className="
-              text-[clamp(0.95rem,2vw,1.125rem)]
+              text-[clamp(1rem,2.5vw,1.25rem)]
               leading-relaxed
-              text-white/70
-              max-w-[45ch]
+              text-white/75
+              max-w-[50ch]
               mx-auto lg:mx-0
             ">
               Nettoie, désinfecte et enlève les mauvaises odeurs en 5 minutes, 
               sans rendre les surfaces glissantes.
             </p>
 
-            {/* CTAs */}
+            {/* CTAs - Plus espacés et impactants */}
             <div className="
               flex flex-col sm:flex-row
-              gap-3 sm:gap-4
+              gap-4
               justify-center lg:justify-start
-              pt-1
+              pt-2
             ">
               <Button
                 asLink
@@ -133,7 +131,7 @@ const HeroSection = () => {
                 icon={ArrowRight}
                 iconPosition="right"
                 onClick={handleDiscoverClick}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto px-8"
               >
                 Découvrir la solution
               </Button>
@@ -143,10 +141,10 @@ const HeroSection = () => {
                 variant="outline"
                 size="lg"
                 className="
-                  w-full sm:w-auto
-                  border-2 border-white/80 text-white
-                  hover:bg-white hover:text-brand-black
-                  focus-visible:ring-white
+                  w-full sm:w-auto px-8
+                  border-2 border-white/60 text-white
+                  hover:bg-white hover:text-brand-black hover:border-white
+                  transition-all duration-300
                 "
               >
                 Demander un devis
@@ -154,28 +152,31 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Colonne droite : Vidéo */}
+          {/* Colonne droite : Vidéo - 5 colonnes sur 12 */}
           <div className="
-            flex items-center justify-center
+            lg:col-span-5
+            flex items-center justify-center lg:justify-end
             order-1 lg:order-2
           ">
             <div className="
-              relative w-full
-              max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[420px]
+              relative
+              w-full max-w-[300px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[440px] xl:max-w-[480px]
               aspect-[3/4]
-              lg:max-h-[420px] xl:max-h-[480px]
               rounded-2xl lg:rounded-3xl
               overflow-hidden
-              shadow-2xl shadow-black/40
-              bg-brand-blue-dark/20
+              shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]
+              ring-1 ring-white/10
             ">
+              {/* Video glow */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl blur-xl opacity-50" />
+              
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="metadata"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="relative w-full h-full object-cover"
                 aria-label="Vidéo de présentation du biocide 3-en-1 Hygiène & Combat"
                 title="Biocide 3-en-1 Hygiène & Combat - Désinfectant salle de sport"
                 onError={(e) => {
@@ -191,27 +192,24 @@ const HeroSection = () => {
       </div>
 
       {/* ============================================================
-          ZONE B : Carrousel "Ils nous font confiance"
-          Hauteur fixe, largeur full container
+          ZONE B : Carrousel "Ils nous font confiance" - Plus haut
           ============================================================ */}
       <div className="
         relative z-10
-        w-full max-w-7xl mx-auto
-        px-4 sm:px-6 lg:px-8
-        h-[72px] sm:h-[80px] lg:h-[88px]
-        flex flex-col justify-center
+        w-full max-w-[1600px] mx-auto
+        px-5 sm:px-8 lg:px-12 xl:px-16
         shrink-0
       ">
         {!isLoadingLogos && logos.length > 0 && (
-          <>
-            {/* Titre discret */}
+          <div className="py-4 sm:py-5 lg:py-6">
+            {/* Titre */}
             <p className="
-              text-[10px] sm:text-[11px]
-              text-white/50
-              uppercase tracking-[0.15em]
+              text-[10px] sm:text-[11px] lg:text-xs
+              text-white/40
+              uppercase tracking-[0.2em]
               font-medium
               text-center
-              mb-2 sm:mb-3
+              mb-3 sm:mb-4
             ">
               Ils nous font confiance
             </p>
@@ -219,14 +217,14 @@ const HeroSection = () => {
             {/* Carrousel */}
             <div
               ref={carouselRef}
-              className="relative w-full overflow-hidden h-[40px] sm:h-[44px] lg:h-[48px]"
+              className="relative w-full overflow-hidden h-[36px] sm:h-[40px] lg:h-[44px]"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
               <div
                 className={`
                   flex items-center h-full
-                  ${isPaused ? "animate-none" : "animate-scroll-logos"}
+                  ${isPaused ? "" : "animate-scroll-logos"}
                 `}
                 style={{
                   animationPlayState: isPaused ? "paused" : "running",
@@ -235,7 +233,7 @@ const HeroSection = () => {
                 {doubledLogos.map((logo, index) => (
                   <div
                     key={`${logo.name}-${index}`}
-                    className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-full flex items-center"
+                    className="flex-shrink-0 mx-5 sm:mx-7 lg:mx-10 h-full flex items-center"
                   >
                     {logo.websiteUrl ? (
                       <a
@@ -243,27 +241,27 @@ const HeroSection = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
-                          block h-[32px] sm:h-[36px] lg:h-[40px]
+                          block h-[28px] sm:h-[32px] lg:h-[36px]
                           w-auto
-                          opacity-60 hover:opacity-100
-                          transition-opacity duration-200
-                          focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black rounded
+                          opacity-50 hover:opacity-100
+                          transition-opacity duration-300
+                          focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded
                         "
                         aria-label={`Visiter le site de ${logo.name}`}
                       >
                         <img
                           src={logo.logoUrl}
                           alt={`Logo ${logo.name}`}
-                          className="h-full w-auto object-contain"
+                          className="h-full w-auto object-contain brightness-0 invert"
                           loading="lazy"
                         />
                       </a>
                     ) : (
-                      <div className="h-[32px] sm:h-[36px] lg:h-[40px] w-auto opacity-60">
+                      <div className="h-[28px] sm:h-[32px] lg:h-[36px] w-auto opacity-50">
                         <img
                           src={logo.logoUrl}
                           alt={`Logo ${logo.name}`}
-                          className="h-full w-auto object-contain"
+                          className="h-full w-auto object-contain brightness-0 invert"
                           loading="lazy"
                         />
                       </div>
@@ -272,26 +270,25 @@ const HeroSection = () => {
                 ))}
               </div>
 
-              {/* Fade edges */}
-              <div className="absolute inset-y-0 left-0 w-12 sm:w-16 lg:w-20 bg-gradient-to-r from-brand-black to-transparent pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-12 sm:w-16 lg:w-20 bg-gradient-to-l from-brand-black to-transparent pointer-events-none" />
+              {/* Fade edges - Plus larges */}
+              <div className="absolute inset-y-0 left-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-r from-brand-black to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-l from-brand-black to-transparent pointer-events-none" />
             </div>
-          </>
+          </div>
         )}
 
-        {/* Placeholder si chargement ou pas de logos (réserve l'espace) */}
+        {/* Placeholder */}
         {(isLoadingLogos || logos.length === 0) && (
-          <div className="h-full" aria-hidden="true" />
+          <div className="h-[60px]" aria-hidden="true" />
         )}
       </div>
 
       {/* ============================================================
-          ZONE C : Espace libre + Flèche de navigation
-          Hauteur fixe, flèche centrée
+          ZONE C : Flèche - Compacte
           ============================================================ */}
       <div className="
         relative z-10
-        h-14 sm:h-16 lg:h-20
+        h-12 sm:h-14
         flex items-center justify-center
         shrink-0
       ">
@@ -299,18 +296,18 @@ const HeroSection = () => {
           onClick={scrollToNextSection}
           className="
             group
-            flex flex-col items-center justify-center
+            flex items-center justify-center
             p-2
             min-h-[44px] min-w-[44px]
             rounded-full
-            text-white/60 hover:text-white
-            transition-colors duration-200
+            text-white/40 hover:text-white/80
+            transition-all duration-300
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black
             motion-safe:animate-bounce-subtle
           "
           aria-label="Défiler vers la section suivante"
         >
-          <ChevronDown size={28} className="sm:w-8 sm:h-8" />
+          <ChevronDown size={24} className="sm:w-7 sm:h-7" />
         </button>
       </div>
     </section>
@@ -318,21 +315,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-/**
- * Breakpoints checked:
- * - 375x812 (iPhone SE): Layout colonne, vidéo compacte, texte lisible, tout tient en 100svh
- * - 390x844 (iPhone 12/13/14): Idem, spacing optimisé
- * - 768x1024 (iPad): Layout colonne avec plus d'espace
- * - 1024x768 (iPad landscape): Transition vers 2 colonnes
- * - 1280x800 (Laptop): 2 colonnes équilibrées
- * - 1440x900 (Desktop): 2 colonnes avec plus de breathing room
- * - 1920x1080 (Full HD): Container max-w-7xl, centré, pas d'étirement
- * 
- * Ajustements clés:
- * - H1: clamp(1.75rem, 5vw, 3.5rem) pour scaling fluide
- * - Vidéo: max-w + max-h pour éviter débordement
- * - Carrousel: hauteur fixe (72-88px selon breakpoint)
- * - Zone flèche: hauteur fixe (56-80px selon breakpoint)
- * - prefers-reduced-motion: bounce désactivé via motion-safe
- */
