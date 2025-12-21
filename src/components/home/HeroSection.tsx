@@ -54,6 +54,7 @@ const HeroSection = () => {
     <section
       id="home-hero"
       aria-labelledby="hero-heading"
+      data-header-theme="dark"
       className="relative min-h-[100svh] bg-brand-black text-brand-white flex flex-col"
     >
       {/* Background gradient */}

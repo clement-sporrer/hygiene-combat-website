@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoWhite from "@/assets/logo-white.png";
@@ -13,26 +13,60 @@ const navLinks = [
 ];
 
 interface HeaderProps {
+  /** Default variant when no section is detected */
   variant?: "dark" | "light";
 }
 
 const Header = ({ variant = "dark" }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeTheme, setActiveTheme] = useState<"dark" | "light">(variant);
   const location = useLocation();
-  const isDark = variant === "dark";
+
+  // Detect sections with data-header-theme attribute
+  const updateThemeFromSections = useCallback(() => {
+    const sections = document.querySelectorAll("[data-header-theme]");
+    const headerHeight = 80; // Approximate header height
+
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      // Check if section is at the top of viewport (under header)
+      if (rect.top <= headerHeight && rect.bottom > headerHeight) {
+        const theme = section.getAttribute("data-header-theme") as "dark" | "light";
+        if (theme && theme !== activeTheme) {
+          setActiveTheme(theme);
+        }
+        return;
+      }
+    }
+    
+    // Fallback to default variant if no section detected
+    if (activeTheme !== variant) {
+      setActiveTheme(variant);
+    }
+  }, [activeTheme, variant]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      updateThemeFromSections();
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
+    // Initial check
+    updateThemeFromSections();
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [updateThemeFromSections]);
+
+  // Reset theme on route change
   useEffect(() => {
+    setActiveTheme(variant);
     setIsMenuOpen(false);
-  }, [location.pathname]);
+    // Delay theme detection to let page render
+    const timer = setTimeout(updateThemeFromSections, 50);
+    return () => clearTimeout(timer);
+  }, [location.pathname, variant, updateThemeFromSections]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -46,16 +80,18 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
     };
   }, [isMenuOpen]);
 
+  const isDark = activeTheme === "dark";
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isDark
           ? isScrolled
-            ? "bg-brand-black/98 shadow-md backdrop-blur-md"
-            : "bg-brand-black/95 backdrop-blur-sm"
+            ? "bg-brand-black/95 shadow-md backdrop-blur-md"
+            : "bg-transparent"
           : isScrolled
-          ? "bg-brand-white/98 shadow-md backdrop-blur-md"
-          : "bg-brand-white/95 backdrop-blur-sm"
+          ? "bg-brand-white/95 shadow-md backdrop-blur-md"
+          : "bg-transparent"
       }`}
     >
       <div className="container-wide">
@@ -74,7 +110,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
             <img
               src={isDark ? logoWhite : logoBlack}
               alt="Hygiène & Combat"
-              className="h-10 sm:h-12 md:h-14 w-auto"
+              className="h-10 sm:h-12 md:h-14 w-auto transition-opacity duration-300"
             />
           </Link>
 
@@ -91,7 +127,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }
                   }}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md ${
                     isDark ? "text-brand-white" : "text-brand-black"
                   } ${
                     isActive
@@ -116,6 +152,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
               to="/devis"
               variant={isDark ? "primary" : "secondary"}
               size="md"
+              className="transition-all duration-300"
             >
               Demander un devis
             </Button>
@@ -124,7 +161,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors ${
+            className={`md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors duration-300 ${
               isDark
                 ? "text-brand-white hover:bg-brand-blue-dark/20"
                 : "text-brand-black hover:bg-muted"

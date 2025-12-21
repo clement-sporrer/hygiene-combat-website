@@ -50,6 +50,7 @@ const Section = ({
   return (
     <section
       id={id}
+      data-header-theme={variant === "dark" ? "dark" : "light"}
       className={cn(
         variants[variant],
         fullScreen 
