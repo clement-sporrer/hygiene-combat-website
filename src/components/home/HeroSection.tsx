@@ -20,7 +20,7 @@ const HeroSection = () => {
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   
-  const { theme, useLightText } = useTheme();
+  const { useLightText } = useTheme();
 
   useEffect(() => {
     const loadLogos = async () => {
@@ -147,7 +147,6 @@ const HeroSection = () => {
                 setIsPaused={setIsPaused}
                 carouselRef={carouselRef}
                 textSubtle={textSubtle}
-                theme={theme}
               />
             </div>
           </div>
@@ -193,7 +192,6 @@ const HeroSection = () => {
             setIsPaused={setIsPaused}
             carouselRef={carouselRef}
             textSubtle={textSubtle}
-            theme={theme}
           />
         </div>
       </div>
@@ -224,7 +222,6 @@ interface TrustRowProps {
   setIsPaused: (paused: boolean) => void;
   carouselRef: React.RefObject<HTMLDivElement>;
   textSubtle: string;
-  theme: string;
 }
 
 const TrustRow = ({ 
@@ -235,18 +232,10 @@ const TrustRow = ({
   setIsPaused, 
   carouselRef,
   textSubtle,
-  theme,
 }: TrustRowProps) => {
   if (isLoading || logos.length === 0) {
     return <div className="h-16" aria-hidden="true" />;
   }
-
-  // Fade gradient color based on theme
-  const fadeFromClass = theme === 'bleu-clair' 
-    ? 'from-[#87a6bb]' 
-    : theme === 'bleu-fonce'
-      ? 'from-[#384a54]'
-      : 'from-brand-black';
 
   return (
     <div className="space-y-4">
@@ -300,22 +289,6 @@ const TrustRow = ({
             </div>
           ))}
         </div>
-
-        {/* Fade edges - theme aware */}
-        <div 
-          className={cn(
-            "absolute inset-y-0 left-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r to-transparent pointer-events-none",
-            fadeFromClass
-          )}
-          aria-hidden="true" 
-        />
-        <div 
-          className={cn(
-            "absolute inset-y-0 right-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l to-transparent pointer-events-none",
-            fadeFromClass
-          )}
-          aria-hidden="true" 
-        />
       </div>
     </div>
   );
