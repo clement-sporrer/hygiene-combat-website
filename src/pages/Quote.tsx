@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,6 +7,7 @@ import Section from "@/components/layout/Section";
 import FormField from "@/components/ui/FormField";
 import TextareaField from "@/components/ui/TextareaField";
 import SelectField from "@/components/ui/SelectField";
+import PostalCodeField from "@/components/ui/PostalCodeField";
 import Button from "@/components/ui/button";
 import { Send, Truck, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -18,11 +19,21 @@ const Quote = () => {
   const {
     register,
     handleSubmit,
+    control,
+    setValue,
+    watch,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<QuoteFormData>({
     resolver: zodResolver(quoteFormSchema),
+    defaultValues: {
+      postalCode: "",
+      city: "",
+    },
   });
+
+  const postalCodeValue = watch("postalCode");
+  const cityValue = watch("city");
 
   const onSubmit = async (data: QuoteFormData) => {
     try {
@@ -107,24 +118,24 @@ const Quote = () => {
                   Votre salle
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <FormField
-                    label="Nom de la salle"
-                    type="text"
-                    {...register("gymName")}
-                    error={errors.gymName?.message}
-                    placeholder="Fight Club Paris"
-                    required
-                  />
-                  <FormField
-                    label="Ville / Code postal"
-                    type="text"
-                    {...register("location")}
-                    error={errors.location?.message}
-                    placeholder="Paris 75001"
-                    required
-                  />
-                </div>
+                <FormField
+                  label="Nom de la salle"
+                  type="text"
+                  {...register("gymName")}
+                  error={errors.gymName?.message}
+                  placeholder="Fight Club Paris"
+                  required
+                />
+
+                <PostalCodeField
+                  postalCodeValue={postalCodeValue || ""}
+                  cityValue={cityValue || ""}
+                  onPostalCodeChange={(value) => setValue("postalCode", value, { shouldValidate: true })}
+                  onCityChange={(value) => setValue("city", value, { shouldValidate: true })}
+                  postalCodeError={errors.postalCode?.message}
+                  cityError={errors.city?.message}
+                  required
+                />
 
                 <FormField
                   label="Activités pratiquées"

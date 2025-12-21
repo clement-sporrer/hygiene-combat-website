@@ -1,8 +1,13 @@
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
 import { ArrowRight, MessageSquare } from "lucide-react";
+import { ThemeVariant } from "@/lib/themeVariants";
 
-const CTASection = () => {
+interface CTASectionProps {
+  themeVariant?: ThemeVariant;
+}
+
+const CTASection = ({ themeVariant }: CTASectionProps) => {
   return (
     <Section variant="light" id="cta-section" fullScreen size="narrow" className="relative">
       {/* Background decoration */}

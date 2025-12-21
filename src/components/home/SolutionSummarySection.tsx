@@ -2,8 +2,13 @@ import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
 import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Sparkles, ShieldCheck, Wind, ArrowRight } from "lucide-react";
+import { ThemeVariant } from "@/lib/themeVariants";
 
-const SolutionSummarySection = () => {
+interface SolutionSummarySectionProps {
+  themeVariant?: ThemeVariant;
+}
+
+const SolutionSummarySection = ({ themeVariant }: SolutionSummarySectionProps) => {
   return (
     <Section variant="light" id="solution-summary" fullScreen size="default">
       <div className="section-header">

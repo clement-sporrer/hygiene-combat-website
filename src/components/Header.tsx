@@ -303,13 +303,14 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
             })}
           </nav>
 
-          {/* Desktop CTA Button */}
+          {/* Desktop CTA Button - Blue-clair style */}
           <div className="hidden md:block">
             <Button
               asLink
               to="/devis"
               variant="primary"
               size="md"
+              className="bg-[#87a6bb] hover:bg-[#87a6bb]/90 text-white"
             >
               Demander un devis
             </Button>
@@ -374,7 +375,7 @@ const Header = ({ variant = "dark" }: HeaderProps) => {
                 to="/devis"
                 variant="primary"
                 size="md"
-                className="w-full min-h-[48px]"
+                className="w-full min-h-[48px] bg-[#87a6bb] hover:bg-[#87a6bb]/90 text-white"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Demander un devis

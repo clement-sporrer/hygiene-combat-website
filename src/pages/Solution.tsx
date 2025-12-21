@@ -94,7 +94,10 @@ const Solution = () => {
                     description: "Supprime les odeurs de transpiration et laisse un parfum frais d'eucalyptus.",
                   },
                 ].map((item) => (
-                  <div key={item.title} className="text-center p-6 card">
+                  <div 
+                    key={item.title} 
+                    className="text-center p-6 card cursor-pointer transition-all duration-200 hover:bg-muted/50 hover:shadow-md hover:border-primary/30"
+                  >
                     <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-4">
                       <item.icon size={24} aria-hidden="true" />
                     </div>
@@ -109,28 +112,15 @@ const Solution = () => {
               </div>
             </div>
             
-            {/* Image du produit - utiliser la vidéo existante */}
+            {/* Image du produit - Image statique */}
             <div className="order-1 lg:order-2 relative flex items-center justify-center lg:col-span-1">
               <div className="relative w-full max-w-xs">
-                <div className="relative w-full aspect-[3/4] rounded-3xl overflow-hidden shadow-glow">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-full object-cover"
-                    aria-label="Vidéo de présentation du biocide 3-en-1 Hygiène & Combat"
-                    title="Biocide 3-en-1 Hygiène & Combat"
-                    onError={(e) => {
-                      // Fallback: hide video on error
-                      const target = e.target as HTMLVideoElement;
-                      target.style.display = 'none';
-                    }}
-                  >
-                    <source src="/videos/bidon h&c.mp4" type="video/mp4" />
-                  </video>
-                </div>
+                <img
+                  src="/images/bidon_avant.PNG"
+                  alt="Bidon 5L Hygiène & Combat - Biocide 3-en-1"
+                  className="w-full h-auto rounded-2xl object-contain"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

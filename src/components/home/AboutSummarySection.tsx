@@ -2,10 +2,35 @@ import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
 import ScrollArrow from "@/components/ui/ScrollArrow";
 import { Target, Heart, ArrowRight } from "lucide-react";
+import { ThemeVariant, shouldUseLightText } from "@/lib/themeVariants";
+import { cn } from "@/lib/utils";
 
-const AboutSummarySection = () => {
+interface AboutSummarySectionProps {
+  themeVariant?: ThemeVariant;
+}
+
+const AboutSummarySection = ({ themeVariant }: AboutSummarySectionProps) => {
+  // Get background class based on variant
+  const getSectionBgClass = () => {
+    if (!themeVariant || themeVariant === 'noir') return '';
+    if (themeVariant === 'bleu-clair') return 'bg-[#87a6bb]';
+    if (themeVariant === 'bleu-fonce') return 'bg-[#384a54]';
+    if (themeVariant === 'gradient-clair-fonce') return 'bg-gradient-to-b from-[#87a6bb] to-[#384a54]';
+    if (themeVariant === 'gradient-fonce-clair') return 'bg-gradient-to-b from-[#384a54] to-[#87a6bb]';
+    return '';
+  };
+
+  const sectionBgClass = getSectionBgClass();
+  const useLightText = !themeVariant || themeVariant !== 'bleu-clair';
+
   return (
-    <Section variant="dark" id="about-summary" fullScreen size="default">
+    <Section 
+      variant="dark" 
+      id="about-summary" 
+      fullScreen 
+      size="default"
+      className={sectionBgClass}
+    >
       <div className="section-header">
         <h2>À propos</h2>
         <p className="text-lg text-muted-foreground content-block">
@@ -57,7 +82,7 @@ const AboutSummarySection = () => {
         </Button>
       </div>
       
-      <ScrollArrow targetId="cta-section" variant="dark" />
+      <ScrollArrow targetId="cta-section" variant={useLightText ? "dark" : "light"} />
     </Section>
   );
 };

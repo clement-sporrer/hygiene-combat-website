@@ -16,6 +16,10 @@ import CGV from "./pages/CGV";
 import Confidentialite from "./pages/Confidentialite";
 import NotFound from "./pages/NotFound";
 
+// Variant pages
+import IndexVariant from "./pages/variants/IndexVariant";
+import SolutionVariant from "./pages/variants/SolutionVariant";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,6 +32,7 @@ const App = () => (
           <BrowserRouter>
             <ScrollToTop />
             <Routes>
+              {/* Main routes */}
               <Route path="/" element={<Index />} />
               <Route path="/solution" element={<Solution />} />
               <Route path="/a-propos" element={<About />} />
@@ -36,6 +41,21 @@ const App = () => (
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/cgv" element={<CGV />} />
               <Route path="/confidentialite" element={<Confidentialite />} />
+              
+              {/* Variant routes - Accueil */}
+              <Route path="/accueil-noir" element={<IndexVariant variant="noir" />} />
+              <Route path="/accueil-bleu-clair" element={<IndexVariant variant="bleu-clair" />} />
+              <Route path="/accueil-bleu-fonce" element={<IndexVariant variant="bleu-fonce" />} />
+              <Route path="/accueil-gradient-clair-fonce" element={<IndexVariant variant="gradient-clair-fonce" />} />
+              <Route path="/accueil-gradient-fonce-clair" element={<IndexVariant variant="gradient-fonce-clair" />} />
+              
+              {/* Variant routes - Solution */}
+              <Route path="/solution-noir" element={<SolutionVariant variant="noir" />} />
+              <Route path="/solution-bleu-clair" element={<SolutionVariant variant="bleu-clair" />} />
+              <Route path="/solution-bleu-fonce" element={<SolutionVariant variant="bleu-fonce" />} />
+              <Route path="/solution-gradient-clair-fonce" element={<SolutionVariant variant="gradient-clair-fonce" />} />
+              <Route path="/solution-gradient-fonce-clair" element={<SolutionVariant variant="gradient-fonce-clair" />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

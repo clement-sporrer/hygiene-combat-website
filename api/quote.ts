@@ -47,12 +47,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID!;
 
     const timestamp = new Date().toISOString();
+    // Combine postalCode and city for location field (backward compatible)
+    const location = `${data.postalCode} ${data.city}`;
     const values = [
       data.name,
       data.email,
       data.phone,
       data.gymName,
-      data.location,
+      location,
       data.activities || '',
       data.surfaces || '',
       data.surfaceArea || '',
@@ -73,7 +75,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         email: data.email,
         phone: data.phone,
         gymName: data.gymName,
-        location: data.location,
+        location: location,
         activities: data.activities,
         surfaces: data.surfaces,
         members: data.surfaceArea, // Using surfaceArea as members for now
