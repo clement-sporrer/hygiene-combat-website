@@ -4,10 +4,17 @@ import SEO from "@/components/SEO";
 import Section from "@/components/layout/Section";
 import Button from "@/components/ui/button";
 import { Target, Heart, MapPin, ArrowRight } from "lucide-react";
+import { useTheme } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 const About = () => {
+  const { useLightText } = useTheme();
+  
+  const darkTextColor = useLightText ? "text-white" : "text-brand-black";
+  const darkTextMuted = useLightText ? "text-white/70" : "text-brand-black/70";
+
   return (
-    <div className="min-h-screen bg-brand-white">
+    <div className="min-h-screen bg-background">
       <SEO
         title="À Propos - Hygiène & Combat | Solution Hygiène Salle de Sport"
         description="Hygiène & Combat : solution d'hygiène professionnelle née du terrain pour les salles de sport de combat. Réduire les infections cutanées avec un produit adapté aux tatamis, rings et vestiaires."
@@ -20,8 +27,8 @@ const About = () => {
         {/* Hero */}
         <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
           <div className="hero-content">
-            <h1>À propos</h1>
-            <p className="text-lg md:text-xl text-muted-foreground content-block">
+            <h1 className={darkTextColor}>À propos</h1>
+            <p className={cn("text-lg md:text-xl content-block", darkTextMuted)}>
               Une solution née du terrain, pour répondre à un vrai problème.
             </p>
           </div>
@@ -30,7 +37,7 @@ const About = () => {
         {/* Bloc 1 : Origine, mission, philosophie */}
         <Section variant="light" id="origine-mission-philosophie" size="default">
           <div className="section-header">
-            <h2>Origine, mission et philosophie</h2>
+            <h2 className="text-heading">Origine, mission et philosophie</h2>
           </div>
           
           <div className="grid md:grid-cols-2 grid-content mb-12 md:mb-16">
@@ -38,7 +45,7 @@ const About = () => {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
                   <Heart size={24} aria-hidden="true" />
                 </div>
-                <h3>L'origine</h3>
+                <h3 className="text-heading">L'origine</h3>
                 <p className="text-lg text-muted-foreground content-block">
                   Hygiène & Combat est né d'un constat simple : trop d'infections, 
                   trop de surfaces mal entretenues, trop de produits inadaptés. 
@@ -50,7 +57,7 @@ const About = () => {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
                   <Target size={24} aria-hidden="true" />
                 </div>
-                <h3>Notre mission</h3>
+                <h3 className="text-heading">Notre mission</h3>
                 <p className="text-lg text-muted-foreground content-block">
                   Réduire les infections cutanées dans les clubs de sport de combat 
                   et améliorer les standards d'hygiène avec une solution simple, 
@@ -61,7 +68,7 @@ const About = () => {
             
             <div className="card p-8">
               <div className="section-header mb-8">
-                <h3>Notre philosophie</h3>
+                <h3 className="text-heading">Notre philosophie</h3>
                 <p className="text-lg text-muted-foreground content-block">
                   Les valeurs qui guident notre approche.
                 </p>
@@ -101,11 +108,11 @@ const About = () => {
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mx-auto">
               <MapPin size={24} aria-hidden="true" />
             </div>
-            <h2>Distribution</h2>
-            <p className="text-lg text-muted-foreground content-block">
+            <h2 className={darkTextColor}>Distribution</h2>
+            <p className={cn("text-lg content-block", darkTextMuted)}>
               Nous servons actuellement le marché francophone : France métropolitaine, Corse, Belgique. Livraison en 48h après facturation.
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className={cn("text-sm", darkTextMuted)}>
               🇫🇷 Produit fabriqué en France
             </p>
           </div>
@@ -114,7 +121,7 @@ const About = () => {
         {/* CTA */}
         <Section variant="light" id="cta-about" size="narrow">
           <div className="section-header">
-            <h2>Une question ? Un projet ?</h2>
+            <h2 className="text-heading">Une question ? Un projet ?</h2>
             <p className="text-lg text-muted-foreground content-block">
               Nous sommes là pour vous accompagner dans l'amélioration de l'hygiène 
               de votre salle.
@@ -134,7 +141,7 @@ const About = () => {
               to="/devis"
               variant="outline"
               size="lg"
-              className="border-brand-black text-brand-black hover:bg-brand-black hover:text-brand-white"
+              className="btn-outline"
               icon={ArrowRight}
               iconPosition="right"
             >

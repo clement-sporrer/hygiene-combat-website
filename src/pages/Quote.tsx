@@ -13,9 +13,16 @@ import { Send, Truck, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { quoteFormSchema, type QuoteFormData } from "@/lib/validations";
 import { submitQuoteForm } from "@/lib/googleSheets";
+import { useTheme } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 const Quote = () => {
   const { toast } = useToast();
+  const { useLightText } = useTheme();
+  
+  const darkTextColor = useLightText ? "text-white" : "text-brand-black";
+  const darkTextMuted = useLightText ? "text-white/70" : "text-brand-black/70";
+  
   const {
     register,
     handleSubmit,
@@ -53,7 +60,7 @@ const Quote = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-white">
+    <div className="min-h-screen bg-background">
       <SEO
         title="Devis Désinfectant Salle de Sport | Hygiène & Combat - Gratuit"
         description="Demandez un devis personnalisé pour votre salle de sport. Solution d'hygiène adaptée à votre surface, fréquentation et besoins. Désinfectant tatami, ring, vestiaires. Réponse sous 24h."
@@ -66,8 +73,8 @@ const Quote = () => {
         {/* Hero */}
         <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
           <div className="hero-content">
-            <h1>Demander un devis</h1>
-            <p className="text-lg md:text-xl text-muted-foreground content-block">
+            <h1 className={darkTextColor}>Demander un devis</h1>
+            <p className={cn("text-lg md:text-xl content-block", darkTextMuted)}>
               Remplissez ce formulaire et nous vous proposons une solution 
               adaptée à votre salle et à votre usage.
             </p>
@@ -79,7 +86,7 @@ const Quote = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 md:space-y-10">
               {/* Contact info */}
               <div className="space-y-6">
-                <h2 className="text-xl md:text-2xl font-semibold text-brand-black">
+                <h2 className="text-xl md:text-2xl font-semibold text-heading">
                   Vos coordonnées
                 </h2>
                 
@@ -114,7 +121,7 @@ const Quote = () => {
 
               {/* Gym info */}
               <div className="space-y-6 pt-8 border-t border-border">
-                <h2 className="text-xl md:text-2xl font-semibold text-brand-black">
+                <h2 className="text-xl md:text-2xl font-semibold text-heading">
                   Votre salle
                 </h2>
 
@@ -212,7 +219,7 @@ const Quote = () => {
                   <Truck className="text-primary flex-shrink-0" size={22} aria-hidden="true" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-brand-black mb-4 text-lg">
+                  <h4 className="font-semibold text-heading mb-4 text-lg">
                     Informations livraison
                   </h4>
                   <ul className="space-y-3 text-base text-muted-foreground">

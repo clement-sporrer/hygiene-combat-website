@@ -11,9 +11,16 @@ import { Mail, Phone, MapPin, Clock, Calendar, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 import { submitContactForm } from "@/lib/googleSheets";
+import { useTheme } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { useLightText } = useTheme();
+  
+  const darkTextColor = useLightText ? "text-white" : "text-brand-black";
+  const darkTextMuted = useLightText ? "text-white/70" : "text-brand-black/70";
+  
   const {
     register,
     handleSubmit,
@@ -41,7 +48,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-white">
+    <div className="min-h-screen bg-background">
       <SEO
         title="Contact - Hygiène & Combat | Devis Désinfectant Salle de Sport"
         description="Contactez Hygiène & Combat pour vos questions sur notre solution d'hygiène professionnelle. Désinfectant tatami, ring et vestiaires. Réponse sous 24h. +33 6 15 61 35 31"
@@ -54,8 +61,8 @@ const Contact = () => {
         {/* Hero */}
         <Section variant="dark" size="narrow" spacing="hero" className="flex items-center">
           <div className="hero-content">
-            <h1>Contact</h1>
-            <p className="text-lg md:text-xl text-muted-foreground content-block">
+            <h1 className={darkTextColor}>Contact</h1>
+            <p className={cn("text-lg md:text-xl content-block", darkTextMuted)}>
               Une question ? Besoin d'informations ? Nous sommes là pour vous aider.
             </p>
           </div>
@@ -66,7 +73,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 grid-content">
             {/* Form */}
             <div className="w-full">
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-black mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-heading mb-8">
                 Envoyez-nous un message
               </h2>
               
@@ -149,7 +156,7 @@ const Contact = () => {
                 <div className="card p-6">
                   <div className="flex items-center gap-4 mb-4">
                     <Calendar className="text-primary flex-shrink-0" size={22} aria-hidden="true" />
-                    <h4 className="font-semibold text-brand-black text-lg">Prendre rendez-vous</h4>
+                    <h4 className="font-semibold text-heading text-lg">Prendre rendez-vous</h4>
                   </div>
                   <p className="text-base text-muted-foreground mb-6 leading-relaxed">
                     Planifiez un appel pour discuter de vos besoins.
@@ -172,7 +179,7 @@ const Contact = () => {
 
                 {/* Nos coordonnées */}
                 <div className="pt-8 border-t border-border">
-                  <h2 className="text-2xl md:text-3xl font-bold text-brand-black mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-heading mb-8">
                     Nos coordonnées
                   </h2>
 
@@ -182,7 +189,7 @@ const Contact = () => {
                         <Mail className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2">Email</h4>
+                        <h4 className="font-semibold text-heading mb-2">Email</h4>
                         <a 
                           href="mailto:contact@hygiene-combat.fr" 
                           className="text-primary hover:underline text-base transition-colors break-all"
@@ -197,7 +204,7 @@ const Contact = () => {
                         <Phone className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2">Téléphone</h4>
+                        <h4 className="font-semibold text-heading mb-2">Téléphone</h4>
                         <a 
                           href="tel:+33615613531" 
                           className="text-primary hover:underline text-base transition-colors"
@@ -212,7 +219,7 @@ const Contact = () => {
                         <MapPin className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2">Localisation</h4>
+                        <h4 className="font-semibold text-heading mb-2">Localisation</h4>
                         <p className="text-base text-muted-foreground leading-relaxed">
                           Hauts-de-Seine (92), Ile de France
                         </p>
@@ -224,7 +231,7 @@ const Contact = () => {
                         <Clock className="text-primary" size={20} aria-hidden="true" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-brand-black mb-2">Horaires</h4>
+                        <h4 className="font-semibold text-heading mb-2">Horaires</h4>
                         <p className="text-base text-muted-foreground leading-relaxed">
                           Lundi – Vendredi : 10h – 20h
                         </p>
